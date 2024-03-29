@@ -26,10 +26,7 @@
   home.file = {
   	"${config.xdg.configHome}/.p10k.zsh".source = ./zsh/.p10k.zsh;
   	"${config.xdg.configHome}/nvim".source = ./nvim;
-    ".config/tmux" = {
-		source = ./tmux;
-		recursive = true;
-	};
+    ".tmux.conf".source = ./tmux/.tmux.conf;
     ".config/awesome" = {
 		source = ./awesome;
 		recursive = true;
