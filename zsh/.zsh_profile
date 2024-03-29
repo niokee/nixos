@@ -1,0 +1,27 @@
+export PATH=$PATH:~/.local/scripts
+export PATH=$HOME/.config/rofi/scripts:$PATH
+export FMOD_ALSA_DEVICE=pulse
+
+bindkey -s ^f "tmux-sessionizer\n"
+
+source ~/.alias
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/mdziuba/go/bin
+export EDITOR=nvim
+setxkbmap -layout pl
+setxkbmap -option lv3:lalt_switch 
+xset s off
+xset -dpms
+NUM_MONITORS=$(xrandr --listmonitors | awk "NR>1 {print $1}" | wc -l)
+if [ "$NUM_MONITORS" -eq 2 ]; then
+    xrandr_result=$(xrandr --current | grep DP-3 | grep 1920x1080+1920+0)
+    if [ -z $xrandr_result ]
+    then
+        xrandr --output HDMI-1 --primary --left-of DP-3
+    fi;
+fi 
+
+if [ -z "$TMUX" ] && [ ${UID} != 0 ]
+then
+   exec tmux new-session -A -s main
+fi
