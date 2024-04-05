@@ -7,6 +7,7 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
   fonts.fontconfig.enable = true;
   home.packages = [
+    pkgs.lf
     pkgs.pavucontrol 
     pkgs.dconf
     pkgs.zoxide
@@ -26,23 +27,23 @@
   };
 
   home.file = {
-  	"${config.xdg.configHome}/.p10k.zsh".source = ./zsh/.p10k.zsh;
-  	"${config.xdg.configHome}/nvim".source = ./nvim;
-    ".tmux.conf".source = ./tmux/.tmux.conf;
+  	"${config.xdg.configHome}/.p10k.zsh".source = ./.dotfiles/zsh/.p10k.zsh;
+  	"${config.xdg.configHome}/nvim".source = ./.dotfiles/nvim;
+    ".tmux.conf".source = ./.dotfiles/tmux/.tmux.conf;
     ".config/awesome" = {
-		source = ./awesome;
+		source = ./.dotfiles/awesome;
 		recursive = true;
 	};
     ".config/kitty" = {
-		source = ./kitty;
+		source = ./.dotfiles/kitty;
 		recursive = true;
 	};
     ".config/picom" = {
-		source = ./picom;
+		source = ./.dotfiles/picom;
 		recursive = true;
 	};
     ".config/rofi" = {
-		source = ./rofi;
+		source = ./.dotfiles/rofi;
 		recursive = true;
 	};
   };
