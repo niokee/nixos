@@ -27,23 +27,23 @@
   };
 
   home.file = {
-  	"${config.xdg.configHome}/.p10k.zsh".source = ./.dotfiles/zsh/.p10k.zsh;
-  	"${config.xdg.configHome}/nvim".source = ./.dotfiles/nvim;
-    ".tmux.conf".source = ./.dotfiles/tmux/.tmux.conf;
+  	"${config.xdg.configHome}/.p10k.zsh".source = .dotfiles/zsh/.p10k.zsh;
+  	"${config.xdg.configHome}/nvim".source = .dotfiles/nvim;
+    ".tmux.conf".source = .dotfiles/tmux/.tmux.conf;
     ".config/awesome" = {
-		source = ./.dotfiles/awesome;
+		source = .dotfiles/awesome;
 		recursive = true;
 	};
     ".config/kitty" = {
-		source = ./.dotfiles/kitty;
+		source = .dotfiles/kitty;
 		recursive = true;
 	};
     ".config/picom" = {
-		source = ./.dotfiles/picom;
+		source = .dotfiles/picom;
 		recursive = true;
 	};
     ".config/rofi" = {
-		source = ./.dotfiles/rofi;
+		source = .dotfiles/rofi;
 		recursive = true;
 	};
   };
@@ -89,7 +89,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = ./zsh;
+        src = .dotfiles/zsh;
         file = ".p10k.zsh";
       }
     ];
