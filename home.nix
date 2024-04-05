@@ -7,7 +7,8 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
   fonts.fontconfig.enable = true;
   home.packages = [
-    pkgs.hello
+    pkgs.pavucontrol 
+    pkgs.dconf
     pkgs.zoxide
     pkgs.oh-my-zsh
     pkgs.go
@@ -16,6 +17,7 @@
     pkgs.gnumake
     pkgs.thefuck
     pkgs.redshift
+    pkgs.ffmpeg
   ];
 
 
