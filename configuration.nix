@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
     ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
