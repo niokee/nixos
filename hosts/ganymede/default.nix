@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
   imports = [
     ./hardware-configuration.nix
@@ -137,7 +137,7 @@
       fzf
       gimp
       xclip
-      tldrbluetoothctl
+      tldr
       shutter
       taskwarrior
       ripgrep
