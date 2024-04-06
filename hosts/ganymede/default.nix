@@ -1,33 +1,26 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ inputs, ... }: {
 
-{ config, pkgs, ... }:
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  programs.zsh.enable = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
   users.users.mdziuba.shell = pkgs.zsh;
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  programs.zsh.enable = true;
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    networkmanager.enable = true;
+  };
+  # Bootloader.
   nixpkgs.config.permittedInsecurePackages = [
-                "electron-25.9.0"
-              ];
+    "electron-25.9.0"
+  ];
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
@@ -57,8 +50,8 @@
     windowManager.awesome = {
       enable = true;
       luaModules = with pkgs.luaPackages; [
-         luarocks
-         luadbi-mysql
+        luarocks
+        luadbi-mysql
       ];
     };
 
@@ -97,7 +90,7 @@
     packages = with pkgs; [
       firefox
       kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -110,59 +103,60 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    home-manager
-    git 
-    wget
-    stow
-    neovim
-    jq
-    lshw
-    bat
-    curl
-    lua
-    unzip
-    gettext
-    clang
-    cmake
-    lsof
-    kitty
-    python311Packages.pygments
-    python3
-    kitty
-    fira-code-symbols
-    cargo
-    nodePackages.npm
-    luarocks
-    pyright
-    gopls
-    ruff
-    rust-analyzer
-    python311Packages.pip
-    tmux
-    fzf
-    gimp
-    xclip
-    tldr
-    shutter
-    taskwarrior
-    ripgrep
-    delta
-    feh
-    rofi
-    picom
-    openssh
-    obsidian
-    firefox
-    syncthing
-    maim
-    xclip
-    spotify
-    zsh
-    oh-my-zsh
-    bluez
-    blueman
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      home-manager
+      git
+      wget
+      stow
+      neovim
+      jq
+      lshw
+      bat
+      curl
+      lua
+      unzip
+      gettext
+      clang
+      cmake
+      lsof
+      kitty
+      python311Packages.pygments
+      python3
+      kitty
+      fira-code-symbols
+      cargo
+      nodePackages.npm
+      luarocks
+      pyright
+      gopls
+      ruff
+      rust-analyzer
+      python311Packages.pip
+      tmux
+      fzf
+      gimp
+      xclip
+      tldrbluetoothctl
+      shutter
+      taskwarrior
+      ripgrep
+      delta
+      feh
+      rofi
+      picom
+      openssh
+      obsidian
+      firefox
+      syncthing
+      maim
+      xclip
+      spotify
+      zsh
+      oh-my-zsh
+      bluez
+      blueman
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -190,8 +184,27 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-  
+
   services.blueman.enable = true;
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
 }

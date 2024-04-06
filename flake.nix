@@ -3,27 +3,67 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    hardware.url = "github:nixos/nixos-hardware";
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."mdziuba" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      inherit (self) outputs;
+      lib = nixpkgs.lib // home-manager.lib;
+      systems = [
+        "x86_64-linux"
+      ];
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
+    in
+    {
+      inherit lib;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
+      # Custom modules to enable special functionality for nixos or home-manager oriented configs.
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      # Custom modifications/overrides to upstream packages.
+      overlays = import ./overlays { inherit inputs outputs; };
+
+      # Your custom packages meant to be shared or upstreamed.
+      # Accessible through 'nix build', 'nix shell', etc
+      # packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+
+      # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+
+      # Shell configured with packages that are typically only needed when working on or with nix-config.
+      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      nixosConfigurations = {
+          ganymede = lib.nixosSystem {
+              modules = [ ./hosts/ganymede ];
+              specialArgs = { inherit inputs outputs; };
+          };
+      };
+
+      homeConfigurations = {
+        "mdziuba@ganymede" = lib.homeManagerConfiguration {
+          modules = [ ./home/mdziuba/ganymede.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
       };
     };
 }
