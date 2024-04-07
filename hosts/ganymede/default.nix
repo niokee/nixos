@@ -4,6 +4,17 @@
     ./hardware-configuration.nix
   ];
 
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
+      warn-dirty = false;
+    };
+  };
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -55,8 +66,8 @@
       ];
     };
 
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -206,5 +217,4 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
 }

@@ -3,8 +3,8 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/release-23.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -34,6 +34,7 @@
     in
     {
       inherit lib;
+      nix.settings.experimental-features = ["nix-command" "flakes"];
 
       # Custom modules to enable special functionality for nixos or home-manager oriented configs.
       nixosModules = import ./modules/nixos;
@@ -51,6 +52,7 @@
 
       # Shell configured with packages that are typically only needed when working on or with nix-config.
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+
       nixosConfigurations = {
           ganymede = lib.nixosSystem {
               modules = [ ./hosts/ganymede ];

@@ -8,7 +8,7 @@
   fonts.fontconfig.enable = true;
   home = {
     username = lib.mkDefault "mdziuba";
-    homeDirectory = "/home/${config.home.username}";
+    homeDirectory = "/home/mdziuba";
     stateVersion = lib.mkDefault "23.11";
     sessionPath = [
       "$HOME/.local/scripts"
@@ -23,30 +23,31 @@
     };
   };
   programs.git = {
-      enable = true;
-      userName = "Mateusz Dziuba";
-      userEmail = "mateusz.dziuba97@gmail.com";
+    enable = true;
+    userName = "Mateusz Dziuba";
+    userEmail = "mateusz.dziuba97@gmail.com";
   };
 
 
-  home.package = with pkgs; [
-      # Packages that don't have custom configs go here
-      
-      btop
-      pavucontrol
-      lf
-      dconf
-      zoxide
-      oh-my-zsh
-      go
-      gcc
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      gnumake
-      thefuck
-      redshift
-      ffmpeg
+  home.packages = with pkgs; [
+    # Packages that don't have custom configs go here
+    amphetype
+    lolcat
+    btop
+    pavucontrol
+    lf
+    dconf
+    zoxide
+    oh-my-zsh
+    go
+    gcc
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    gnumake
+    thefuck
+    redshift
+    ffmpeg
   ];
-  
+
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
@@ -59,7 +60,11 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
       warn-dirty = false;
     };
   };
@@ -70,4 +75,25 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+  home.file = {
+    "${config.xdg.configHome}/.p10k.zsh".source = ./../../../.dotfiles/zsh/.p10k.zsh;
+    "${config.xdg.configHome}/nvim".source = ./../../../.dotfiles/nvim;
+    ".tmux.conf".source = ./../../../.dotfiles/tmux/.tmux.conf;
+    ".config/awesome" = {
+      source = ./../../../.dotfiles/awesome;
+      recursive = true;
+    };
+    ".config/kitty" = {
+      source = ./../../../.dotfiles/kitty;
+      recursive = true;
+    };
+    ".config/picom" = {
+      source = ./../../../.dotfiles/picom;
+      recursive = true;
+    };
+    ".config/rofi" = {
+      source = ./../../../.dotfiles/rofi;
+      recursive = true;
+    };
+  };
 }

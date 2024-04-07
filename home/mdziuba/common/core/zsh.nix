@@ -1,7 +1,8 @@
+{ config, pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
+    enableAutosuggestions = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
@@ -18,9 +19,9 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-          "git"
-          "ripgrep"
-          "thefuck"
+        "git"
+        "ripgrep"
+        "thefuck"
       ];
     };
     plugins = [
@@ -31,7 +32,7 @@
       }
       {
         name = "powerlevel10k-config";
-        src = .dotfiles/zsh;
+        src = ./../../../.dotfiles/zsh;
         file = ".p10k.zsh";
       }
     ];
