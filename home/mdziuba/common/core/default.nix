@@ -16,8 +16,8 @@
     sessionVariables = {
       FLAKE = "$HOME/.config/home-manager";
       SHELL = "zsh";
-      TERM = "kitty";
-      TERMINAL = "kitty";
+      TERM = "wezterm";
+      TERMINAL = "wezterm";
       EDITOR = "nvim";
       MANPAGER = "batman";
     };
@@ -46,6 +46,8 @@
     thefuck
     redshift
     ffmpeg
+    wezterm
+    lua
   ];
 
   nixpkgs = {
@@ -73,26 +75,27 @@
     home-manager.enable = true;
   };
 
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   home.file = {
     "${config.xdg.configHome}/.p10k.zsh".source = ./../../../.dotfiles/zsh/.p10k.zsh;
     "${config.xdg.configHome}/nvim".source = ./../../../.dotfiles/nvim;
     ".tmux.conf".source = ./../../../.dotfiles/tmux/.tmux.conf;
-    ".config/awesome" = {
+    "${config.xdg.configHome}/awesome" = {
       source = ./../../../.dotfiles/awesome;
       recursive = true;
     };
-    ".config/kitty" = {
-      source = ./../../../.dotfiles/kitty;
-      recursive = true;
-    };
-    ".config/picom" = {
+    "${config.xdg.configHome}/picom" = {
       source = ./../../../.dotfiles/picom;
       recursive = true;
     };
-    ".config/rofi" = {
+    "${config.xdg.configHome}/rofi" = {
       source = ./../../../.dotfiles/rofi;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/wezterm" = {
+      source = ./../../../.dotfiles/wezterm;
       recursive = true;
     };
   };

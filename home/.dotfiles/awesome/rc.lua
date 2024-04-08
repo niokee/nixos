@@ -19,7 +19,7 @@ local tyrannical = require("tyrannical")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-awful.spawn.with_shell("feh --bg-fill ~/.config/home-manager/.dotfiles/darksky2.png")
+awful.spawn.with_shell("feh --bg-fill ~/.config/home-manager/home/.dotfiles/darksky2.png")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -51,9 +51,9 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 home_dir = os.getenv("HOME")
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty -e tmux new"
+terminal = "wezterm cli spawn --new-window"
 editor = os.getenv("EDITOR") or "nvim"
-editor_cmd =  "kitty -e nvim " .. home_dir .. "/.config/home-manager/awesome/.config/awesome/rc.lua"
+editor_cmd =  "wezterm -e nvim " .. home_dir .. "/.config/home-manager/awesome/.config/awesome/rc.lua"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.

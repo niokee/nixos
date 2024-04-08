@@ -2,11 +2,14 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
+    initExtra = ''
+        eval "$(${config.programs.zoxide.package}/bin/zoxide init zsh)"
+    '';
     history = {
       extended = true;
       ignoreDups = true;
