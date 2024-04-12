@@ -10,7 +10,7 @@ in
 {
   imports = [
     ./basic-binds.nix
-    ./../waybar
+    ./waybar.nix
   ];
   xdg.portal = {
     extraPortals = [ xdph ];
@@ -36,7 +36,6 @@ in
 #      in
       {
         general = {
-          # cursor_inactive_timeout = 4;
           gaps_in = 15;
           gaps_out = 20;
           border_size = 2;
@@ -134,7 +133,7 @@ in
         #   ];
         };
 
-        # exec = [ "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill" ];
+        # exec = [ "${pkgs.swaybg}/bin/swaybg -i ${config.walwaybar.nixmode fill" ];
 
          bind =
            let
@@ -145,7 +144,7 @@ in
       #       gtk-play = lib.getExe' pkgs.libcanberra-gtk3 "canberra-gtk-play";
       #       notify-send = lib.getExe' pkgs.libnotify "notify-send";
       #
-             terminal = "kitty";
+             terminal = "wezterm";
       #       defaultApp = type: "${lib.getExe' pkgs.gtk3 "gtk-launch"} $(${lib.getExe' pkgs.xdg-utils "xdg-mime"} query default ${type})";
       #       browser = defaultApp "x-scheme-handler/https";
       #       editor = defaultApp "text/plain";

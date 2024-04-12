@@ -1,12 +1,12 @@
 { config, lib, pkgs, outputs, ... }:
 {
   imports = [
+    .
     ./ssh.nix
     ./zsh.nix
-    ./hyprland  
+    ./hyprland
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  fonts.fontconfig.enable = true;
   home = {
     username = lib.mkDefault "mdziuba";
     homeDirectory = "/home/mdziuba";
@@ -23,43 +23,29 @@
       MANPAGER = "batman";
     };
   };
-  programs.git = {
-    enable = true;
-    userName = "Mateusz Dziuba";
-    userEmail = "mateusz.dziuba97@gmail.com";
-  };
 
 
   home.packages = with pkgs; [
     # Packages that don't have custom configs go here
-    amphetype
-    lolcat
-    btop
+    amphetype 
     pavucontrol
     lf
     dconf
-    zoxide
-    oh-my-zsh
-    go
-    gcc
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    gnumake
+    tmux
+    gimp
     thefuck
     redshift
     ffmpeg
     wezterm
-    lua
-    ruff
+    feh
+    rofi-wayland
+    picom
+    obsidian
+    syncthing
+    maim
+    spotify
   ];
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
-    };
-  };
 
   nix = {
     package = lib.mkDefault pkgs.nix;
@@ -84,10 +70,6 @@
     "${config.xdg.configHome}/.p10k.zsh".source = ./../../../.dotfiles/zsh/.p10k.zsh;
     "${config.xdg.configHome}/nvim".source = ./../../../.dotfiles/nvim;
     ".tmux.conf".source = ./../../../.dotfiles/tmux/.tmux.conf;
-    "${config.xdg.configHome}/awesome" = {
-      source = ./../../../.dotfiles/awesome;
-      recursive = true;
-    };
     "${config.xdg.configHome}/picom" = {
       source = ./../../../.dotfiles/picom;
       recursive = true;

@@ -1,7 +1,9 @@
 { inputs, lib, pkgs, ... }:
 {
     imports = [
-        common/core 
+        features/cli
+        features/desktop/common
+        features/hyprland
     ];
 
     config.monitors = [

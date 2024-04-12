@@ -1,0 +1,5 @@
+{
+    progsams.lf = {
+        enable = true;
+    };
+}
