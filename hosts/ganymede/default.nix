@@ -11,6 +11,8 @@
         "flakes"
         "repl-flake"
       ];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
       warn-dirty = false;
     };
   };
@@ -21,7 +23,25 @@
       efi.canTouchEfiVariables = true;
     };
   };
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm = {
+      enable = true;
+      wayland = {
+          enable = true;
+          compositor = "weston";
+      };
+  };
   users.users.mdziuba.shell = pkgs.zsh;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    xwayland.enable = true;
+
+  };
+  environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+  };
 
   programs.zsh.enable = true;
   networking = {
@@ -50,25 +70,6 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    # Enable the KDE Plasma Desktop Environment.
-    displayManager = {
-      sddm.enable = true;
-      defaultSession = "none+awesome";
-    };
-    windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks
-        luadbi-mysql
-      ];
-    };
-
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -154,7 +155,7 @@
       ripgrep
       delta
       feh
-      rofi
+      rofi-wayland
       picom
       openssh
       obsidian

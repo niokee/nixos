@@ -3,6 +3,7 @@
   imports = [
     ./ssh.nix
     ./zsh.nix
+    ./hyprland  
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   fonts.fontconfig.enable = true;
@@ -48,6 +49,7 @@
     ffmpeg
     wezterm
     lua
+    ruff
   ];
 
   nixpkgs = {

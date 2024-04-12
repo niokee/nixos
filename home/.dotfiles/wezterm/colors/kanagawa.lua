@@ -36,7 +36,8 @@ local dragon = {
     springGreen = "#98BB6C",
 
     lotusCyan = "#D7E3D8",
-    idk = "#C9D87E"
+    idk = "#C9D87E",
+    transparent = "rgba(0,0,0,0)",
 }
 
 local colorsheme = {
@@ -47,6 +48,18 @@ local colorsheme = {
     cursor_bg = dragon.fujiGrey,
     selection_bg = dragon.waveBlue,
     selection_fg = dragon.oldWhite,
+    tab_bar = {
+        background = dragon.transparent,
+        new_tab = {
+            bg_color = dragon.transparent,
+            fg_color = dragon.transparent,
+        },
+        new_tab_hover = {
+            bg_color = dragon.transparent,
+            fg_color = dragon.transparent,
+            italic = false,
+        },
+    },
     ansi = {
         dragon.sumInk0,
         dragon.autumnRed,

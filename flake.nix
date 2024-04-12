@@ -7,13 +7,15 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
-    sops-nix = {
-      url = "github:mic92/sops-nix";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

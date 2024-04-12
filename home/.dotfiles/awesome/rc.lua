@@ -51,7 +51,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 home_dir = os.getenv("HOME")
 -- This is used later as the default terminal and editor to run.
-terminal = "wezterm cli spawn --new-window"
+terminal = "wezterm"
+--terminal = "wezterm cli spawn --new-window"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd =  "wezterm -e nvim " .. home_dir .. "/.config/home-manager/awesome/.config/awesome/rc.lua"
 
