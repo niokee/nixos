@@ -1,9 +1,10 @@
 { inputs, lib, pkgs, ... }:
 {
     imports = [
+        ./global
         features/cli
         features/desktop/common
-        features/hyprland
+        features/desktop/hyprland
     ];
 
     config.monitors = [

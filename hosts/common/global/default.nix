@@ -3,9 +3,11 @@
 , ...
 }: {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ./nix.nix
     ./locale.nix
     ./systemd-boot.nix
+    ./zsh.nix
   ];
 
   home-manager.extraSpecialArgs = {

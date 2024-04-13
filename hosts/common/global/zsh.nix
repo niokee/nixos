@@ -1,5 +1,5 @@
 {
-    programs.thefuck = {
+    programs.zsh = {
         enable = true;
     };
 }

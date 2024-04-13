@@ -9,7 +9,7 @@
     ./thefuck.nix
     ./zsh.nix
   ];
-  home.packager = with pkgs; [
+  home.packages = with pkgs; [
     wget
     jq
     lshw

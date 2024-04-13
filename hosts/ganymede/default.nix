@@ -7,10 +7,11 @@
 
     ../common/users/mdziuba
 
-    ../optional/pipewire.nix
-    ../optional/bluetooth.nix
+    ../common/optional/pipewire.nix
+    ../common/optional/bluetooth.nix
   ];
-
+    
+  system.stateVersion = "24.05";
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm = {
@@ -50,7 +51,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "ganymede";
     networkmanager.enable = true;
   };
   # Bootloader.

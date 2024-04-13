@@ -1,5 +1,5 @@
 {
-    progsams.lf = {
+    programs.lf = {
         enable = true;
     };
 }
