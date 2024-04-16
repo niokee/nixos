@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -9,6 +10,7 @@
     autocd = true;
     initExtra = ''
         eval "$(${config.programs.zoxide.package}/bin/zoxide init zsh)"
+
     '';
     history = {
       extended = true;

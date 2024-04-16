@@ -43,7 +43,7 @@ in {
             default = true;
           };
           workspace = mkOption {
-            type = types.nullOr types.list;
+            type = types.nullOr types.str;
             default = null;
           };
         };
