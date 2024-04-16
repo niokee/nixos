@@ -14,7 +14,7 @@
     rust-analyzer
     python311Packages.pip
     go
-    gcc
+    (hiPrio gcc)
     ruff 
     gnumake
   ];

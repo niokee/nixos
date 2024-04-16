@@ -5,6 +5,7 @@
         features/cli
         features/desktop/common
         features/desktop/hyprland
+	features/programming
     ];
 
     config.monitors = [
