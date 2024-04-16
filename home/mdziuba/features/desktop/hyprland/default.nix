@@ -239,10 +239,22 @@ in
          }"
            )
            (config.monitors);
-      
-         workspace = map (m: "${m.name},${m.workspace}") (
-           lib.filter (m: m.enabled && m.workspace != null) config.monitors
-         );
+         workspace = [
+            "HDMI-A-2,1"
+            "HDMI-A-2,2"
+            "HDMI-A-2,3"
+            "HDMI-A-2,4"
+            "HDMI-A-2,5"
+                "DP-2,6"
+                "DP-2,7"
+                "DP-2,8"
+                "DP-2,9"
+                "DP-2,10"
+
+         ];
+         # workspace = map (m: "${m.name},${m.workspace}") (
+         #   lib.filter (m: m.enabled && m.workspace != null) config.monitors
+         # );
       };
     # This is order sensitive, so it has to come here.
     extraConfig = ''
