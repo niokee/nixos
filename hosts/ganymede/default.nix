@@ -10,16 +10,16 @@
     ../common/optional/pipewire.nix
     ../common/optional/bluetooth.nix
   ];
-    
+
   system.stateVersion = "24.05";
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland = {
       enable = true;
-      wayland = {
-          enable = true;
-          compositor = "weston";
-      };
+      compositor = "weston";
+    };
   };
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "mdziuba";
@@ -30,8 +30,8 @@
 
   };
   environment.sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   hardware.opengl = {
@@ -58,5 +58,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 }
