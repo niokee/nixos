@@ -11,12 +11,13 @@ in
   imports = [
     ./basic-binds.nix
     ./waybar.nix
+    ./wlsunset.nix
   ];
   xdg.portal = {
     extraPortals = [ xdph ];
     configPackages = [ hyprland ];
   };
-    
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = hyprland;
@@ -30,21 +31,21 @@ in
     };
 
     settings =
-#      let
- #       active = "0xaa${config.colorscheme.colors.base0C}";
-  #      inactive = "0xaa${config.colorscheme.colors.base02}";
-#      in
+      #      let
+      #       active = "0xaa${config.colorscheme.colors.base0C}";
+      #      inactive = "0xaa${config.colorscheme.colors.base02}";
+      #      in
       {
         general = {
           gaps_in = 15;
           gaps_out = 20;
           border_size = 2;
-   #       "col.active_border" = active;
-   #       "col.inactive_border" = inactive;
+          #       "col.active_border" = active;
+          #       "col.inactive_border" = inactive;
         };
         group = {
-   #       "col.border_active" = active;
-  #        "col.border_inactive" = inactive;
+          #       "col.border_active" = active;
+          #        "col.border_inactive" = inactive;
           groupbar.font_size = 11;
         };
         binds = {
@@ -115,146 +116,146 @@ in
           #   "easeinoutback,0.68, -0.6, 0.32, 1.6"
           # ];
           #
-        #   animation = [
-        #     "border,1,3,easeout"
-        #     "workspaces,1,2,easeoutback,slide"
-        #     "windowsIn,1,3,easeoutback,slide"
-        #     "windowsOut,1,3,easeinback,slide"
-        #     "windowsMove,1,3,easeoutback"
-        #     "fadeIn,1,3,easeout"
-        #     "fadeOut,1,3,easein"
-        #     "fadeSwitch,1,3,easeinout"
-        #     "fadeShadow,1,3,easeinout"
-        #     "fadeDim,1,3,easeinout"
-        #     "fadeLayersIn,1,3,easeoutback"
-        #     "fadeLayersOut,1,3,easeinback"
-        #     "layersIn,1,3,easeoutback,slide"
-        #     "layersOut,1,3,easeinback,slide"
-        #   ];
+          #   animation = [
+          #     "border,1,3,easeout"
+          #     "workspaces,1,2,easeoutback,slide"
+          #     "windowsIn,1,3,easeoutback,slide"
+          #     "windowsOut,1,3,easeinback,slide"
+          #     "windowsMove,1,3,easeoutback"
+          #     "fadeIn,1,3,easeout"
+          #     "fadeOut,1,3,easein"
+          #     "fadeSwitch,1,3,easeinout"
+          #     "fadeShadow,1,3,easeinout"
+          #     "fadeDim,1,3,easeinout"
+          #     "fadeLayersIn,1,3,easeoutback"
+          #     "fadeLayersOut,1,3,easeinback"
+          #     "layersIn,1,3,easeoutback,slide"
+          #     "layersOut,1,3,easeinback,slide"
+          #   ];
         };
 
         # exec = [ "${pkgs.swaybg}/bin/swaybg -i ${config.walwaybar.nixmode fill" ];
 
-         bind =
-           let
-      #       grimblast = lib.getExe pkgs.inputs.hyprwm-contrib.grimblast;
-      #       tesseract = lib.getExe pkgs.tesseract;
-      #       pactl = lib.getExe' pkgs.pulseaudio "pactl";
-      #       tly = lib.getExe pkgs.tly;
-      #       gtk-play = lib.getExe' pkgs.libcanberra-gtk3 "canberra-gtk-play";
-      #       notify-send = lib.getExe' pkgs.libnotify "notify-send";
-      #
-             terminal = "wezterm";
-      #       defaultApp = type: "${lib.getExe' pkgs.gtk3 "gtk-launch"} $(${lib.getExe' pkgs.xdg-utils "xdg-mime"} query default ${type})";
-      #       browser = defaultApp "x-scheme-handler/https";
-      #       editor = defaultApp "text/plain";
-           in
-           [
-      #       # Program bindings
-             "SUPER,Return,exec,${terminal}"
-             "SUPER,r,exec,/home/mdziuba/.config/rofi/scripts/launcher_t7"
-      #       "SUPER,e,exec,${editor}"
-      #       "SUPER,v,exec,${editor}"
-      #       "SUPER,b,exec,${browser}"
-      #       # Brightness control (only works if the system has lightd)
-      #       ",XF86MonBrightnessUp,exec,light -A 10"
-      #       ",XF86MonBrightnessDown,exec,light -U 10"
-      #       # Volume
-      #       ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-      #       ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-      #       ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-      #       "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-      #       ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-      #       # Screenshotting
-      #       ",Print,exec,${grimblast} --notify --freeze copy output"
-      #       "SUPER,Print,exec,${grimblast} --notify --freeze copy area"
-      #       # To OCR
-      #       "ALT,Print,exec,${grimblast} --freeze save area - | ${tesseract} - - | wl-copy && ${notify-send} -t 3000 'OCR result copied to buffer'"
-      #       # Tally counter
-      #       "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
-      #       "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
-      #       "SUPERCONTROLSHIFT,z,exec,${tly} reset && ${gtk-play} -i complete" # Reset
-      #       "SUPERSHIFT,z,exec,${notify-send} -t 1000 $(${tly} time)" # Show current time
-           ];
-      #     ++ (
-      #       let
-      #         playerctl = lib.getExe' config.services.playerctld.package "playerctl";
-      #         playerctld = lib.getExe' config.services.playerctld.package "playerctld";
-      #       in
-      #       lib.optionals config.services.playerctld.enable [
-      #         # Media control
-      #         ",XF86AudioNext,exec,${playerctl} next"
-      #         ",XF86AudioPrev,exec,${playerctl} previous"
-      #         ",XF86AudioPlay,exec,${playerctl} play-pause"
-      #         ",XF86AudioStop,exec,${playerctl} stop"
-      #         "ALT,XF86AudioNext,exec,${playerctld} shift"
-      #         "ALT,XF86AudioPrev,exec,${playerctld} unshift"
-      #         "ALT,XF86AudioPlay,exec,systemctl --user restart playerctld"
-      #       ]
-      #     )
-      #     ++
-      #     # Screen lock
-      #     (
-      #       let
-      #         swaylock = lib.getExe config.programs.swaylock.package;
-      #       in
-      #       lib.optionals config.programs.swaylock.enable [
-      #         ",XF86Launch5,exec,${swaylock} -S --grace 2"
-      #         ",XF86Launch4,exec,${swaylock} -S --grace 2"
-      #         "SUPER,backspace,exec,${swaylock} -S --grace 2"
-      #       ]
-      #     )
-      #     ++
-      #     # Notification manager
-      #     (
-      #       let
-      #         makoctl = lib.getExe' config.services.mako.package "makoctl";
-      #       in
-      #       lib.optionals config.services.mako.enable [ "SUPER,w,exec,${makoctl} dismiss" ]
-      #     )
-      #     ++
-      #       ++ (
-      #         let
-      #           pass-wofi = lib.getExe (pkgs.pass-wofi.override { pass = config.programs.password-store.package; });
-      #         in
-      #         lib.optionals config.programs.password-store.enable [
-      #           ",Scroll_Lock,exec,${pass-wofi}" # fn+k
-      #           ",XF86Calculator,exec,${pass-wofi}" # fn+f12
-      #           "SUPER,semicolon,exec,pass-wofi"
-      #         ]
-      #       )
-      #     );
-      #
-         monitor = map
-           (
-             m:
-             let
-               resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-               position = "${toString m.x}x${toString m.y}";
-             in
-             "${m.name},${
+        bind =
+          let
+            #       grimblast = lib.getExe pkgs.inputs.hyprwm-contrib.grimblast;
+            #       tesseract = lib.getExe pkgs.tesseract;
+            #       pactl = lib.getExe' pkgs.pulseaudio "pactl";
+            #       tly = lib.getExe pkgs.tly;
+            #       gtk-play = lib.getExe' pkgs.libcanberra-gtk3 "canberra-gtk-play";
+            #       notify-send = lib.getExe' pkgs.libnotify "notify-send";
+            #
+            terminal = "wezterm";
+            #       defaultApp = type: "${lib.getExe' pkgs.gtk3 "gtk-launch"} $(${lib.getExe' pkgs.xdg-utils "xdg-mime"} query default ${type})";
+            #       browser = defaultApp "x-scheme-handler/https";
+            #       editor = defaultApp "text/plain";
+          in
+          [
+            #       # Program bindings
+            "SUPER,Return,exec,${terminal}"
+            "SUPER,r,exec,/home/mdziuba/.config/rofi/scripts/launcher_t7"
+            #       "SUPER,e,exec,${editor}"
+            #       "SUPER,v,exec,${editor}"
+            #       "SUPER,b,exec,${browser}"
+            #       # Brightness control (only works if the system has lightd)
+            #       ",XF86MonBrightnessUp,exec,light -A 10"
+            #       ",XF86MonBrightnessDown,exec,light -U 10"
+            #       # Volume
+            #       ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+            #       ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+            #       ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+            #       "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+            #       ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+            #       # Screenshotting
+            #       ",Print,exec,${grimblast} --notify --freeze copy output"
+            #       "SUPER,Print,exec,${grimblast} --notify --freeze copy area"
+            #       # To OCR
+            #       "ALT,Print,exec,${grimblast} --freeze save area - | ${tesseract} - - | wl-copy && ${notify-send} -t 3000 'OCR result copied to buffer'"
+            #       # Tally counter
+            #       "SUPER,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} add && ${gtk-play} -i dialog-information" # Add new entry
+            #       "SUPERCONTROL,z,exec,${notify-send} -t 1000 $(${tly} time) && ${tly} undo && ${gtk-play} -i dialog-warning" # Undo last entry
+            #       "SUPERCONTROLSHIFT,z,exec,${tly} reset && ${gtk-play} -i complete" # Reset
+            #       "SUPERSHIFT,z,exec,${notify-send} -t 1000 $(${tly} time)" # Show current time
+          ];
+        #     ++ (
+        #       let
+        #         playerctl = lib.getExe' config.services.playerctld.package "playerctl";
+        #         playerctld = lib.getExe' config.services.playerctld.package "playerctld";
+        #       in
+        #       lib.optionals config.services.playerctld.enable [
+        #         # Media control
+        #         ",XF86AudioNext,exec,${playerctl} next"
+        #         ",XF86AudioPrev,exec,${playerctl} previous"
+        #         ",XF86AudioPlay,exec,${playerctl} play-pause"
+        #         ",XF86AudioStop,exec,${playerctl} stop"
+        #         "ALT,XF86AudioNext,exec,${playerctld} shift"
+        #         "ALT,XF86AudioPrev,exec,${playerctld} unshift"
+        #         "ALT,XF86AudioPlay,exec,systemctl --user restart playerctld"
+        #       ]
+        #     )
+        #     ++
+        #     # Screen lock
+        #     (
+        #       let
+        #         swaylock = lib.getExe config.programs.swaylock.package;
+        #       in
+        #       lib.optionals config.programs.swaylock.enable [
+        #         ",XF86Launch5,exec,${swaylock} -S --grace 2"
+        #         ",XF86Launch4,exec,${swaylock} -S --grace 2"
+        #         "SUPER,backspace,exec,${swaylock} -S --grace 2"
+        #       ]
+        #     )
+        #     ++
+        #     # Notification manager
+        #     (
+        #       let
+        #         makoctl = lib.getExe' config.services.mako.package "makoctl";
+        #       in
+        #       lib.optionals config.services.mako.enable [ "SUPER,w,exec,${makoctl} dismiss" ]
+        #     )
+        #     ++
+        #       ++ (
+        #         let
+        #           pass-wofi = lib.getExe (pkgs.pass-wofi.override { pass = config.programs.password-store.package; });
+        #         in
+        #         lib.optionals config.programs.password-store.enable [
+        #           ",Scroll_Lock,exec,${pass-wofi}" # fn+k
+        #           ",XF86Calculator,exec,${pass-wofi}" # fn+f12
+        #           "SUPER,semicolon,exec,pass-wofi"
+        #         ]
+        #       )
+        #     );
+        #
+        monitor = map
+          (
+            m:
+            let
+              resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+              position = "${toString m.x}x${toString m.y}";
+            in
+            "${m.name},${
            if m.enabled
            then "${resolution},${position},1"
            else "disable"
          }"
-           )
-           (config.monitors);
-         workspace = [
-            "HDMI-A-2,1"
-            "HDMI-A-2,2"
-            "HDMI-A-2,3"
-            "HDMI-A-2,4"
-            "HDMI-A-2,5"
-                "DP-2,6"
-                "DP-2,7"
-                "DP-2,8"
-                "DP-2,9"
-                "DP-2,10"
+          )
+          (config.monitors);
+        workspace = [
+          "HDMI-A-2,1"
+          "HDMI-A-2,2"
+          "HDMI-A-2,3"
+          "HDMI-A-2,4"
+          "HDMI-A-2,5"
+          "DP-2,6"
+          "DP-2,7"
+          "DP-2,8"
+          "DP-2,9"
+          "DP-2,10"
 
-         ];
-         # workspace = map (m: "${m.name},${m.workspace}") (
-         #   lib.filter (m: m.enabled && m.workspace != null) config.monitors
-         # );
+        ];
+        # workspace = map (m: "${m.name},${m.workspace}") (
+        #   lib.filter (m: m.enabled && m.workspace != null) config.monitors
+        # );
       };
     # This is order sensitive, so it has to come here.
     extraConfig = ''

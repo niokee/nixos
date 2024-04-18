@@ -15,7 +15,6 @@
     tmux
     gimp
     thefuck
-    redshift
     ffmpeg
     wezterm
     feh
