@@ -3,6 +3,7 @@
   imports = [
     ./btop.nix
     ./bat.nix
+    ./fzf.nix
     ./git.nix
     ./lf.nix
     ./ssh.nix
@@ -17,7 +18,6 @@
     lshw
     curl
     unzip
-    fzf
     xclip
     lsof
     tldr

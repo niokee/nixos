@@ -7,6 +7,7 @@
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
+    enableFzfHistory = true;
     autocd = true;
     history = {
       extended = true;
@@ -23,6 +24,7 @@
         "git"
         "ripgrep"
         "thefuck"
+        "fzf-tab"
       ];
     };
     plugins = [
@@ -38,4 +40,12 @@
       }
     ];
   };
+  zsh-abbr = {
+      enable = true;
+      abbreviations = {
+          vi = "nvim";
+          vim = "nvim";
+          hibarnate = "systemctl hibarnate";
+      };
+    };
 }
