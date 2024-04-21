@@ -112,7 +112,34 @@ local keys = {
          end),
       }),
    },
+   -- activate tabs
+   {
+       key = '~',
+       mods = 'LEADER',
+       action = act.ActivateTab(0),
+   },
+   {
+       key = '@',
+       mods = 'LEADER',
+       action = act.ActivateTab(1),
+   },
+   {
+       key = '#',
+       mods = 'LEADER',
+       action = act.ActivateTab(2),
+   },
+   {
+       key = '$',
+       mods = 'LEADER',
+       action = act.ActivateTab(3),
+   },
+   {
+       key = '%',
+       mods = 'LEADER',
+       action = act.ActivateTab(4),
+   },
 }
+
 
 local key_tables = {
    resize_font = {
