@@ -8,6 +8,7 @@
     ./ssh.nix
     ./thefuck.nix
     ./zsh.nix
+    ./zoxide.nix
     ./scripts
   ];
   home.packages = with pkgs; [
