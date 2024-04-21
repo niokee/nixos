@@ -4,8 +4,6 @@ local act = wezterm.action
 
 local mod = {}
 
-mod.SUPER = 'ALT' -- to not conflict with  hypr key shortcuts
-mod.SUPER_REV = 'ALT|CTRL'
 
 local keys = {
    -- misc/useful --
@@ -15,7 +13,7 @@ local keys = {
    { key = 'F4', mods = 'NONE', action = act.ShowTabNavigator },
    { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
    { key = 'F12', mods = 'NONE', action = act.ShowDebugOverlay },
-   { key = 'f', mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
+   { key = 'f', mods = 'LEADER', action = act.Search({ CaseInSensitiveString = '' }) },
 
    -- copy/paste --
    { key = 'c', mods = 'CTRL|SHIFT', action = act.CopyTo('Clipboard') },
@@ -23,59 +21,59 @@ local keys = {
 
    -- tabs --
    -- tabs: spawn+close
-   { key = 't', mods = mod.SUPER, action = act.SpawnTab('DefaultDomain') },
-   -- { key = 't', mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:NixOS' }) },
-   { key = 'x', mods = mod.SUPER, action = act.CloseCurrentTab({ confirm = false }) },
+   { key = 't', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
+   -- { key = 't', mods = 'LEADER', action = act.SpawnTab({ DomainName = 'WSL:NixOS' }) },
+   { key = 'x', mods = 'LEADER', action = act.CloseCurrentTab({ confirm = false }) },
 
    -- tabs: navigation
-   { key = '(', mods = mod.SUPER, action = act.ActivateTabRelative(-1) },
-   { key = ')', mods = mod.SUPER, action = act.ActivateTabRelative(1) },
-   { key = '(', mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-   { key = ')', mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+   { key = '(', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+   { key = ')', mods = 'LEADER', action = act.ActivateTabRelative(1) },
+   { key = '[', mods = 'LEADER', action = act.MoveTabRelative(-1) },
+   { key = ']', mods = 'LEADER', action = act.MoveTabRelative(1) },
 
    -- window --
    -- spawn windows
-   { key = 'n', mods = mod.SUPER, action = act.SpawnWindow },
+   { key = 'n', mods = 'LEADER', action = act.SpawnWindow },
 
    -- panes --
    -- panes: split panes
    {
       key = 'v',
-      mods = mod.SUPER_REV,
+      mods = 'LEADER',
       action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
    },
    {
       key = 'h',
-      mods = mod.SUPER_REV,
+      mods = 'LEADER',
       action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
    },
    {
-      key = [[-]],
-      mods = mod.SUPER_REV,
-      action = act.CloseCurrentPane({ confirm = true }),
+      key = '-',
+      mods = 'LEADER',
+      action = act.CloseCurrentPane({ confirm = false }),
    },
 
    -- panes: zoom+close pane
-   { key = 'z', mods = mod.SUPER_REV, action = act.TogglePaneZoomState },
-   { key = 'w', mods = mod.SUPER, action = act.CloseCurrentPane({ confirm = false }) },
+   { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState },
+   { key = 'w', mods = 'LEADER', action = act.CloseCurrentPane({ confirm = false }) },
 
    -- panes: navigation
-   { key = 'n', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Left') },
-   { key = 'e', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Down') },
-   { key = 'i', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Up') },
-   { key = 'o', mods = mod.SUPER_REV, action = act.ActivatePaneDirection('Right') },
+   { key = 'n', mods = 'LEADER', action = act.ActivatePaneDirection('Left') },
+   { key = 'e', mods = 'LEADER', action = act.ActivatePaneDirection('Down') },
+   { key = 'i', mods = 'LEADER', action = act.ActivatePaneDirection('Up') },
+   { key = 'o', mods = 'LEADER', action = act.ActivatePaneDirection('Right') },
 
    -- panes: resize
-   { key = 'LeftArrow', mods = mod.SUPER, action = act.AdjustPaneSize({ 'Left', 1 }) },
-   { key = 'DownArrow', mods = mod.SUPER, action = act.AdjustPaneSize({ 'Down', 1 }) },
-   { key = 'UpArrow', mods = mod.SUPER, action = act.AdjustPaneSize({ 'Up', 1 }) },
-   { key = 'RightArrow', mods = mod.SUPER, action = act.AdjustPaneSize({ 'Right', 1 }) },
+   { key = 'LeftArrow', mods = 'LEADER', action = act.AdjustPaneSize({ 'Left', 1 }) },
+   { key = 'DownArrow', mods = 'LEADER', action = act.AdjustPaneSize({ 'Down', 1 }) },
+   { key = 'UpArrow', mods = 'LEADER', action = act.AdjustPaneSize({ 'Up', 1 }) },
+   { key = 'RightArrow', mods = 'LEADER', action = act.AdjustPaneSize({ 'Right', 1 }) },
 
    -- fonts --
    -- fonts: resize
-   { key = 'UpArrow', mods = mod.SUPER_REV, action = act.IncreaseFontSize },
-   { key = 'DownArrow', mods = mod.SUPER_REV, action = act.DecreaseFontSize },
-   { key = 'r', mods = mod.SUPER_REV, action = act.ResetFontSize },
+   { key = 'UpArrow', mods = 'LEADER', action = act.IncreaseFontSize },
+   { key = 'DownArrow', mods = 'LEADER', action = act.DecreaseFontSize },
+   { key = 'r', mods = 'LEADER', action = act.ResetFontSize },
 
    -- key-tables --
    -- resizes fonts
@@ -195,7 +193,7 @@ local mouse_bindings = {
 return {
    disable_default_key_bindings = true,
    disable_default_mouse_bindings = true,
-   leader = { key = 'Space', mods = 'CTRL|SHIFT' },
+   leader = { key = 'a', mods = 'CTRL' },
    keys = keys,
    key_tables = key_tables,
    mouse_bindings = mouse_bindings,
