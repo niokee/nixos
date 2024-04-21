@@ -12,6 +12,9 @@ in
     ./basic-binds.nix
     ./waybar.nix
     ./wlsunset.nix
+    ./wlogout.nix
+
+    ./scrips
   ];
   xdg.portal = {
     extraPortals = [ xdph ];
@@ -84,6 +87,7 @@ in
           "blur,wofi"
           "ignorezero,wofi"
           "noanim,wallpaper"
+          "blur,wlogout"
         ];
 
         decoration = {
@@ -134,7 +138,7 @@ in
           #   ];
         };
 
-        # exec = [ "${pkgs.swaybg}/bin/swaybg -i ${config.walwaybar.nixmode fill" ];
+        exec = [ "${pkgs.swaybg}/bin/swaybg -i /home/mdziuba/.config/home-manager/home/.dotfiles/darksky2.png --mode fill" ];
 
         bind =
           let

@@ -19,11 +19,13 @@
     curl
     unzip
     xclip
+    pfetch
     lsof
     tldr
     shutter
     taskwarrior
     ripgrep
     delta
+    nix-prefetch-github 
   ];
 }

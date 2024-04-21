@@ -13,15 +13,18 @@
     lf
     dconf
     gimp
+    grim
+    imagemagick
     thefuck
     ffmpeg
     wezterm
-    feh
+    swww
     rofi-wayland
     obsidian
     syncthing
     maim
     spotify
+    gnome.gnome-calendar
   ];
 
 
