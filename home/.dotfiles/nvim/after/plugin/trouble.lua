@@ -1,4 +1,4 @@
 require("trouble").setup({
-    position = "right",
-    width = 40
+	position = "right",
+	width = 40,
 })

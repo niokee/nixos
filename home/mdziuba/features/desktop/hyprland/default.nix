@@ -9,12 +9,11 @@ let
 in
 {
   imports = [
+
     ./basic-binds.nix
     ./waybar.nix
     ./wlsunset.nix
     ./wlogout.nix
-
-    ./scrips
   ];
   xdg.portal = {
     extraPortals = [ xdph ];
@@ -40,6 +39,7 @@ in
       #      in
       {
         general = {
+          allow_tearing = true;
           gaps_in = 15;
           gaps_out = 20;
           border_size = 2;
@@ -78,6 +78,7 @@ in
             "nofocus, ${sweethome3d-tooltips}"
             "stayfocused, ${steam}"
             "minsize 1 1, ${steam}"
+            "immediate, ${steam}"
           ];
         layerrule = [
           "blur,waybar"
@@ -87,7 +88,6 @@ in
           "blur,wofi"
           "ignorezero,wofi"
           "noanim,wallpaper"
-          "blur,wlogout"
         ];
 
         decoration = {

@@ -13,8 +13,6 @@
     lf
     dconf
     gimp
-    grim
-    imagemagick
     thefuck
     ffmpeg
     wezterm
@@ -24,7 +22,6 @@
     syncthing
     maim
     spotify
-    gnome.gnome-calendar
   ];
 
 

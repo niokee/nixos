@@ -3,6 +3,7 @@
   imports = [
     ./global
     features/cli
+    features/games
     features/desktop/common
     features/desktop/hyprland
     features/programming
@@ -14,7 +15,7 @@
       width = 1920;
       height = 1080;
       x = 0;
-      refreshRate = 120;
+      refreshRate = 60;
       workspace = "1";
       primary = true;
     }

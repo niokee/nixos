@@ -1,1 +1,1 @@
-return {{ "numToStr/Comment.nvim", lazy = false }}
+return { { "numToStr/Comment.nvim", lazy = false } }

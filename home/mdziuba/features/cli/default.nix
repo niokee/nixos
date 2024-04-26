@@ -19,7 +19,7 @@
     curl
     unzip
     xclip
-    pfetch
+    neofetch
     lsof
     tldr
     shutter

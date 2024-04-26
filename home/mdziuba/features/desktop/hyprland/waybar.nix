@@ -1,10 +1,17 @@
 { pkgs
 , ...
 }:
+let
+  wlogoutScript = ''${pkgs.grim}/bin/grim -t jpeg /tmp/shot.jpeg && \
+    ${pkgs.imagemagick}/bin/magick /tmp/shot.jpeg -scale 10% -blur 0x2.5 -resize 1000% /tmp/shot_blurred.jpeg && \
+    ${pkgs.wlogout}/bin/wlogout --protocol layer-shell'';
+in
 {
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+    systemd.target = "hyprland-session.target";
     style = ''
       * {
           border: none;
@@ -43,7 +50,6 @@
           box-shadow: inherit;
       	background-color: rgba(200,192,147,1);
         color: #2D4F67;
-        background: #2D4F67;
       }
 
       #workspaces button.focused {
@@ -71,7 +77,7 @@
       modules-right = [ "tray" "pulseaudio" "custom/power" ];
 
       clock = {
-        on-click = "gnome-calendar";
+        on-click = "${pkgs.gnome.gnome-calendar}/bin/gnome-calendar";
       };
       pulseaudio = {
         format = "{volume}% {icon} ";
@@ -89,11 +95,11 @@
           car = "";
           default = [ "" "" "" ];
         };
-        on-click = "pavucontrol";
+        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
       };
       "custom/power" = {
         format = " ";
-        on-click = "blur_logout";
+        on-click = wlogoutScript;
       };
     }];
   };

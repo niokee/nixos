@@ -5,19 +5,16 @@ vim.o.foldenable = true
 
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 local wk = require("which-key")
-wk.register(
-    {
-        z = {
-            name = "Folds",
-            R = { require("ufo").openAllFolds, "Open all folds" },
-            M = { require("ufo").closeAllFolds, "Close all folds" },
-            r = { require("ufo").openFoldsExceptKinds, "Open all folds except kinds" },
-            m = { require("ufo").closeFoldsWith, "Close all folds with" },
-        }
-    },
-    {
-        mode = "n"
-    }
-)
+wk.register({
+	z = {
+		name = "Folds",
+		R = { require("ufo").openAllFolds, "Open all folds" },
+		M = { require("ufo").closeAllFolds, "Close all folds" },
+		r = { require("ufo").openFoldsExceptKinds, "Open all folds except kinds" },
+		m = { require("ufo").closeFoldsWith, "Close all folds with" },
+	},
+}, {
+	mode = "n",
+})
 
 require("ufo").setup()

@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     neovim
     lua
+    stylua
+    lua-language-server
     clang
     cmake
     python311Packages.pygments

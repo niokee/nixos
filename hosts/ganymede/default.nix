@@ -10,16 +10,13 @@
     ../common/optional/pipewire.nix
     ../common/optional/bluetooth.nix
   ];
-
+  
   system.stateVersion = "24.05";
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm = {
+  services.xserver.displayManager.gdm = {
     enable = true;
-    wayland = {
-      enable = true;
-      compositor = "weston";
-    };
+    wayland = true;
   };
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "mdziuba";
@@ -54,11 +51,9 @@
     hostName = "ganymede";
     networkmanager.enable = true;
   };
-  # Bootloader.
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
 }

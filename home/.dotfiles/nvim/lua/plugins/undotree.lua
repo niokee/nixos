@@ -1,8 +1,5 @@
 local M = {
-    "mbbill/undotree"
+	"mbbill/undotree",
 }
 
 return { M }
-
-
-
