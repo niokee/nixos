@@ -2,6 +2,7 @@ local highlight = {
 	"IblIndent",
 }
 
+
 vim.api.nvim_set_hl(0, "IblIndent", { fg = "#343436" })
 
 require("ibl").setup({

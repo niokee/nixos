@@ -43,3 +43,4 @@ vim.opt.splitbelow = true
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+vim.api.nvim_set_hl(0, "CurSearch", { fg = "#C8C093" })
