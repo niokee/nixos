@@ -10,6 +10,15 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    hyprwm-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,10 +48,6 @@
 
       # Custom modifications/overrides to upstream packages.
       overlays = import ./overlays { inherit inputs outputs; };
-
-      # Your custom packages meant to be shared or upstreamed.
-      # Accessible through 'nix build', 'nix shell', etc
-      # packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
 
       # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);

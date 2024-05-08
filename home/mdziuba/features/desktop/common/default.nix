@@ -4,6 +4,7 @@
     ./font.nix
     ./firefox.nix
     ./pavucontrol.nix
+    ./playerctl.nix
   ];
 
   home.packages = with pkgs; [
@@ -16,11 +17,9 @@
     thefuck
     ffmpeg
     wezterm
-    swww
     rofi-wayland
     obsidian
     syncthing
-    maim
     spotify
   ];
 

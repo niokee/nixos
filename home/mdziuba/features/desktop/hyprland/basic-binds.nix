@@ -30,7 +30,7 @@
         "F11"
         "F12"
       ];
-      # Map keys (arrows and neio) to hyprland directions (l, r, u, d)
+      # Map keys (arrows and hjkl) to hyprland directions (l, r, u, d)
       directions = rec {
         left = "l";
         right = "r";
@@ -46,7 +46,7 @@
         "SUPERSHIFT,c,killactive"
         "SUPERSHIFT,e,exit"
 
-        "SUPER,s,togglesplit"
+        "SUPER,%,togglesplit"
         "SUPER,f,fullscreen,1"
         "SUPERSHIFT,f,fullscreen,0"
         "SUPERSHIFT,space,togglefloating"

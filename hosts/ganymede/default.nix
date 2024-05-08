@@ -13,13 +13,21 @@
   
   system.stateVersion = "24.05";
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm = {
+  services.xserver = {
     enable = true;
-    wayland = true;
+    videoDrivers = [ "nvidia" ];
+    displayManager = {
+        autoLogin = {
+            enable = true;
+            user = "mdziuba";
+        };
+        sddm = {
+            enable = true;
+            wayland.enable = true;
+            theme = "Sugar Dark for SDDM";
+        };
+    };
   };
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "mdziuba";
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -37,8 +45,6 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -55,5 +61,4 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-
 }

@@ -60,8 +60,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wit
 
 	local process = get_process(tab)
 	local title = process and string.format(" %s (%s) ", process, cwd) or " [?] "
-    foreground = colors.foreground   
-    background = colors.tab_bar.background
+    local foreground = colors.foreground
     if tab.is_active then
         foreground = colors.selection_fg
     end
@@ -70,7 +69,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wit
 		{ Foreground = { Color = foreground  } },
 		{ Background = { Color = colors.tab_bar.background } },
 		{ Text = title },
-	}
+	} 
 end)
 
 return {
@@ -82,7 +81,9 @@ return {
 	webgpu_preferred_adapter = wezterm.gui.enumerate_gpus()[1],
 
 	colors = colors,
-
+    command_palette_rows = 10,
+    command_palette_fg_color = colors.selection_fg,
+    command_palette_bg_color = colors.background,
 	background = {
 		{
 			source = { Color = colors.background },
@@ -91,7 +92,17 @@ return {
 			opacity = 0.90,
 		},
 	},
+
+    window_frame = {
+        font = wezterm.font("FiraCode Nerd Font", { weight = 450 }), 
+        border_left_color = colors.selection_fg,
+        border_right_color = colors.selection_fg,
+        border_bottom_color = colors.selection_fg,
+        border_top_color = colors.selection_fg,
+    },
+
 	tab_bar_at_bottom = true,
+    show_new_tab_button_in_tab_bar = false,
 
 	use_fancy_tab_bar = false,
 	enable_scroll_bar = true,
