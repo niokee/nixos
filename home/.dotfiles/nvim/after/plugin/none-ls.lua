@@ -7,6 +7,7 @@ none_ls.setup({
 		none_ls.builtins.formatting.isort,
 		none_ls.builtins.formatting.black,
 		none_ls.builtins.formatting.stylua,
+		none_ls.builtins.formatting.alejandra,
 		none_ls.builtins.completion.spell,
 	},
 })

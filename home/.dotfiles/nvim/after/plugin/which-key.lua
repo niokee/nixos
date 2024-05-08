@@ -52,7 +52,6 @@ wk.register({
 		s = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word under cursor" },
 		x = { "<cmd>!chmod +x %<CR>", "Make file executable" },
 		["<leader>"] = { "<cmd>so<CR>", "Source file" },
-		fml = { "<cmd>CellularAutomaton game_of_life<CR>", "Run game of life" },
 	},
 }, {
 	mode = "n",

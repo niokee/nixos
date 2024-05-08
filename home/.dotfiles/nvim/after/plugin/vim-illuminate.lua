@@ -55,7 +55,7 @@ require("illuminate").configure({
 	-- case_insensitive_regex: sets regex case sensitivity
 	case_insensitive_regex = false,
 })
-local fg = "#1F1F2A"
+local fg = "#4b4b52"
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = fg })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = fg })
 vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = fg })
