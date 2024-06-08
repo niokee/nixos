@@ -7,6 +7,7 @@
     lua-language-server
     codeium
     clang
+    nixd
     cmake
     python311Packages.pygments
     python3

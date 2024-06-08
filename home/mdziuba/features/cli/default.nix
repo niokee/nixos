@@ -1,11 +1,12 @@
 { pkgs, ... }:
 {
   imports = [
+#    ./lf
+
     ./btop.nix
     ./bat.nix
     ./fzf.nix
     ./git.nix
-    ./lf.nix
     ./ssh.nix
     ./thefuck.nix
     ./zsh.nix

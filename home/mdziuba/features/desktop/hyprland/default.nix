@@ -41,6 +41,7 @@ in
          inactive = "rgb(727169)";
        in
       {
+          debug.enable_stdout_logs = true;
         general = {
           allow_tearing = true;
           gaps_in = 15;

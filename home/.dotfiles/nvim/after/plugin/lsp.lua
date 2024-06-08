@@ -122,8 +122,8 @@ lspconfig.gopls.setup({
 })
 
 -- nix lang setup
-lspconfig.alejandra.setup({
-	cmd = { "alejandra" },
+lspconfig.nixd.setup({
+	cmd = { "nixd" },
 	filetypes = { "nix" },
 	capabilities = lsp_capabilities,
 })
