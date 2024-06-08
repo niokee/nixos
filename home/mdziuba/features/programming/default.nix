@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     neovim
     alejandra
@@ -19,7 +19,7 @@
     python311Packages.pip
     go
     (hiPrio gcc)
-    ruff 
+    ruff
     gnumake
   ];
 }

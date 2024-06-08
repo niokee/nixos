@@ -29,6 +29,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+        { name = "codeium" },
 	}, {
 		{ name = "buffer" },
 	}),
@@ -89,14 +90,21 @@ local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local util = require("lspconfig/util")
 
--- lua_ls setup
+-- pyright setup
+lspconfig.pyright.setup({
+	cmd = { "pyright" },
+	filetypes = { "python" },
+	capabilities = lsp_capabilities,
+})
+
+-- lua setup
 lspconfig.lua_ls.setup({
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
 	capabilities = lsp_capabilities,
 })
 
--- gopls setup
+-- golang setup
 lspconfig.gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtml" },
@@ -113,6 +121,12 @@ lspconfig.gopls.setup({
 	capabilities = lsp_capabilities,
 })
 
+-- nix lang setup
+lspconfig.alejandra.setup({
+	cmd = { "alejandra" },
+	filetypes = { "nix" },
+	capabilities = lsp_capabilities,
+})
 
 -- nvim-diagnostic setup
 vim.diagnostic.config({
@@ -135,3 +149,4 @@ for _, ls in ipairs(language_servers) do
 end
 
 require("ufo").setup()
+
