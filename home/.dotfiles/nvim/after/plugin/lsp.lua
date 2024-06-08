@@ -97,7 +97,7 @@ lspconfig.lua_ls.setup({
 })
 
 -- gopls setup
-require("lspconfig").gopls.setup({
+lspconfig.gopls.setup({
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtml" },
 	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -112,6 +112,7 @@ require("lspconfig").gopls.setup({
 	},
 	capabilities = lsp_capabilities,
 })
+
 
 -- nvim-diagnostic setup
 vim.diagnostic.config({

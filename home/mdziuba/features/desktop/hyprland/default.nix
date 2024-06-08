@@ -16,10 +16,6 @@ in
     ./wlogout.nix
   ];
 
-  home.packages = [
-    inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
-  ];
-
 
   xdg.portal = {
     extraPortals = [ xdph ];
@@ -93,6 +89,7 @@ in
           "blur,rofi"
           "ignorezero,rofi"
           "noanim,wallpaper"
+          "noanim,selection"
         ];
 
         decoration = {
@@ -101,7 +98,6 @@ in
           fullscreen_opacity = 1.0;
           rounding = 7;
           blur = {
-            enabled = true;
             size = 5;
             passes = 3;
             new_optimizations = true;
@@ -145,7 +141,9 @@ in
 
         bind =
           let
-            grimblast = lib.getExe inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast;
+            grim = lib.getExe pkgs.grim;
+            slurp = lib.getExe pkgs.slurp;
+            wl-clipboard = lib.getExe pkgs.wl-clipboard;
             tesseract = lib.getExe pkgs.tesseract;
             pactl = lib.getExe' pkgs.pulseaudio "pactl";
             notify-send = lib.getExe' pkgs.libnotify "notify-send";
@@ -165,17 +163,15 @@ in
             # Brightness control (only works if the system has lightd)
             ",XF86MonBrightnessUp,exec,light -A 10"
             ",XF86MonBrightnessDown,exec,light -U 10"
-            # Volume
             ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
             ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
             ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
             "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
             ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
             # Screenshotting
-            "SUPER,s,exec,${grimblast} --notify --freeze copy output"
-            "SUPERSHIFT,s,exec,${grimblast} --notify --freeze copy area"
-
-            "SUPERCONTROLALT,s,exec,${grimblast} --freeze save area - | ${tesseract} - - | wl-copy && ${notify-send} -t 3000 'OCR result copied to buffer'"
+            ''SUPER,s,exec,${grim} -g $(hyprctl monitors -j | jq -r '.[] | select(.focused == true)' | jq -r '.name') "$(${slurp} -b 00000000 -c DCD7BA)"''
+            ''SUPERSHIFT,s,exec,${grim} -g "$(${slurp} -b 00000040 -c DCD7BA)" - | wl-copy''
+            ''SUPERCONTROLALT,s,exec,${grim} -g "$(${slurp} -b 00000040 -c DCD7BA)"''
           ]
           ++ (
             let

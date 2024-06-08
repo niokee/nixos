@@ -5,6 +5,7 @@
     lua
     stylua
     lua-language-server
+    codeium
     clang
     cmake
     python311Packages.pygments
