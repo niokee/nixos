@@ -21,6 +21,7 @@
     go
     (hiPrio gcc)
     ruff
+    ruff-lsp
     gnumake
   ];
 }
