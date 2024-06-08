@@ -11,11 +11,9 @@
     ../common/optional/bluetooth.nix
   ];
   
-  system.stateVersion = "24.05";
+  system.stateVersion = "unstable";
 
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
+  services = {
     displayManager = {
         autoLogin = {
             enable = true;
@@ -28,6 +26,11 @@
         };
     };
   };
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+  };
+
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;

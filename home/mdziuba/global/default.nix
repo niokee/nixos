@@ -43,7 +43,7 @@ in
   home = {
     username = lib.mkDefault "mdziuba";
     homeDirectory = "/home/mdziuba";
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault "24.05";
     sessionPath = [
       "$HOME/.local/scripts"
     ];
