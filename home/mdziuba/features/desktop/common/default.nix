@@ -18,7 +18,7 @@
     ffmpeg
     wezterm
     rofi-wayland
-    obsidian
+    # obsidian
     syncthing
     spotify
   ];

@@ -11,7 +11,7 @@
     ../common/optional/bluetooth.nix
   ];
   
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   services = {
     displayManager = {
