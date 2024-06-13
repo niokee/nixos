@@ -33,7 +33,7 @@ let
         "--framerate-limit ${toString monitor.refreshRate}"
         "--prefer-output ${monitor.name}"
         "--adaptive-sync"
-        "--expose-wayland"
+#        "--expose-wayland"
         "--hdr-enabled"
         "--steam"
       ];

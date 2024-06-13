@@ -251,7 +251,6 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-
 	awful.key({ modkey }, "j", function()
 		awful.client.focus.byidx(1)
 	end, { description = "focus next by index", group = "client" }),
@@ -346,7 +345,12 @@ globalkeys = gears.table.join(
 		awful.spawn.with_shell(
 			"maim -s -b 3 -c 192,36,0,1 --format png /dev/stdout | xclip -selection clipboard -t image/png -i"
 		)
-	end, { description = "take a screenshot of a section", group = "launcher" })
+	end, { description = "take a screenshot of a section", group = "launcher" }),
+	awful.key({ modkey, "Shift" }, "b", function()
+		awful.spawn.with_shell(
+			"sh ~/.local/scripts/auto-connect-bt"
+		)
+	end)
 )
 
 clientkeys = gears.table.join(
@@ -594,9 +598,9 @@ awful.spawn.with_shell("picom")
 awful.spawn.with_shell("sh ~/.local/scripts/auto-connect-bt")
 awful.spawn.easy_async_with_shell("pgrep redshift-gtk", function(stdout, stderr, exitreason, exitcode)
 	if stdout ~= nil and exitcode == 0 then
-		-- naughty.notify({text = "Redshift already running."})
+		naughty.notify({ text = "Redshift already running." })
 	elseif exitcode == 1 then
-		-- naughty.notify({text = "Redshift GTK not running. Running a new instance"})
+		naughty.notify({ text = "Redshift GTK not running. Running a new instance" })
 		awful.spawn.once("redshift-gtk")
 	end
 end)

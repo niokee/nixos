@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-#    ./lf
+    ./lf
 
     ./btop.nix
     ./bat.nix
@@ -15,6 +15,7 @@
   ];
   home.packages = with pkgs; [
     wget
+    gnome.nautilus
     jq
     lshw
     curl

@@ -17,8 +17,10 @@
     thefuck
     ffmpeg
     wezterm
-    rofi-wayland
-    # obsidian
+    rofi
+    gnome.simple-scan   
+    picom
+#    obsidian
     syncthing
     spotify
   ];
@@ -32,6 +34,14 @@
     };
     "${config.xdg.configHome}/wezterm" = {
       source = ./../../../../.dotfiles/wezterm;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/awesome" = {
+      source = ./../../../../.dotfiles/awesome;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/picom" = {
+      source = ./../../../../.dotfiles/picom;
       recursive = true;
     };
   };

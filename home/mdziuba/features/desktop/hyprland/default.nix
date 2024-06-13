@@ -1,7 +1,6 @@
 { lib
 , config
 , pkgs
-, inputs
 , ...
 }:
 let
@@ -41,7 +40,7 @@ in
          inactive = "rgb(727169)";
        in
       {
-          debug.enable_stdout_logs = true;
+        debug.enable_stdout_logs = true;
         general = {
           allow_tearing = true;
           gaps_in = 15;
@@ -225,16 +224,16 @@ in
           )
           (config.monitors);
         workspace = [
-          "HDMI-A-2,1"
-          "HDMI-A-2,2"
-          "HDMI-A-2,3"
-          "HDMI-A-2,4"
-          "HDMI-A-2,5"
-          "DP-2,6"
-          "DP-2,7"
-          "DP-2,8"
-          "DP-2,9"
-          "DP-2,10"
+          "name:1,monitor:HDMI-A-2"
+          "name:2,monitor:HDMI-A-2"
+          "name:3,monitor:HDMI-A-2"
+          "name:4,monitor:HDMI-A-2"
+          "name:5,monitor:HDMI-A-2"
+          "name:6,monitor:DP-2"
+          "name:7,monitor:DP-2"
+          "name:8,monitor:DP-2"
+          "name:9,monitor:DP-2"
+          "name:10,monitor:DP-2"
 
         ];
       };
