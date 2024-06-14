@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  import = [
+      ./vscode
+  ];
   home.packages = with pkgs; [
     neovim
     alejandra
