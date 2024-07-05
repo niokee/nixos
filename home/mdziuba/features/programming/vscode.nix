@@ -1,15 +1,17 @@
-{pkgs}: {
+{pkgs, ...}: {
   programs.vscode = {
+    enable = true;
     extensions = with pkgs.vscode-extensions; [
-      charliermarslh.ruff
+      charliermarsh.ruff
       ms-python.python
       ms-python.vscode-pylance
-      njpwnerner.autodocstring
+      njpwerner.autodocstring
       eamodio.gitlens
       catppuccin.catppuccin-vsc
       ms-toolsai.jupyter
       asvetliakov.vscode-neovim
       ban.spellright
+      mkhl.direnv
     ];
   };
 }

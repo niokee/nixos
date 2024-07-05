@@ -5,6 +5,7 @@
     ./firefox.nix
     ./pavucontrol.nix
     ./playerctl.nix
+    ./syncthing.nix
   ];
 
   home.packages = with pkgs; [
@@ -18,10 +19,11 @@
     ffmpeg
     wezterm
     rofi
+    feh
+    maim
     gnome.simple-scan   
     picom
-#    obsidian
-    syncthing
+    obsidian
     spotify
   ];
 

@@ -5,6 +5,7 @@
 
     ./btop.nix
     ./bat.nix
+    ./direnv.nix
     ./fzf.nix
     ./git.nix
     ./ssh.nix
@@ -20,6 +21,7 @@
     lshw
     curl
     unzip
+    zip
     xclip
     neofetch
     lsof

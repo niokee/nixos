@@ -15,7 +15,7 @@
     ../common/optional/bluetooth.nix
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
 
   services = {
     displayManager = {
@@ -39,7 +39,12 @@
       openFirewall = true;
     };
   };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [pkgs.hplipWithPlugin];
+  };
   services.xserver = {
+     xkb.layout = "pl";
     enable = true;
     videoDrivers = ["nvidia"];
     windowManager.awesome = {

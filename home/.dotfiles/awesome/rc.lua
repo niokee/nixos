@@ -605,6 +605,5 @@ awful.spawn.easy_async_with_shell("pgrep redshift-gtk", function(stdout, stderr,
 	end
 end)
 beautiful.useless_gap = 5
-beautiful.notification_max_width = 100
 mouse.screen = screen.primary
 mouse.coords({ x = 960, y = 540 })
