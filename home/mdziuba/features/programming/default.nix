@@ -9,7 +9,7 @@
     stylua
     lua-language-server
     codeium
-    clang
+    clang-tools
     nixd
     cmake
     python311Packages.pygments

@@ -152,6 +152,12 @@ lspconfig.nixd.setup({
     capabilities = lsp_capabilities,
 })
 
+-- c setup
+lspconfig.clangd.setup({
+    cmd = { "clang" },
+    capabilities = lsp_capabilities,
+})
+
 -- nvim-diagnostic setup
 vim.diagnostic.config({
     virtual_text = true,
