@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     # Packages that don't have custom configs go here
     amphetype
+    gnome.nautilus
     pavucontrol
     lf
     dconf

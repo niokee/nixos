@@ -17,7 +17,6 @@
   home.packages = with pkgs; [
     wget
     jq
-    lshw
     curl
     unzip
     zip
@@ -25,7 +24,6 @@
     neofetch
     lsof
     tldr
-    shutter
     taskwarrior
     ripgrep
     delta
