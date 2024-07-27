@@ -93,7 +93,6 @@
             nix-homebrew = {
               enable = true;
               user = "mateusz";
-                                autoMigrate = true;
             };
           }
           home-manager.darwinModules.home-manager
