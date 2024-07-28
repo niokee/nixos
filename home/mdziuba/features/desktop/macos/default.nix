@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    ./skhd.nix
-    ./yabai.nix
     ../common/syncthing.nix
   ];
 
@@ -21,6 +19,7 @@
 
   home.file = {
     "${config.xdg.configHome}/nvim".source = ./../../../../.dotfiles/nvim;
+    "${config.xdg.configHome}/sketchybar".source = ./../../../../.dotfiles/sketchybar;
     "${config.xdg.configHome}/wezterm" = {
       source = ./../../../../.dotfiles/wezterm;
       recursive = true;

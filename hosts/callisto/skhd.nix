@@ -1,9 +1,9 @@
-{lib, ...}: {
+    {lib, ...}: {
   xdg.configFile."skhd/skhdrc" = {
     executable = true;
     text = let
       modMask = "shift + alt";
-      moveMask = "ctrl + shift + alt";
+      moveMask = "ctrl + alt";
       focusSpaceLeft = ''
         && osascript -e 'tell app "System Events" to key code "4" using {control down, shift down}'
       '';
@@ -14,33 +14,33 @@
       # sh
       ''
         # focus window
-        ${modMask} - h : yabai -m window --focus west
-        ${modMask} - j : yabai -m window --focus south
-        ${modMask} - k : yabai -m window --focus north
-        ${modMask} - l : yabai -m window --focus east
+        ${modMask} - n : yabai -m window --focus west
+        ${modMask} - e : yabai -m window --focus south
+        ${modMask} - i : yabai -m window --focus north
+        ${modMask} - o : yabai -m window --focus east
         # swap managed window
-        ${moveMask} - h : yabai -m window --swap west
-        ${moveMask} - j : yabai -m window --swap south
-        ${moveMask} - k : yabai -m window --swap north
-        ${moveMask} - l : yabai -m window --swap east
+        ${moveMask} - n : yabai -m window --swap west
+        ${moveMask} - e : yabai -m window --swap south
+        ${moveMask} - i : yabai -m window --swap north
+        ${moveMask} - o : yabai -m window --swap east
         # rotate space
-        ${moveMask} - n : yabai -m space --rotate 270
-        ${moveMask} - m : yabai -m space --rotate 90
+        ${moveMask} - j : yabai -m space --rotate 270
+        ${moveMask} - ' : yabai -m space --rotate 90
         # send window to space
         ${lib.concatMapStrings (n: moveMask + " - " + n + " : yabai -m window --space " + n + "\n") (
           map toString (lib.range 1 9)
         )}
         # send window to space and follow focus
         ${moveMask} - u : yabai -m window --space prev ${focusSpaceLeft}
-        ${moveMask} - i : yabai -m window --space next ${focusSpaceRight}
+        ${moveMask} - y : yabai -m window --space next ${focusSpaceRight}
         # focus monitor
-        ${modMask} - w : yabai -m display --focus prev
-        ${modMask} - e : yabai -m display --focus next
-        ${modMask} - r : yabai -m display --focus recent
+        ${modMask} - h : yabai -m display --focus prev
+        ${modMask} - . : yabai -m display --focus next
+        ${modMask} - , : yabai -m display --focus recent
         # send window to monitor and follow focus
-        ${moveMask} - w : yabai -m window --display prev; yabai -m display --focus prev
-        ${moveMask} - e : yabai -m window --display next; yabai -m display --focus next
-        ${moveMask} - r : yabai -m window --display recent; yabai -m display --focus recent
+        ${moveMask} - h : yabai -m window --display prev; yabai -m display --focus prev
+        ${moveMask} - . : yabai -m window --display next; yabai -m display --focus next
+        ${moveMask} - , : yabai -m window --display recent; yabai -m display --focus recent
         # balance size of windows
         ${modMask} - space : yabai -m space --balance
         # increase window size
@@ -59,6 +59,7 @@
 
         # unbind hide window shortcut
         cmd - h : skhd -k ""
+        cmd - return: wezterm
       '';
     onChange = ''
       /opt/homebrew/bin/skhd --restart-service

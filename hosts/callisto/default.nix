@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   system.stateVersion = 4;
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -16,4 +13,28 @@
     recursive
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];
+
+  homebrew = {
+    enable = true;
+    taps = [
+      "homebrew/bundle"
+      "homebrew/services"
+    ];
+    casks = [
+      "firefox"
+      "hiddenbar"
+      "itsycal"
+      "karabiner-elements"
+      "protonvpn"
+      "raycast"
+      "readline"
+      "slack"
+      "stats"
+      "wezterm"
+    ];
+  };
+
+  services.yabai = {
+    enable = true;
+  };
 }
