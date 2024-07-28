@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   system.stateVersion = 4;
   services.nix-daemon.enable = true;
+  services.skhd.enable = true;
+  services.yabai.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
   programs.zsh.enable = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -21,20 +23,9 @@
       "homebrew/services"
     ];
     casks = [
-      "firefox"
-      "hiddenbar"
-      "itsycal"
-      "karabiner-elements"
+      "spotmenu"
       "protonvpn"
-      "raycast"
-      "readline"
-      "slack"
-      "stats"
-      "wezterm"
+      "firefox"
     ];
-  };
-
-  services.yabai = {
-    enable = true;
   };
 }
