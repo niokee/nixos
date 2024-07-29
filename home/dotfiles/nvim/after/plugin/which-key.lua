@@ -38,7 +38,7 @@ wk.add({
     { "<c-f>",     "<cmd>silent !tmux neww tmux-sessionizer<CR>",          desc = "Open tmux sessionizer" },
     { "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace word under cursor" },
     { "<leader>x", "<cmd>!chmod +x %<CR>",                                 desc = "Make file executable" },
-    { "<leader><leader>",  "<cmd>so<CR>",                                          desc = "Source file" },
+   -- { "<leader><leader>",  "<cmd>so<CR>",                                          desc = "Source file" },
     mode = { "n" },
 })
 wk.add({
