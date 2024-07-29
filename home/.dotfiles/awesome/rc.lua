@@ -595,7 +595,6 @@ end)
 beautiful.border_focus = "#dcd7ba"
 awful.spawn.with_shell("source ~/.zshrc")
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("sh ~/.local/scripts/auto-connect-bt")
 awful.spawn.easy_async_with_shell("pgrep redshift-gtk", function(stdout, stderr, exitreason, exitcode)
 	if stdout ~= nil and exitcode == 0 then
 		naughty.notify({ text = "Redshift already running." })
