@@ -12,13 +12,11 @@ if not vim.g.vscode then
         })
     end
     vim.opt.rtp:prepend(lazypath)
+    -- Apply colorscheme and nvim opacitya
 
     require("lazy").setup({
         { import = "plugins" },
     })
     vim.opt.spell = true
-    -- Apply colorscheme and nvim opacitya
-    local bd_name = "a"
     vim.cmd("colorscheme kanagawa")
-    -- ColorMyPencils()
 end

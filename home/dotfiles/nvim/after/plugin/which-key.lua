@@ -1,8 +1,8 @@
 local wk = require("which-key")
-wk.add({
-    { "<leader>pv", "<cmd>Neotree filesystem reveal float<CR>", desc = "Open file tree" },
-    mode = { "n" },
-})
+-- wk.add({
+--     { "<leader>pv", "<cmd>Neotree filesystem reveal float<CR>", desc = "Open file tree" },
+--     mode = { "n" },
+-- })
 wk.add({
     { "J", ":m '>+1<CR>gv=gv", desc = "Move line down" },
     { "K", ":m '<-2<CR>gv=gv", desc = "Move line up" },

@@ -77,7 +77,7 @@ in
       modules-right = [ "tray" "pulseaudio" "custom/power" ];
 
       clock = {
-        on-click = "${pkgs.gnome.gnome-calendar}/bin/gnome-calendar";
+        on-click = "${pkgs.gnome-calendar}/bin/gnome-calendar";
       };
       pulseaudio = {
         format = "{volume}% {icon} ";

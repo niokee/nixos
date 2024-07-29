@@ -15,7 +15,7 @@
     ../common/optional/bluetooth.nix
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   services = {
     displayManager = {
@@ -67,10 +67,9 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32bit = true;
   };
 
   hardware.nvidia = {

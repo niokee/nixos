@@ -31,7 +31,7 @@
   };
 
   home = {
-    stateVersion = lib.mkDefault "24.05";
+    stateVersion = lib.mkDefault "24.11";
     sessionPath = [
       "$HOME/.local/scripts"
     ];

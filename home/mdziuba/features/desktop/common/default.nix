@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     # Packages that don't have custom configs go here
     amphetype
-    gnome.nautilus
+    nautilus
     pavucontrol
     lf
     dconf
@@ -22,7 +22,7 @@
     rofi
     feh
     maim
-    gnome.simple-scan   
+    simple-scan   
     picom
     obsidian
     spotify
