@@ -12,7 +12,7 @@ return {
 					enabled = false,
 				},
 			},
-			window = {
+			win = {
 				winblend = 10,
 			},
 			triggers_no_wait = {

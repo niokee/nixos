@@ -30,21 +30,21 @@
 
 
   home.file = {
-    "${config.xdg.configHome}/nvim".source = ./../../../../.dotfiles/nvim;
+    "${config.xdg.configHome}/nvim".source = ./../../../../dotfiles/nvim;
     "${config.xdg.configHome}/rofi" = {
-      source = ./../../../../.dotfiles/rofi;
+      source = ./../../../../dotfiles/rofi;
       recursive = true;
     };
     "${config.xdg.configHome}/wezterm" = {
-      source = ./../../../../.dotfiles/wezterm;
+      source = ./../../../../dotfiles/wezterm;
       recursive = true;
     };
     "${config.xdg.configHome}/awesome" = {
-      source = ./../../../../.dotfiles/awesome;
+      source = ./../../../../dotfiles/awesome;
       recursive = true;
     };
     "${config.xdg.configHome}/picom" = {
-      source = ./../../../../.dotfiles/picom;
+      source = ./../../../../dotfiles/picom;
       recursive = true;
     };
   };
