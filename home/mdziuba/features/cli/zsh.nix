@@ -51,6 +51,7 @@
     shellAliases = {
       ferrisl = "cd ~/Downloads && unzip firmware.zip && cp cradio_left-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
       ferrisr = "cd ~/Downloads && unzip firmware.zip && cp cradio_right-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
+      ls = "eza --icons --git --long --no-filesize --no-time --no-user --no-permissions";
     };
     zsh-abbr = {
       enable = true;
@@ -73,7 +74,7 @@
         snrs = "sudo nixos-rebuild --flake . switch";
         hm = "home-manager --flake .";
         hms = "home-manager --flake . switch";
-        dnrs = "darwin-rebuild --flake /Users/mateusz/.config/nix/flake.nix switch";
+        drs = "darwin-rebuild --flake /Users/mateusz/.config/nix switch";
       };
     };
   };
