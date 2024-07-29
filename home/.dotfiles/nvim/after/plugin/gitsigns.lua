@@ -12,8 +12,9 @@ require("gitsigns").setup({
 local wk = require("which-key")
 
 local gs = package.loaded.gitsigns
-wk.add({
-    {"]c",
+wk.register({
+	name = "Git hunk navigation",
+	["]c"] = {
 		function()
 			if vim.wo.diff then
 				return "]c"
@@ -23,9 +24,9 @@ wk.add({
 			end)
 			return "<Ignore>"
 		end,
-		desc = "Next hunk",
+		"Next hunk",
 	},
-	{"[c" ,
+	["[c"] = {
 		function()
 			if vim.wo.diff then
 				return "[c"
@@ -35,37 +36,39 @@ wk.add({
 			end)
 			return "<Ignore>"
 		end,
-		desc = "Previous hunk",
+		"Previous hunk",
 	},
-    mode = { "n", "v" },
-})
-wk.add({
-    {"<leader>hs", gs.stage_hunk, desc = "Git stage hunk" },
-    {"<leader>hr", gs.reset_hunk, desc = "Git reset hunk" },
-    {"<leader>hS", gs.stage_buffer, desc = "Git stage buffer" },
-    {"<leader>hu", gs.undo_stage_hunk, desc = "Git undo stage hunk" },
-    {"<leader>hR", gs.reset_buffer, desc = "Git reset buffer" },
-    {"<leader>hp", gs.preview_hunk, desc = "Git preview hunk" },
-    {"<leader>hb",
+}, { mode = { "n", "v" }, expr = true })
+wk.register({
+	h = {
+		name = "Git hunk operations",
+		s = { gs.stage_hunk, "Git stage hunk" },
+		r = { gs.reset_hunk, "Git reset hunk" },
+		S = { gs.stage_buffer, "Git stage buffer" },
+		u = { gs.undo_stage_hunk, "Git undo stage hunk" },
+		R = { gs.reset_buffer, "Git reset buffer" },
+		p = { gs.preview_hunk, "Git preview hunk" },
+		b = {
 			function()
 				gs.blame_line({ full = false })
 			end,
-		desc =	"Git blame line",
+			"Git blame line",
 		},
-    {"<leader>hd", gs.diffthis, desc = "Git diff against index" },
-    {"<leader>hD",
+		d = { gs.diffthis, "Git diff against index" },
+		D = {
 			function()
 				gs.diffthis("~")
 			end,
-			desc = "Git diff against last commit",
+			"Git diff against last commit",
 		},
-    {"<leader>htb", gs.toggle_current_line_blame, desc = "Toggle git blame line" },
-    {"<leader>htd", gs.toggle_deleted, desc = "Toggle git show deleted" },
-    mode = { "n" }
-})
+	},
+	t = {
+		name = "Git toggles",
+		b = { gs.toggle_current_line_blame, "Toggle git blame line" },
+		d = { gs.toggle_deleted, "Toggle git show deleted" },
+	},
+}, { mode = "n", prefix = "<leader>" })
 
-
-wk.add({
-    {"ih", ":<C-U>Gitsigns select_hunk<CR>", desc = "Select git hunk" },
-    mode = { "o", "x" },
-})
+wk.register({
+	ih = { ":<C-U>Gitsigns select_hunk<CR>", "Select git hunk" },
+}, { mode = { "o", "x" } })

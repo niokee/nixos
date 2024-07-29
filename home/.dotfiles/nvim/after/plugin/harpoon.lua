@@ -2,32 +2,36 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 local wk = require("which-key")
 
-wk.add({
-    { "<c-e>", ui.toggle_quick_menu, desc = "Toggle quick menu" },
-    {"<c-h>",
+wk.register({
+	name = "harpoon",
+	["<c-e>"] = { ui.toggle_quick_menu, "Toggle quick menu" },
+	["<c-h>"] = {
 		function()
 			ui.nav_file(1)
 		end,
-		desc = "Move to first file",
+		"Move to first file",
 	},
-    {"<c-j>",
+	["<c-j>"] = {
 		function()
 			ui.nav_file(2)
 		end,
-		desc = "Move to second file",
+		"Move to second file",
 	},
-    {"<c-k>",
+	["<c-k>"] = {
 		function()
 			ui.nav_file(3)
 		end,
-		desc = "Move to third file",
+		"Move to third file",
 	},
-    {"<c-l>",
+	["<c-l>"] = {
 		function()
 			ui.nav_file(4)
 		end,
-		desc = "Move to fourth file",
+		"Move to fourth file",
 	},
-    {"<leader>a", mark.add_file, desc = "Add file to harpoon" },
-	mode = { "n" },
+	["<leader>"] = {
+		a = { mark.add_file, "Add file to harpoon" },
+	},
+}, {
+	mode = "n",
 })

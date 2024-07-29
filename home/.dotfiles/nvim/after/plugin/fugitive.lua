@@ -1,5 +1,4 @@
 local wk = require("which-key")
-wk.add({
-    {"<leader>gs", vim.cmd.Git, desc = "Git status" },
-     mode = { "n" },
-})
+wk.register({
+	["<leader>gs"] = { vim.cmd.Git, "Git status" },
+}, { mode = "n" })
