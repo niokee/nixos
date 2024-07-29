@@ -16,18 +16,6 @@
 
   programs = {
     home-manager.enable = true;
-    git = {
-      enable = true;
-      extraConfig = {
-        url = {
-          "git@github.com:" = {
-            insteadOf = [
-              "https://github.com/"
-            ];
-          };
-        };
-      };
-    };
   };
 
   home = {

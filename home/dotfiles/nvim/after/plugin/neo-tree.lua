@@ -12,4 +12,9 @@ require("neo-tree").setup({
 			end,
 		},
 	},
+    window = {
+        mappings = {
+            ["<esc>"] = "cancel",
+        }
+    }
 })

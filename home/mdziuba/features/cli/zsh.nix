@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -25,31 +27,30 @@
         "thefuck"
       ];
     };
-   plugins = [
-     {
-       name = "powerlevel10k";
-       src = pkgs.zsh-powerlevel10k;
-       file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-     }
-     {
-       name = "powerlevel10k-config";
-       src = ./../../../dotfiles/zsh;
-       file = ".p10k.zsh";
-     }
-     {
-       name = "fzf-tab";
-       src = pkgs.fetchFromGitHub {
-         owner = "Aloxaf";
-         repo = "fzf-tab";
-         rev = "bf3ef5588af6d3bf7cc60f2ad2c1c95bca216241";
-         hash = "sha256-0/YOL1/G2SWncbLNaclSYUz7VyfWu+OB8TYJYm4NYkM=";
-       };
-     }
-   ];
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "powerlevel10k-config";
+        src = ./../../../dotfiles/zsh;
+        file = ".p10k.zsh";
+      }
+      {
+        name = "fzf-tab";
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "bf3ef5588af6d3bf7cc60f2ad2c1c95bca216241";
+          hash = "sha256-0/YOL1/G2SWncbLNaclSYUz7VyfWu+OB8TYJYm4NYkM=";
+        };
+      }
+    ];
     shellAliases = {
-        ferrisl = "cd ~/Downloads && unzip firmware.zip && cp cradio_left-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
-        ferrisr = "cd ~/Downloads && unzip firmware.zip && cp cradio_right-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
-
+      ferrisl = "cd ~/Downloads && unzip firmware.zip && cp cradio_left-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
+      ferrisr = "cd ~/Downloads && unzip firmware.zip && cp cradio_right-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
     };
     zsh-abbr = {
       enable = true;
@@ -72,7 +73,7 @@
         snrs = "sudo nixos-rebuild --flake . switch";
         hm = "home-manager --flake .";
         hms = "home-manager --flake . switch";
-
+        dnrs = "darwin-rebuild --flake /Users/mateusz/.config/nix/flake.nix switch";
       };
     };
   };

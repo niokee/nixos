@@ -19,6 +19,7 @@
     jq
     lshw
     curl
+    fzf-git-sh
     unzip
     zip
     xclip
@@ -28,7 +29,6 @@
     shutter
     taskwarrior
     ripgrep
-    delta
     nix-prefetch-github
   ];
 }

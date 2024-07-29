@@ -5,7 +5,10 @@
   services.yabai.enable = true;
   services.sketchybar.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellInit = ''source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh'';
+  };
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.mateusz = {

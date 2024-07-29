@@ -1,6 +1,5 @@
 {
-    programs.bat = {
+    programs.btop = {
         enable = true;
-        config.theme = "base16";
     };
 }
