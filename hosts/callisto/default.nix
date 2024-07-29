@@ -7,10 +7,6 @@
   nix.settings.experimental-features = "nix-command flakes";
   programs.zsh = {
     enable = true;
-    shellInit = ''
-    source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
-    source $(which _fzf_opts)
-    '';
   };
   nixpkgs.hostPlatform = "aarch64-darwin";
 

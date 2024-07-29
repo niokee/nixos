@@ -10,6 +10,10 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
+    initExtra = ''
+      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
+      source $(which _fzf_opts)
+    '';
     history = {
       extended = true;
       ignoreDups = true;
