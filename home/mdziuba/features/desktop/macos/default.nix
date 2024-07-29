@@ -13,6 +13,7 @@
     readline
     itsycal
     slack
+    sketchybar
     wezterm
     hidden-bar
     karabiner-elements
@@ -25,6 +26,7 @@
     wezterm
     obsidian
     spotify
+    github-cli
   ];
 
   home.file = {
