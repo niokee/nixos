@@ -1,11 +1,11 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./lf
 
     ./btop.nix
     ./bat.nix
     ./direnv.nix
+    ./eza.nix
     ./fzf.nix
     ./git.nix
     ./ssh.nix
@@ -29,6 +29,6 @@
     taskwarrior
     ripgrep
     delta
-    nix-prefetch-github 
+    nix-prefetch-github
   ];
 }
