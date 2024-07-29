@@ -35,7 +35,7 @@
     "${config.xdg.configHome}/skhd".source = ./../../../../dotfiles/skhd;
     "${config.xdg.configHome}/yabai".source = ./../../../../dotfiles/yabai;
     "${config.xdg.configHome}/wezterm" = {
-      source = ./../../../../.dotfiles/wezterm;
+      source = ./../../../../dotfiles/wezterm;
       recursive = true;
     };
   };

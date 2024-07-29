@@ -137,7 +137,7 @@ in
             ];
         };
 
-        exec = [ "${pkgs.swaybg}/bin/swaybg -i /home/mdziuba/.config/home-manager/home/.dotfiles/darksky2.png --mode fill" ];
+        exec = [ "${pkgs.swaybg}/bin/swaybg -i /home/mdziuba/.config/home-manager/home/dotfiles/darksky2.png --mode fill" ];
 
         bind =
           let

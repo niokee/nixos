@@ -19,7 +19,7 @@ local tyrannical = require("tyrannical")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-awful.spawn.with_shell("feh --bg-fill ~/.config/home-manager/home/.dotfiles/darksky2.png")
+awful.spawn.with_shell("feh --bg-fill ~/.config/home-manager/home/dotfiles/darksky2.png")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to

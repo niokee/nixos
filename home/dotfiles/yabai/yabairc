@@ -5,17 +5,15 @@ yabai -m space 2 --label notes
 yabai -m space 4 --label web
 yabai -m space 3 --label code
 yabai -m space 5 --label media
-yabai -m space 6 --label re
-yabai -m space 7 --label mail
 
 
 # window rules
 yabai -m rule --add app="^Outlook$" space=mail
 yabai -m rule --add app="^Firefox$" space=web
 yabai -m rule --add app="^WezTerm$" space=code
-yabai -m rule --add app="^Obisidian$" space=notes
+yabai -m rule --add app="^Obsidian$" space=notes
 yabai -m rule --add app="^Spotify$" space=media
-yabai -m rule --add app="^slack$" space=slack grid=1:1:0:0:1:1 manage=off
+yabai -m rule --add app="^Slack$" space=slack grid=1:1:0:0:1:1 manage=off
 yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" manage=off
 
 # signals
