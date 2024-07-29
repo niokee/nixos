@@ -67,10 +67,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware.graphics = {
-    enable = true;
-    enable32bit = true;
-  };
+  hardware.graphics.enable = true;
 
   hardware.nvidia = {
     modesetting.enable = true;
