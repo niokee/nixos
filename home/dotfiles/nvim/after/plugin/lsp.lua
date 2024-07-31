@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 require("neoconf").setup()
 
 -- nvim-cmp setup
@@ -46,7 +47,7 @@ cmp.setup({
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-            { name = 'path' }
+            { napame = 'path' }
         }, {
             { name = 'cmdline' }
         }),
@@ -82,6 +83,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("i", "<c-h>", function()
             vim.lsp.buf.signature_help()
         end, opts)
+
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.declaration()
+        end, opts)
+        vim.keymap.set("n", "gD", function()
+            vim.lsp.buf.definition()
+        end, opts)
+        vim.keymap.set("n", "<leader>D", function()
+            vim.lsp.buf.type_definition()
+        end, opts)
+        vim.keymap.set("n", "gi", function()
+            vim.lsp.buf.implementation()
+        end, opts)
+        vim.keymap.set("n", "gr", function()
+            vim.lsp.buf.references()
+        end, opts)
+        vim.keymap.set("n", "<c-.>", function()
+            vim.lsp.buf.code_action()
+        end, opts)
+        vim.keymap.set("i", "<c-.>", function()
+            vim.lsp.buf.code_action()
+        end, opts)
+
+
     end,
 })
 
@@ -99,11 +124,17 @@ lspconfig.pyright.setup({
         pyright = {
             -- Using Ruff's import organizer
             disableOrganizeImports = true,
+            disableLanguageServices = false,
+            disableTaggedHints = false,
         },
         python = {
             analysis = {
                 -- Ignore all files for analysis to exclusively use Ruff for linting
                 ignore = { '*' },
+                autoImportCompletions = true,
+                diagnosticMode = "workspace",
+                typeCheckingMode = "basic",
+                useLibraryCodeForTypes = true,
             },
         },
     },
