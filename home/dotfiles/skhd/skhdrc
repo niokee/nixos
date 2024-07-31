@@ -165,3 +165,5 @@ ctrl + alt - s : yabai -m space --layout $(yabai -m query --spaces --space | jq 
 
 # close window; sketchybar --trigger window_focus
 shift + cmd - c : osascript -e 'tell application "System Events" to perform action "AXPress" of (first button whose subrole is "AXCloseButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)'; sketchybar --trigger window_focus
+
+

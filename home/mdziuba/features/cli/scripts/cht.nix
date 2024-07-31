@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellScriptBin "cht.sh" ''
   selected=`cat ~/.tmux-cht-languages ~/.tmux-cht-command | fzf`
   if [[ -z $selected ]]; then

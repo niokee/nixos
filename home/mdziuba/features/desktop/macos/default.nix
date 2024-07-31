@@ -5,25 +5,21 @@
 }: {
   imports = [
     ../common/syncthing.nix
+    ../common/wezterm.nix
   ];
 
   home.packages = with pkgs; [
     lf
     yabai
-    readline
     itsycal
     slack
-    sketchybar
-    wezterm
-    hidden-bar
     karabiner-elements
     raycast
-    stats
+    sketchybar
     skhd
     dconf
     thefuck
     ffmpeg
-    wezterm
     obsidian
     spotify
     github-cli

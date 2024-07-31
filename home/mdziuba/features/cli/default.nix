@@ -31,5 +31,6 @@
     taskwarrior
     ripgrep
     nix-prefetch-github
+    age
   ];
 }

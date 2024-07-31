@@ -1,6 +1,5 @@
-{pkgs, ...}:
-{
-     home.packages = with pkgs; [
-        readline
-    ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    readline
+  ];
 }

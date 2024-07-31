@@ -44,7 +44,7 @@
     extraBackends = [pkgs.hplipWithPlugin];
   };
   services.xserver = {
-     xkb.layout = "pl";
+    xkb.layout = "pl";
     enable = true;
     videoDrivers = ["nvidia"];
     windowManager.awesome = {

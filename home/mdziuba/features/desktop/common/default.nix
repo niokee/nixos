@@ -1,5 +1,10 @@
-{ config, lib, pkgs, outputs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
     ./font.nix
     ./firefox.nix
@@ -22,12 +27,11 @@
     rofi
     feh
     maim
-    simple-scan   
+    simple-scan
     picom
     obsidian
     spotify
   ];
-
 
   home.file = {
     "${config.xdg.configHome}/nvim".source = ./../../../../dotfiles/nvim;

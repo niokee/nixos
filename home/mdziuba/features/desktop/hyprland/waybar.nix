@@ -1,13 +1,8 @@
-{ pkgs
-, ...
-}:
-let
-  wlogoutScript = ''${pkgs.grim}/bin/grim -t jpeg /tmp/shot.jpeg && \
-    ${pkgs.imagemagick}/bin/magick /tmp/shot.jpeg -scale 10% -blur 0x2.5 -resize 1000% /tmp/shot_blurred.jpeg && \
-    ${pkgs.wlogout}/bin/wlogout --protocol layer-shell'';
-in
-{
-
+{pkgs, ...}: let
+  wlogoutScript = ''    ${pkgs.grim}/bin/grim -t jpeg /tmp/shot.jpeg && \
+        ${pkgs.imagemagick}/bin/magick /tmp/shot.jpeg -scale 10% -blur 0x2.5 -resize 1000% /tmp/shot_blurred.jpeg && \
+        ${pkgs.wlogout}/bin/wlogout --protocol layer-shell'';
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -71,36 +66,38 @@ in
           padding: 1px 1px 1px 6px;
       }
     '';
-    settings = [{
-      modules-left = [ "hyprland/workspaces" ];
-      modules-center = [ "clock" ];
-      modules-right = [ "tray" "pulseaudio" "custom/power" ];
+    settings = [
+      {
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["clock"];
+        modules-right = ["tray" "pulseaudio" "custom/power"];
 
-      clock = {
-        on-click = "${pkgs.gnome-calendar}/bin/gnome-calendar";
-      };
-      pulseaudio = {
-        format = "{volume}% {icon} ";
-        format-bluetooth = "{volume}% {icon}  {format_source}";
-        format-bluetooth-muted = " {icon}  {format_source}";
-        format-muted = "0% {icon} ";
-        format-source = "{volume}% ";
-        format-source-muted = "";
-        format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
+        clock = {
+          on-click = "${pkgs.gnome-calendar}/bin/gnome-calendar";
         };
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-      };
-      "custom/power" = {
-        format = " ";
-        on-click = wlogoutScript;
-      };
-    }];
+        pulseaudio = {
+          format = "{volume}% {icon} ";
+          format-bluetooth = "{volume}% {icon}  {format_source}";
+          format-bluetooth-muted = " {icon}  {format_source}";
+          format-muted = "0% {icon} ";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
+          };
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        };
+        "custom/power" = {
+          format = " ";
+          on-click = wlogoutScript;
+        };
+      }
+    ];
   };
 }

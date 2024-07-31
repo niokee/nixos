@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.blueman.enable = true;
-  hardware.firmware = [ pkgs.rtl8761b-firmware ];
+  hardware.firmware = [pkgs.rtl8761b-firmware];
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

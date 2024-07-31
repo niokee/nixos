@@ -3,8 +3,10 @@
   services.nix-daemon.enable = true;
   services.skhd.enable = true;
   services.yabai.enable = true;
-  services.sketchybar.enable = true;
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+        experimental-features = "nix-command flakes";
+        #        access-token = ;
+    };
   programs.zsh = {
     enable = true;
   };
@@ -21,16 +23,10 @@
 
   homebrew = {
     enable = true;
-    taps = [
-      "homebrew/bundle"
-      "homebrew/services"
-    ];
     casks = [
-      "spotmenu"
       "protonvpn"
       "firefox"
       "sf-symbols"
-      "meetingbar"
     ];
   };
 }

@@ -1,4 +1,4 @@
-media=(
+#!/usr/bin/env bash
   icon.background.drawing=on
   icon.background.image=media.artwork
   icon.background.image.corner_radius=9

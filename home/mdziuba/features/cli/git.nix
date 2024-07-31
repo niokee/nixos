@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.git = {
     enable = true;
     aliases = {
@@ -9,7 +9,7 @@
     delta.enable = true;
     package = pkgs.gitAndTools.gitFull;
     userName = "Mateusz Dziuba";
-    userEmail = "mateusz.dziuba97@gmail.com";
+    userEmail = lib.mkDefault "mateusz.dziuba97@gmail.com";
     extraConfig = {
       url = {
         "git@github.com:" = {

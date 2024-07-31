@@ -36,6 +36,7 @@
     home-manager,
     darwin,
     nix-homebrew,
+    sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;

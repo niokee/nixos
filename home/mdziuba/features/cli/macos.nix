@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   imports = [
     ./lf
 
@@ -15,6 +15,9 @@
     ./zoxide.nix
     ./scripts
   ];
+  programs.git = {
+    userEmail = "mateusz.dziuba@arx.city";
+  };
   home.packages = with pkgs; [
     wget
     jq
@@ -30,5 +33,6 @@
     ripgrep
     delta
     nix-prefetch-github
+    age
   ];
 }
