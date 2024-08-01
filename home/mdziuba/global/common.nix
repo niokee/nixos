@@ -29,7 +29,7 @@
       TERM = "wezterm";
       TERMINAL = "wezterm";
       EDITOR = "nvim";
-      MANPAGER = "batman";
+      MANPAGER = "man";
     };
   };
 }

@@ -1,11 +1,11 @@
 sudo yabai --load-sa
 
-yabai -m space 1 --label slack
 yabai -m space 2 --label notes
 yabai -m space 3 --label code
 yabai -m space 4 --label web
+yabai -m space 8 --label utils
 yabai -m space 9 --label media
-yabai -m space 10 --label utils
+yabai -m space 10 --label slack
 
 # window rules
 yabai -m rule --add app="^Outlook$" space=^mail
