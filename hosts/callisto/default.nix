@@ -7,9 +7,7 @@
     experimental-features = "nix-command flakes";
     #        access-token = ;
   };
-  programs.zsh = {
-    enable = true;
-  };
+  programs.zsh.enable = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   users.users.mateusz = {
@@ -20,10 +18,12 @@
     recursive
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];
-  
+
   homebrew = {
     enable = true;
     casks = [
+      "1password-cli"
+      "1password"
       "protonvpn"
       "firefox"
       "sf-symbols"

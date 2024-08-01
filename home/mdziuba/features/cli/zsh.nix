@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   programs.zsh = {
@@ -10,7 +11,7 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
-    initExtra = ''
+    initExtra = lib.mkDefault ''
       source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
       source $(which _fzf_opts)
     '';
