@@ -4,9 +4,9 @@
   services.skhd.enable = true;
   services.yabai.enable = true;
   nix.settings = {
-        experimental-features = "nix-command flakes";
-        #        access-token = ;
-    };
+    experimental-features = "nix-command flakes";
+    #        access-token = ;
+  };
   programs.zsh = {
     enable = true;
   };
@@ -20,13 +20,14 @@
     recursive
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];
-
+  
   homebrew = {
     enable = true;
     casks = [
       "protonvpn"
       "firefox"
       "sf-symbols"
+      "microsoft-excel"
     ];
   };
 }

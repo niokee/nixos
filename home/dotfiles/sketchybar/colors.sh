@@ -18,7 +18,7 @@
 ### Catppuccin
 export BLACK=0xff1f1f28
 export WHITE=0xffdcd7ba
-export RED=0xffff5d62
+export RED=0xff957fb8 # actully violet...
 export GREEN=0xff98bb6c
 export BLUE=0xffa3d4d5
 export YELLOW=0xffc0a36e
