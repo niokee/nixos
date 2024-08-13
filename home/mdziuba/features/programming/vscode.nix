@@ -103,6 +103,9 @@
       };
 
       "window.enableMenuBarMnemonics" = false;
+      "extensions.experimental.affinity" = {
+        "asvetliakov.vscode-neovim" = 1;
+      };
     };
     extensions = with pkgs.vscode-extensions; [
       charliermarsh.ruff

@@ -9,7 +9,7 @@
   
     programs.ssh.extraConfig = ''
     # Arx account
-    Host github.com-arx
+    Host github.com
     HostName github.com
       User git
       IdentityFile ~/.ssh/m-dziuba

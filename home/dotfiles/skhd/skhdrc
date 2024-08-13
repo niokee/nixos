@@ -168,7 +168,6 @@ shift + cmd - c : osascript -e 'tell application "System Events" to perform acti
 
 0x0A : skhd -k "0x32"
 shift - 0x0A : skhd -k "shift - 0x32"
-
 ctrl - c  [
   "wezterm" ~
   * : skhd -k "cmd - c"

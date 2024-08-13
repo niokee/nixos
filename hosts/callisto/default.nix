@@ -22,12 +22,12 @@
   homebrew = {
     enable = true;
     casks = [
-      "1password-cli"
-      "1password"
       "protonvpn"
       "firefox"
       "sf-symbols"
       "microsoft-excel"
+      "logi-options-plus"
+      "logitech-g-hub"
     ];
   };
 }

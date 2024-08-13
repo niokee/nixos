@@ -4,13 +4,13 @@ local wk = require("which-key")
 
 wk.add({
     { "<c-e>", ui.toggle_quick_menu, desc = "Toggle quick menu" },
-    {"<c-h>",
+    {"<c-j>",
 		function()
 			ui.nav_file(1)
 		end,
 		desc = "Move to first file",
 	},
-    {"<c-j>",
+    {"<c-l>",
 		function()
 			ui.nav_file(2)
 		end,
@@ -22,7 +22,7 @@ wk.add({
 		end,
 		desc = "Move to third file",
 	},
-    {"<c-l>",
+    {"<c-h>",
 		function()
 			ui.nav_file(4)
 		end,
