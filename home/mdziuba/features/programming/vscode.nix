@@ -3,8 +3,9 @@
     enable = true;
     enableExtensionUpdateCheck = true;
     enableUpdateCheck = true;
-
     userSettings = {
+      "vscode-neovim.neovimExecutablePaths.linux" = "${pkgs.neovim}/bin/nvim";
+      "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
       "[python]" = {
         "editor.defaultFormatter" = "charliermarsh.ruff";
 

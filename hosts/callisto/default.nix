@@ -22,6 +22,7 @@
   homebrew = {
     enable = true;
     casks = [
+      "docker"
       "protonvpn"
       "firefox"
       "sf-symbols"
