@@ -18,22 +18,35 @@ cmp.setup({
 	},
 
 	mapping = cmp.mapping.preset.insert({
-		["<C-i>"] = cmp.mapping.select_prev_item(cmp_select),
-		["<C-e>"] = cmp.mapping.select_next_item(cmp_select),
+		["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
+		["<C-i>"] = cmp.mapping.select_next_item(cmp_select),
 		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-a>"] = cmp.mapping.abort(),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "codeium" },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "luasnip", keyword_length = 2 },
+		{ name = "copilot" },
+		{ name = "path" },
 	}, {
 		{ name = "buffer" },
 	}),
+
+    sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			cmp.config.compare.recently_used,
+			require("cmp-under-comparator").under,
+			cmp.config.compare.kind,
+		},
+	},
 
 	-- Use buffer source for `/` and `?`
 	cmp.setup.cmdline({ "/", "?" }, {
@@ -182,9 +195,14 @@ lspconfig.clangd.setup({
 	capabilities = lsp_capabilities,
 })
 
--- c setup
+-- terraform setup
 lspconfig.terraformls.setup({
 	cmd = { "terraform" },
+	capabilities = lsp_capabilities,
+})
+
+lspconfig.yamlls.setup({
+	cmd = { "yamlls" },
 	capabilities = lsp_capabilities,
 })
 

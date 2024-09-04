@@ -19,6 +19,8 @@
     luarocks
     pyright
     gopls
+    yaml-language-server
+    prettierd
     rust-analyzer
     python311Packages.pip
     go

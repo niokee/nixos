@@ -2,6 +2,7 @@ local none_ls = require("null-ls")
 
 none_ls.setup({
 	sources = {
+		none_ls.builtins.formatting.prettierd,
 		none_ls.builtins.formatting.gofmt,
 		none_ls.builtins.formatting.goimports,
 		none_ls.builtins.formatting.stylua,

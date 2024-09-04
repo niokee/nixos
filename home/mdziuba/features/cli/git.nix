@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     aliases = {
-      ammend = "commit --ammend --no-edit";
+      amend = "commit --amend --no-edit";
       ll = "log --oneline";
       cm = "commit -m";
     };
