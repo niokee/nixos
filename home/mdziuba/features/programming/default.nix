@@ -16,6 +16,7 @@
     python3
     cargo
     #    nodePackages.npm
+    mypy
     nodejs_22
     luarocks
     pyright

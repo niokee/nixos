@@ -138,7 +138,7 @@ lspconfig.pyright.setup({
 				ignore = { "*" },
 				autoImportCompletions = true,
 				diagnosticMode = "workspace",
-				typeCheckingMode = "standard",
+				typeCheckingMode = "off",
 				useLibraryCodeForTypes = true,
 			},
 		},

@@ -26,7 +26,6 @@
       "protonvpn"
       "firefox"
       "sf-symbols"
-      "microsoft-excel"
       "logi-options-plus"
       "logitech-g-hub"
     ];
