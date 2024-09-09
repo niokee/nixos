@@ -1,5 +1,5 @@
-return {{
-     "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-}}
+return {
+	{
+		"github/copilot.vim",
+	},
+}

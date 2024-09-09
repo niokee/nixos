@@ -15,7 +15,8 @@
     python311Packages.pygments
     python3
     cargo
-    nodePackages.npm
+    #    nodePackages.npm
+    nodejs_22
     luarocks
     pyright
     gopls
