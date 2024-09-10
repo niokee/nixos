@@ -3,6 +3,7 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
+    gum
     neovim
     alejandra
     lua5_4

@@ -1,4 +1,9 @@
-{pkgs, lib, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.git = {
     enable = true;
     aliases = {
@@ -17,6 +22,9 @@
             "https://github.com/"
           ];
         };
+      };
+      init = {
+        templatedir = "${config.home.homeDirectory}/.git-templates";
       };
     };
   };

@@ -1,6 +1,6 @@
 {
   description = "Home Manager configuration of mdziuba";
-
+  
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
