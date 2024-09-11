@@ -196,7 +196,16 @@ lspconfig.clangd.setup({
 
 -- terraform setup
 lspconfig.terraformls.setup({
-	cmd = { "terraform" },
+	cmd = { "terraform-ls", "serve", "--log-file='/tmp/terraform-ls-{{pid}}.log'" },
+	capabilities = lsp_capabilities,
+})
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+lspconfig.tflint.setup({
 	capabilities = lsp_capabilities,
 })
 

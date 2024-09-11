@@ -4,6 +4,7 @@
   ];
   home.packages = with pkgs; [
         terraform
+        tflint
         terraform-ls
         terragrunt
         dbeaver-bin

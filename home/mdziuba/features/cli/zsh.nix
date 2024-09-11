@@ -28,7 +28,6 @@
       enable = true;
       plugins = [
         "git"
-        "ripgrep"
         "thefuck"
       ];
     };
