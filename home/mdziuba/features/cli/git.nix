@@ -10,6 +10,9 @@
       amend = "commit --amend --no-edit";
       ll = "log --oneline";
       cm = "commit -m";
+      fix = ''!f() { git commit -m "fix: $1"; }; f'';
+      feat = ''!f() { git commit -m "feat: $1"; }; f'';
+      bc = ''!f() { git commit -m "BREAKING CHANGE: $1"; }; f'';
     };
     delta.enable = true;
     package = pkgs.gitAndTools.gitFull;

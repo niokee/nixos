@@ -3,6 +3,9 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
+    efm-langserver
+    shfmt
+    shellcheck
     gum
     neovim
     alejandra

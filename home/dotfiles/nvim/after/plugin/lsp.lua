@@ -36,7 +36,7 @@ cmp.setup({
 		{ name = "buffer" },
 	}),
 
-    sorting = {
+	sorting = {
 		comparators = {
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
@@ -199,11 +199,10 @@ lspconfig.terraformls.setup({
 	cmd = { "terraform-ls", "serve", "--log-file='/tmp/terraform-ls-{{pid}}.log'" },
 	capabilities = lsp_capabilities,
 })
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-  pattern = {"*.tf", "*.tfvars"},
-  callback = function()
-    vim.lsp.buf.format()
-  end,
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	callback = function()
+		vim.lsp.buf.format()
+	end,
 })
 lspconfig.tflint.setup({
 	capabilities = lsp_capabilities,
@@ -212,6 +211,25 @@ lspconfig.tflint.setup({
 lspconfig.yamlls.setup({
 	cmd = { "yamlls" },
 	capabilities = lsp_capabilities,
+})
+
+lspconfig.efm.setup({
+	settings = {
+		languages = {
+			sh = {
+				lintCommand = "shellcheck -f gcc -x",
+				lintSource = "shellcheck",
+				lintFormats = {
+					"%f:%l:%c: %trror: %m",
+					"%f:%l:%c: %tarning: %m",
+					"%f:%l:%c: %tote: %m",
+				},
+				formatCommand = "shfmt -ci -s -bn",
+				formatStdin = true,
+			},
+		},
+	},
+	filetypes = { "sh" },
 })
 
 -- nvim-diagnostic setup
