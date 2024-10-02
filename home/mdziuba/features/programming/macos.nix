@@ -3,10 +3,10 @@
     ./default.nix
   ];
   home.packages = with pkgs; [
-        terraform
-        tflint
-        terraform-ls
-        terragrunt
-        dbeaver-bin
-        ];
+    terraform
+    tflint
+    terraform-ls
+    terragrunt
+    dbeaver-bin
+  ];
 }

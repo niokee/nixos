@@ -29,7 +29,7 @@ cmp.setup({
 	}),
 
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "nvim_lsp" },
 		{ name = "luasnip", keyword_length = 2 },
 		{ name = "path" },
 	}, {

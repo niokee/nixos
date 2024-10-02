@@ -5,7 +5,6 @@
   services.yabai.enable = true;
   nix.settings = {
     experimental-features = "nix-command flakes";
-    #        access-token = ;
   };
   programs.zsh.enable = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -25,6 +24,7 @@
       "docker"
       "protonvpn"
       "firefox"
+      "flameshot"
       "sf-symbols"
       "logi-options-plus"
       "logitech-g-hub"
