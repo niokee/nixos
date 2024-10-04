@@ -122,23 +122,23 @@ local util = require("lspconfig/util")
 
 -- python setup
 lspconfig.pyright.setup({
-	cmd = { "pyright" },
+	on_attach = function(client, bufnr)
+		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+	end,
+	cmd = { "pyright-langserver", "--stdio" },
 	filetypes = { "python" },
 	capabilities = lsp_capabilities,
 	settings = {
 		pyright = {
 			-- Using Ruff's import organizer
 			disableOrganizeImports = true,
-			disableLanguageServices = false,
-			disableTaggedHints = false,
 		},
 		python = {
 			analysis = {
 				-- Ignore all files for analysis to exclusively use Ruff for linting
-				ignore = { "*" },
 				autoImportCompletions = true,
 				diagnosticMode = "workspace",
-				typeCheckingMode = "off",
+				typeCheckingMode = "standard",
 				useLibraryCodeForTypes = true,
 			},
 		},

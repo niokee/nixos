@@ -8,7 +8,7 @@ local add_to_trouble = require("trouble.sources.telescope").add
 wk.add({
 	{ "<leader>pg", builtin.git_files, desc = "Find git files" },
 	{ "<leader>ps", builtin.live_grep, desc = "Live grep" },
-	{ "<leader>pt", builtin.diagnostics, desc = "Diagnostics" },
+	{ "<leader>px", builtin.diagnostics, desc = "Diagnostics" },
 	{ "<leader>pf", builtin.find_files, desc = "Find files" },
 	{ "<leader>pc", builtin.commands, desc = "Commands" },
 	mode = { "n" },
@@ -25,10 +25,6 @@ wk.add({
 	{ "q/", builtin.search_history, desc = "Search history" },
 	mode = { "n" },
 })
--- wk.add({
--- 	{ "<leader>ct", open_with_trouble, desc = "Trouble telescope" },
--- 	mode = { "n" },
--- })
 
 wk.add({
 	{ "z=", builtin.spell_suggest, desc = "Spelling suggestion" },

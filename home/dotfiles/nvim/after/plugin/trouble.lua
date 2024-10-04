@@ -1,14 +1,8 @@
 require("trouble").setup({
-    focus = true,
+	focus = true,
 	win = {
 		position = "right",
 		size = { width = 0.3 },
-	},
-	preview = {
-		type = "split",
-		relative = "win",
-		position = "bottom",
-		size = 0.4,
 	},
 })
 

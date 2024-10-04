@@ -5,7 +5,7 @@ require("todo-comments").setup({
 	},
 	search = {
 		-- ripgrep regex, supporting the pattern TODO(name)
-		pattern = [[\b(KEYWORDS)]],
+		pattern = [[\b(KEYWORDS)(\([\w ]*\))*:]],
 	},
 })
 local wk = require("which-key")
