@@ -8,5 +8,6 @@
     terraform-ls
     terragrunt
     dbeaver-bin
+    circleci-cli
   ];
 }
