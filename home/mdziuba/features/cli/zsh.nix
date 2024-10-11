@@ -55,7 +55,7 @@
     shellAliases = {
       ferrisl = "cd ~/Downloads && unzip firmware.zip && cp cradio_left-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
       ferrisr = "cd ~/Downloads && unzip firmware.zip && cp cradio_right-nice_nano_v2-zmk.uf2 /run/media/mdziuba/NICENANO/. && rm cradio*";
-      ls = "eza --icons --git --long --no-filesize --no-time --no-user --no-permissions";
+      ls = "eza --icons --long --no-user --no-permissions --no-time --no-filesize --git  -a --git-ignore";
     };
     zsh-abbr = {
       enable = true;

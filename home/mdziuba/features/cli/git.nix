@@ -14,7 +14,21 @@
       feat = ''!f() { git commit -m "feat: $1"; }; f'';
       bc = ''!f() { git commit -m "BREAKING CHANGE: $1"; }; f'';
     };
-    delta.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        line-numbers = true;
+        side-by-side = true;
+        theme = "kanagawa";
+        colorMoved = "default";
+
+        decorations = {
+          commit-decoration-style = "bold yellow box ul";
+          file-style = "bold yellow ul";
+          hunk-header-decoration-style = "yellow box";
+        };
+      };
+    };
     package = pkgs.gitAndTools.gitFull;
     userName = "Mateusz Dziuba";
     userEmail = lib.mkDefault "mateusz.dziuba97@gmail.com";

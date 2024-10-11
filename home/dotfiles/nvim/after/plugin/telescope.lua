@@ -2,14 +2,19 @@ local builtin = require("telescope.builtin")
 local wk = require("which-key")
 local open_with_trouble = require("trouble.sources.telescope").open
 
--- Use this to add more results without clearing the trouble list
-local add_to_trouble = require("trouble.sources.telescope").add
-
 wk.add({
 	{ "<leader>pg", builtin.git_files, desc = "Find git files" },
 	{ "<leader>ps", builtin.live_grep, desc = "Live grep" },
 	{ "<leader>px", builtin.diagnostics, desc = "Diagnostics" },
-	{ "<leader>pf", builtin.find_files, desc = "Find files" },
+	{
+		"<leader>pf",
+		function()
+			builtin.find_files({
+				find_command = { "fd", "--hidden", "--exclude", ".git/", "--type", "f", "--color", "never" },
+			})
+		end,
+		desc = "Find files",
+	},
 	{ "<leader>pc", builtin.commands, desc = "Commands" },
 	mode = { "n" },
 })
@@ -30,6 +35,7 @@ wk.add({
 	{ "z=", builtin.spell_suggest, desc = "Spelling suggestion" },
 	mode = { "n" },
 })
+
 require("telescope").setup({
 	extensions = {
 		["ui-select"] = {
