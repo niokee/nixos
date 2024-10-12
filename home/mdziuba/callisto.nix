@@ -19,7 +19,7 @@
       IdentityFile ~/.ssh/m-dziuba
 
     # Personal account
-    Host github.com--personal
+    Host github.com-personal
       HostName github.com
       User git
       IdentityFile ~/.ssh/niokee
