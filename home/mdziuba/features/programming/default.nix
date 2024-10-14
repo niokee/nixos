@@ -3,36 +3,45 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
+    ## bash
     efm-langserver
     shfmt
     shellcheck
-    gum
-    neovim
+    ## nix
+    nixd
     alejandra
-    lua5_4
+    ## lua
     stylua
     lua-language-server
-    codeium
-    clang-tools
-    nixd
-    cmake
-    python311Packages.pygments
-    python3
-    cargo
-    #    nodePackages.npm
-    mypy
-    nodejs_22
     luarocks
-    pyright
-    gopls
-    yaml-language-server
-    prettierd
-    rust-analyzer
+    ## python
+    python3
     python311Packages.pip
-    go
-    (hiPrio gcc)
+    python311Packages.pygments
+    mypy
+    pyright
     ruff
     ruff-lsp
+    ## golang
+    go
+    gopls
+    templ
+    golangci-lint
+    ## rust
+    cargo
+    rust-analyzer
+    ## yaml/json/etc.
+    yaml-language-server
+    yamllint
+    prettierd
+    ## c-tools
+    clang-tools
+    cmake
+    (hiPrio gcc)
     gnumake
+    ## misc
+    neovim
+    gum
+    nodejs_22
   ];
 }

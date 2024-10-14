@@ -180,6 +180,9 @@ lspconfig.gopls.setup({
 	},
 	capabilities = lsp_capabilities,
 })
+lspconfig.templ.setup({
+	capabilities = lsp_capabilities,
+})
 
 -- nix lang setup
 lspconfig.nixd.setup({
