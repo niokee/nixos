@@ -43,5 +43,6 @@
     neovim
     gum
     nodejs_22
+    vhs
   ];
 }
