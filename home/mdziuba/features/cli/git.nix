@@ -43,6 +43,9 @@
       init = {
         templatedir = "${config.home.homeDirectory}/.git-templates";
       };
+      push = {
+        autoSetupRemote = true;
+      };
     };
   };
 }
