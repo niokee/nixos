@@ -21,11 +21,11 @@ cmd - 3 : yabai -m space --focus  3 ; sketchybar --trigger window_focus
 cmd - 4 : yabai -m space --focus  4 ; sketchybar --trigger window_focus
 cmd - 5 : yabai -m space --focus  5 ; sketchybar --trigger window_focus
 
-cmd + alt + ctrl - 1 : yabai -m space --focus  6 ; sketchybar --trigger window_focus
-cmd + alt + ctrl - 2 : yabai -m space --focus  7 ; sketchybar --trigger window_focus
-cmd + alt + ctrl - 3 : yabai -m space --focus  8 ; sketchybar --trigger window_focus
-cmd + alt + ctrl - 4 : yabai -m space --focus  9 ; sketchybar --trigger window_focus
-cmd + alt + ctrl - 5 : yabai -m space --focus 10 ; sketchybar --trigger window_focus
+cmd - 6 : yabai -m space --focus  6 ; sketchybar --trigger window_focus
+cmd - 7 : yabai -m space --focus  7 ; sketchybar --trigger window_focus
+cmd - 8 : yabai -m space --focus  8 ; sketchybar --trigger window_focus
+cmd - 9 : yabai -m space --focus  9 ; sketchybar --trigger window_focus
+cmd - 0 : yabai -m space --focus 10 ; sketchybar --trigger window_focus
 
 # focus monitor
 cmd + alt - h  : yabai -m display --focus prev; sketchybar --trigger window_focus
@@ -77,19 +77,19 @@ cmd + alt - w : yabai -m space --focus prev && yabai -m space recent --destroy; 
 
 #
 # send window to desktop and follow focus
-shift + cmd - e : yabai -m window --space recent && yabai -m space --focus recent; sketchybar --trigger window_focus
-shift + cmd - n : yabai -m window --space prev && yabai -m space --focus prev; sketchybar --trigger window_focus
-shift + cmd - o : yabai -m window --space next && yabai -m space --focus next; sketchybar --trigger window_focus
-shift + cmd - 1 : yabai -m window --space  1 && yabai -m space --focus 1; sketchybar --trigger window_focus
-shift + cmd - 2 : yabai -m window --space  2 && yabai -m space --focus 2; sketchybar --trigger window_focus
-shift + cmd - 3 : yabai -m window --space  3 && yabai -m space --focus 3; sketchybar --trigger window_focus
-shift + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4; sketchybar --trigger window_focus
-shift + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5; sketchybar --trigger window_focus
-shift + cmd + alt + ctrl - 1 : yabai -m window --space  6 && yabai -m space --focus 6; sketchybar --trigger window_focus
-shift + cmd + alt + ctrl - 2 : yabai -m window --space  7 && yabai -m space --focus 7; sketchybar --trigger window_focus
-shift + cmd + alt + ctrl - 3 : yabai -m window --space  8 && yabai -m space --focus 8; sketchybar --trigger window_focus
-shift + cmd + alt + ctrl - 4 : yabai -m window --space  9 && yabai -m space --focus 9; sketchybar --trigger window_focus
-shift + cmd + alt + ctrl - 5 : yabai -m window --space 10 && yabai -m space --focus 10; sketchybar --trigger window_focus
+alt + cmd - e : yabai -m window --space recent && yabai -m space --focus recent; sketchybar --trigger window_focus
+alt + cmd - n : yabai -m window --space prev && yabai -m space --focus prev; sketchybar --trigger window_focus
+alt + cmd - o : yabai -m window --space next && yabai -m space --focus next; sketchybar --trigger window_focus
+alt + cmd - 1 : yabai -m window --space  1 && yabai -m space --focus 1; sketchybar --trigger window_focus
+alt + cmd - 2 : yabai -m window --space  2 && yabai -m space --focus 2; sketchybar --trigger window_focus
+alt + cmd - 3 : yabai -m window --space  3 && yabai -m space --focus 3; sketchybar --trigger window_focus
+alt + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4; sketchybar --trigger window_focus
+alt + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5; sketchybar --trigger window_focus
+alt + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6; sketchybar --trigger window_focus
+alt + cmd - 7 : yabai -m window --space  7 && yabai -m space --focus 7; sketchybar --trigger window_focus
+alt + cmd - 8 : yabai -m window --space  8 && yabai -m space --focus 8; sketchybar --trigger window_focus
+alt + cmd - 9 : yabai -m window --space  9 && yabai -m space --focus 9; sketchybar --trigger window_focus
+alt + cmd - 0 : yabai -m window --space 10 && yabai -m space --focus 10; sketchybar --trigger window_focus
 
 
 # send window to monitor and follow focus
@@ -126,12 +126,6 @@ alt - r : yabai -m space --rotate 90; sketchybar --trigger window_focus
 # mirror tree y-axis
 alt - y : yabai -m space --mirror y-axis; sketchybar --trigger window_focus
 
-# mirror tree x-axis
-shift + alt - x : yabai -m space --mirror x-axis; sketchybar --trigger window_focus
-
-# toggle desktop offset
-shift + alt - a : yabai -m space --toggle padding --toggle gap; sketchybar --trigger window_focus
-
 # toggle window parent zoom
 alt - d : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
 
@@ -141,18 +135,10 @@ alt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen; sketchybar --trigger window_focus
 
-# toggle window split type
-shift + alt - e : yabai -m window --toggle split; sketchybar --trigger window_focus
-
 # float / unfloat window and restore position
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
 alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2; sketchybar --trigger window_focus
 
-# toggle sticky (show on all spaces)
-shift + alt - s : yabai -m window --toggle sticky; sketchybar --trigger window_focus
-
-# toggle topmost (keep above other windows)
-shift + alt - o : yabai -m window --toggle topmost; sketchybar --trigger window_focus
 
 # toggle picture-in-picture
 alt - p : yabai -m window --toggle border --toggle pip; sketchybar --trigger window_focus
