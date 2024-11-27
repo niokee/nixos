@@ -26,7 +26,6 @@
       "firefox"
       "flameshot"
       "sf-symbols"
-      "logi-options-plus"
       "logitech-g-hub"
     ];
   };

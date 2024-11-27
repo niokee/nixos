@@ -1,21 +1,19 @@
+#!/usr/bin/env bash
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 yabai -m space 2 --label notes
-yabai -m space 3 --label code
-yabai -m space 4 --label web
-yabai -m space 8 --label utils
-yabai -m space 9 --label media
-yabai -m space 10 --label slack
+yabai -m space 3 --label work
+yabai -m space 4 --label other
+
 
 # window rules
-yabai -m rule --add app="^Outlook$" space=^mail
-yabai -m rule --add app="^Firefox$" space=^web
-yabai -m rule --add app="^WezTerm$" space=^code
+yabai -m rule --add app="^Firefox$" space=^work grid=2:3:2:0:1:2
+yabai -m rule --add app="^WezTerm$" space=^work grid=2:3:1:0:1:2
 yabai -m rule --add app="^Obsidian$" space=^notes
-yabai -m rule --add app="^Spotify$" space=^media
-yabai -m rule --add app="^Slack$" space=^slack grid=1:1:0:0:1:1 manage=off
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" space=^utils manage=off
+yabai -m rule --add app="^Spotify$" space=^work grid=2:3:1:0:1:1
+yabai -m rule --add app="^Slack$" space=^work grid=2:3:0:0:1:1 manage=off
+yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" space=^other manage=off
 
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
@@ -44,6 +42,8 @@ yabai -m config window_border_width          6
 yabai -m config active_window_border_color   0xff775759
 yabai -m config normal_window_border_color   0xff555555
 yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config window_animation_duration    0.5            
+yabai -m config window_animation_easing      ease_out_quint 
 
 # mouse
 yabai -m config mouse_modifier               cmd
@@ -60,3 +60,7 @@ yabai -m config left_padding                 20
 yabai -m config right_padding                20
 yabai -m config window_gap                   15
 
+yabai -m signal --add event=application_launched action="/Users/mateusz/.config/nix/home/dotfiles/yabai/centerOneApp.sh"
+yabai -m signal --add event=application_terminated action="/Users/mateusz/.config/nix/home/dotfiles/yabai/centerOneApp.sh"
+yabai -m signal --add event=application_front_switched action="/Users/mateusz/.config/nix/home/dotfiles/yabai/centerOneApp.sh"
+yabai -m signal --add event=space_changed action="/Users/mateusz/.config/nix/home/dotfiles/yabai/centerOneApp.sh"

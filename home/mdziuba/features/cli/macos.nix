@@ -34,7 +34,6 @@
     neofetch
     lsof
     tldr
-    taskwarrior
     ripgrep
     delta
     nix-prefetch-github
