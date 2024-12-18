@@ -145,7 +145,7 @@ lspconfig.pyright.setup({
 	},
 })
 
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
 	cmd = { "ruff" },
 	filetypes = { "python" },
 	capabilities = lsp_capabilities,

@@ -16,9 +16,9 @@
     luarocks
     ## python
     python3
+    uv
     python311Packages.pip
     python311Packages.pygments
-    mypy
     pyright
     ruff
     ruff-lsp
@@ -44,5 +44,6 @@
     gum
     nodejs_22
     vhs
+    devenv
   ];
 }

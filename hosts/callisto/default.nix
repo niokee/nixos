@@ -21,6 +21,7 @@
   homebrew = {
     enable = true;
     casks = [
+      "betterdisplay"
       "docker"
       "protonvpn"
       "firefox"

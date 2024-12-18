@@ -2,33 +2,32 @@
   imports = [
     ./lf
 
-    ./btop.nix
+    ./btop.nix # [v]
     ./bat.nix
     ./direnv.nix
     ./eza.nix
-    ./fd.nix
-    ./fzf.nix
-    ./git.nix
-    ./ssh.nix
-    ./thefuck.nix
-    ./zsh.nix
-    ./zoxide.nix
+    ./fd.nix # [v]
+    ./fzf.nix # [v]
+    ./git.nix # [v]
+    ./ssh.nix # [v]
+    ./thefuck.nix # [v]
+    ./zsh.nix # [v]
+    ./zoxide.nix # [v]
     ./scripts
   ];
   home.packages = with pkgs; [
     wget
     jq
     lshw
-    curl
-    fzf-git-sh
-    unzip
-    zip
-    xclip
+    curl # [v]
+    fzf-git-sh # [v]
+    unzip # [v]
+    zip # [v]
+    xclip # [v]
     neofetch
     lsof
     tldr
-    shutter
-    taskwarrior
+    shutter # [v]
     ripgrep
     nix-prefetch-github
     age
