@@ -1,15 +1,18 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "query", "python", "rust", "go", "javascript", "typescript" },
-	-- Insta parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
+	ensure_installed = { "c", "lua", "vim", "query", "python", "rust", "go" },
 	indent = { enable = true },
+	auto_install = false,
 
-	-- Automatically install missing parsers when entering buffer
-	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-	auto_install = true,
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
+		disable = function(lang, buf)
+			local max_filecsize = 100 * 1024 -- 100KB
+			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+			if ok and stats and stats.size > max_filecsize then
+				return true
+			end
+		end,
 	},
 })
 require("nvim-treesitter.install").compilers = { "clang", "cc" }

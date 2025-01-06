@@ -1,13 +1,16 @@
+require("custom.telescope.multi-ripgrep")
+
 local builtin = require("telescope.builtin")
+local live_multigrep = require("custom.telescope.multi-ripgrep").live_multigrep
 local wk = require("which-key")
 local open_with_trouble = require("trouble.sources.telescope").open
 
 wk.add({
-	{ "<leader>pg", builtin.git_files, desc = "Find git files" },
-	{ "<leader>ps", builtin.live_grep, desc = "Live grep" },
-	{ "<leader>px", builtin.diagnostics, desc = "Diagnostics" },
+	{ "<leader>fh", builtin.help_tags, desc = "Find help" },
+	{ "<leader>fg", live_multigrep, desc = "Find help" },
+	{ "<leader>fx", builtin.diagnostics, desc = "Diagnostics" },
 	{
-		"<leader>pf",
+		"<leader>fd",
 		function()
 			builtin.find_files({
 				find_command = { "fd", "--hidden", "--exclude", ".git/", "--type", "f", "--color", "never" },
@@ -15,28 +18,28 @@ wk.add({
 		end,
 		desc = "Find files",
 	},
-	{ "<leader>pc", builtin.commands, desc = "Commands" },
-	mode = { "n" },
-})
-
-wk.add({
-	{ "<leader>vrr", builtin.lsp_references, desc = "LSP references" },
-	{ "<leader>vws", builtin.lsp_workspace_symbols, desc = "LSP workspace symbols" },
-	{ "<leader>vds", builtin.lsp_document_symbols, desc = "LSP document symbols" },
-	mode = { "n" },
-})
-wk.add({
+	{
+		"<leader>en",
+		function()
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+		end,
+		desc = "Find in Neovim config",
+	},
+	{ "<leader>lr", builtin.lsp_references, desc = "LSP references" },
+	{ "<leader>ws", builtin.lsp_workspace_symbols, desc = "LSP workspace symbols" },
+	{ "<leader>ds", builtin.lsp_document_symbols, desc = "LSP document symbols" },
 	{ "q:", builtin.command_history, desc = "Command history" },
 	{ "q/", builtin.search_history, desc = "Search history" },
-	mode = { "n" },
-})
-
-wk.add({
 	{ "z=", builtin.spell_suggest, desc = "Spelling suggestion" },
 	mode = { "n" },
 })
 
 require("telescope").setup({
+	-- pickers = {
+	-- 	find_files = {
+	-- 		theme = "ivy",
+	-- 	},
+	-- },
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({
@@ -57,6 +60,6 @@ require("telescope").setup({
 		},
 	},
 })
-require("telescope").load_extension("live_grep_args")
+
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")

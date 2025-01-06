@@ -35,11 +35,15 @@ wk.add({
 	mode = { "i" },
 })
 wk.add({
-	{ "<c-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", desc = "Open tmux sessionizer" },
 	{ "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace word under cursor" },
 	{ "<leader>X", "<cmd>!chmod +x %<CR>", desc = "Make file executable" },
-	{ "<leader><leader>", "<cmd>so<CR>", desc = "Source file" },
+	{ "<leader><leader>x", ":.lua<CR>", desc = "Run line" },
+	{ "<leader><leader>X", "<cmd>source %<CR>", desc = "Source file" },
 	mode = { "n" },
+})
+wk.add({
+	{ "<leader><leader>x", ":lua<CR>", desc = "Run selection" },
+	mode = { "v" },
 })
 wk.add({
 	{ "<c-s>", "<C-c>:update<CR>", desc = "Save file" },

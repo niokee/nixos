@@ -1,6 +1,4 @@
-local M = {
+return { {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-}
-
-return { M }
+} }
