@@ -135,10 +135,7 @@ in {
       bind = let
         grim = lib.getExe pkgs.grim;
         slurp = lib.getExe pkgs.slurp;
-        wl-clipboard = lib.getExe pkgs.wl-clipboard;
-        tesseract = lib.getExe pkgs.tesseract;
         pactl = lib.getExe' pkgs.pulseaudio "pactl";
-        notify-send = lib.getExe' pkgs.libnotify "notify-send";
         terminal = "wezterm";
         defaultApp = type: "${lib.getExe' pkgs.gtk3 "gtk-launch"} $(${lib.getExe' pkgs.xdg-utils "xdg-mime"} query default ${type})";
         browser = defaultApp "x-scheme-handler/https";

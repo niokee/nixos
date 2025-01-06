@@ -1,7 +1,8 @@
-{pkgs, ...}: {
-  imports = [
-    ./vscode.nix
-  ];
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     ## bash
     efm-langserver
@@ -46,4 +47,7 @@
     vhs
     devenv
   ];
+  home.file = {
+    "${config.xdg.configHome}/nvim".source = ./../../../dotfiles/nvim;
+  };
 }

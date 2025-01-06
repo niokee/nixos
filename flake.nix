@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,10 +35,10 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-wsl,
     home-manager,
     darwin,
     nix-homebrew,
-    sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -74,11 +75,27 @@
         modules = [./hosts/ganymede];
         specialArgs = {inherit inputs outputs;};
       };
+      io = lib.nixosSystem {
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+          }
+          ./hosts/io
+        ];
+        specialArgs = {inherit inputs outputs;};
+      };
     };
 
     homeConfigurations = {
       "mdziuba@ganymede" = lib.homeManagerConfiguration {
         modules = [./home/mdziuba/ganymede.nix];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
+      "mdziuba@io" = lib.homeManagerConfiguration {
+        modules = [./home/mdziuba/io.nix];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };

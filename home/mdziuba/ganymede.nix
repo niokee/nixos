@@ -1,9 +1,4 @@
 {
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: {
   imports = [
     ./global
     features/cli

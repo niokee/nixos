@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
@@ -11,8 +10,9 @@
 
     ../common/users/mdziuba
 
-    ../common/optional/pipewire.nix
     ../common/optional/bluetooth.nix
+    ../common/optional/pipewire.nix
+    ../common/optional/systemd-boot.nix
   ];
 
   system.stateVersion = "24.11";

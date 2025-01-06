@@ -26,8 +26,8 @@
     sessionVariables = {
       FLAKE = "$HOME/.config/home-manager";
       SHELL = "zsh";
-      TERM = "wezterm";
-      TERMINAL = "wezterm";
+      TERM = lib.mkDefault "wezterm";
+      TERMINAL = lib.mkDefault "wezterm";
       EDITOR = "nvim";
       MANPAGER = "batman";
     };
