@@ -8,6 +8,7 @@
     enable = true;
     aliases = {
       amend = "commit --amend --no-edit";
+      aaf = ''!f() { git add . && git amend && git push --force; }; f'';
       ll = "log --oneline";
       cm = "commit -m";
       fix = ''!f() { git commit -m "fix: $1"; }; f'';

@@ -19,6 +19,7 @@
     python3
     uv
     python311Packages.pip
+    python311Packages.debugpy
     python311Packages.pygments
     pyright
     ruff
