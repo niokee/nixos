@@ -2,6 +2,7 @@
   imports = [
     ./lf
 
+    ./1password.nix
     ./btop.nix # [v]
     ./bat.nix
     ./direnv.nix

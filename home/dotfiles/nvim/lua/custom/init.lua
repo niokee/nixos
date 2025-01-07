@@ -22,8 +22,6 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.inccommand = "split"
-
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
@@ -49,3 +47,9 @@ vim.api.nvim_set_hl(0, "CurSearch", { fg = "#C8C093" })
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.spell = true
+
+-- ufo settings
+vim.opt.foldcolumn = "1" -- '0' is not bad
+vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
