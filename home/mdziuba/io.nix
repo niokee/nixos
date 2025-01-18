@@ -3,6 +3,7 @@
     ./global
     features/cli
     features/programming
+    features/server
   ];
 
   home = {

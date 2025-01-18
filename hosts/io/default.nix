@@ -1,27 +1,29 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
 
-{ config, lib, pkgs, ... }:
-{ 
-   imports = [
-      ./hardware-configuration.nix
-
-     ../common/global
-     ../common/users/mdziuba
+    ../common/global
+    ../common/users/mdziuba
     # include NixOS-WSL modules
   ];
 
-    wsl = {
+  wsl = {
     enable = true;
     defaultUser = "mdziuba";
     extraBin = with pkgs; [
       # Binaries for Docker Desktop wsl-distro-proxy
-      { src = "${coreutils}/bin/cat"; }
-      { src = "${coreutils}/bin/whoami"; }
+      {src = "${coreutils}/bin/cat";}
+      {src = "${coreutils}/bin/whoami";}
     ];
   };
 
@@ -29,11 +31,38 @@
     enable = true;
     enableOnBoot = true;
     autoPrune.enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+      daemon.settings = {
+        features.cdi = true;
+        cdi-spec-dirs = ["/home/mdziuba/.cdi"];
+      };
+    };
+    daemon.settings = {
+      features.cdi = true;
+    };
   };
+  hardware = {
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      open = false;
+      nvidiaSettings = false;
+    };
+    nvidia-container-toolkit.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+  };
+  services.xserver.videoDrivers = ["nvidia"];
 
-  ## patch the script 
+  ## patch the script
   systemd.services.docker-desktop-proxy.script = lib.mkForce ''${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --docker-desktop-root ${config.wsl.wslConf.automount.root}/wsl/docker-desktop "C:\Program Files\Docker\Docker\resources"'';
-  
+
   services.dbus.enable = true;
   services.dbus.packages = [pkgs.dbus];
   # This value determines the NixOS release from which the default
@@ -43,5 +72,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
