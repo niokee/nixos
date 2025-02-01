@@ -76,9 +76,10 @@ style = "bold fg:#FFFFFF bg:crystal_blue"
 format = "[[](bg:crystal_blue fg:fuji_white)  $symbol$path ]($style)"
 
 [custom.dir_no_git]
-when = true
-command = 'begin; git rev-parse --is-inside-work-tree &>/dev/null; or echo ""; end'
-format = '[($output )](fg:crystal_blue)'
+when = '! git rev-parse --is-inside-work-tree'
+shell = "sh"
+format = '[ ](fg:crystal_blue)'
+
 
 [git_branch]
 symbol = " "
