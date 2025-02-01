@@ -4,8 +4,7 @@
   ...
 }: {
   imports = [
-    ../common/syncthing.nix
-    ../common/wezterm.nix
+    ../common
   ];
 
   home.packages = with pkgs; [
@@ -16,11 +15,6 @@
     sketchybar
     skhd
     dconf
-    thefuck
-    ffmpeg
-    obsidian
-    spotify
-    github-cli
   ];
 
   home.file = {

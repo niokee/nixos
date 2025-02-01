@@ -1,12 +1,39 @@
-{...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
-    ./global/macos.nix
-    features/macos.nix
-    features/cli/macos.nix
+    ./global
+
+    features/cli
+    features/cli/awscli.nix
+
     features/desktop/macos
-    features/programming/macos.nix
+
+    features/programming
+    features/programming/work.nix
   ];
 
+  home.file."Applications/home-manager".source = let
+    apps = pkgs.buildEnv {
+      name = "home-manager-applications";
+      paths = config.home.packages;
+      pathsToLink = "/Applications";
+    };
+  in
+    lib.mkIf pkgs.stdenv.targetPlatform.isDarwin "${apps}/Applications";
+
+  programs.git = {
+    userEmail = "mateusz.dziuba@arx.city";
+  };
+
+  programs.fish = {
+    shellInit = lib.mkAfter ''
+      source ${config.xdg.configHome}/op/plugins.sh
+    '';
+  };
   programs.ssh.extraConfig = ''
     # 1Password SSH agent
     Host *

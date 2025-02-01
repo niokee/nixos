@@ -17,7 +17,7 @@ local process_icons = {
 	["node"] = wezterm.nerdfonts.mdi_hexagon,
 	["go"] = wezterm.nerdfonts.seti_go,
 	["python3"] = "",
-	["zsh"] = wezterm.nerdfonts.dev_terminal,
+	["fish"] = wezterm.nerdfonts.dev_terminal,
 	["bash"] = wezterm.nerdfonts.cod_terminal_bash,
 	["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
 	["htop"] = wezterm.nerdfonts.mdi_chart_donut_variant,
@@ -53,23 +53,22 @@ local function get_process(tab)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_with)
-
 	local cwd = wezterm.format({
 		{ Text = get_current_working_dir(tab) },
 	})
 
 	local process = get_process(tab)
 	local title = process and string.format(" %s (%s) ", process, cwd) or " [?] "
-    local foreground = colors.foreground
-    if tab.is_active then
-        foreground = colors.selection_fg
-    end
+	local foreground = colors.foreground
+	if tab.is_active then
+		foreground = colors.selection_fg
+	end
 
 	return {
-		{ Foreground = { Color = foreground  } },
+		{ Foreground = { Color = foreground } },
 		{ Background = { Color = colors.tab_bar.background } },
 		{ Text = title },
-	} 
+	}
 end)
 
 return {
@@ -81,9 +80,9 @@ return {
 	webgpu_preferred_adapter = wezterm.gui.enumerate_gpus()[1],
 
 	colors = colors,
-    command_palette_rows = 10,
-    command_palette_fg_color = colors.selection_fg,
-    command_palette_bg_color = colors.background,
+	command_palette_rows = 10,
+	command_palette_fg_color = colors.selection_fg,
+	command_palette_bg_color = colors.background,
 	background = {
 		{
 			source = { Color = colors.background },
@@ -93,16 +92,16 @@ return {
 		},
 	},
 
-    window_frame = {
-        font = wezterm.font("FiraCode Nerd Font", { weight = 450 }), 
-        border_left_color = colors.selection_fg,
-        border_right_color = colors.selection_fg,
-        border_bottom_color = colors.selection_fg,
-        border_top_color = colors.selection_fg,
-    },
+	window_frame = {
+		font = wezterm.font("FiraCode Nerd Font", { weight = 450 }),
+		border_left_color = colors.selection_fg,
+		border_right_color = colors.selection_fg,
+		border_bottom_color = colors.selection_fg,
+		border_top_color = colors.selection_fg,
+	},
 
 	tab_bar_at_bottom = true,
-    show_new_tab_button_in_tab_bar = false,
+	show_new_tab_button_in_tab_bar = false,
 
 	use_fancy_tab_bar = false,
 	enable_scroll_bar = true,

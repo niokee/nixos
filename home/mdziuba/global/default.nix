@@ -21,6 +21,6 @@
 
   home = {
     username = lib.mkDefault "mdziuba";
-    homeDirectory = "/home/mdziuba";
+    homeDirectory = lib.mkDefault "/home/mdziuba";
   };
 }

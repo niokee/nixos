@@ -117,7 +117,6 @@
           }
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.mateusz = import ./home/mdziuba/callisto.nix;
             home-manager.extraSpecialArgs = {inherit inputs outputs;};

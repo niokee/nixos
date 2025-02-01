@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  nixHome = "${config.xdg.configHome}/nix";
+in {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -23,13 +25,6 @@
       size = 10000;
       share = true;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "thefuck"
-      ];
     };
     plugins = [
       {
@@ -63,13 +58,13 @@
         nbn = "nix build nixpkgs#";
         nf = "nix flake";
 
-        nr = "nixos-rebuild --flake .";
-        nrs = "nixos-rebuild --flake . switch";
-        snr = "sudo nixos-rebuild --flake .";
-        snrs = "sudo nixos-rebuild --flake . switch";
-        hm = "home-manager --flake .";
-        hms = "home-manager --flake . switch";
-        drs = "darwin-rebuild --flake /Users/mateusz/.config/nix switch";
+        nr = "nixos-rebuild --flake ${nixHome}";
+        nrs = "nixos-rebuild --flake ${nixHome} switch";
+        snr = "sudo nixos-rebuild --flake ${nixHome}";
+        snrs = "sudo nixos-rebuild --flake ${nixHome} switch";
+        hm = "home-manager --flake ${nixHome}";
+        hms = "home-manager --flake ${nixHome} switch";
+        drs = "darwin-rebuild --flake ${nixHome} switch";
       };
     };
   };

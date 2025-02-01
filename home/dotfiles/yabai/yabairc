@@ -7,14 +7,6 @@ yabai -m space 3 --label work
 yabai -m space 4 --label other
 
 
-# window rules
-yabai -m rule --add app="^Firefox$" space=^work grid=2:3:2:0:1:2
-yabai -m rule --add app="^WezTerm$" space=^work grid=2:3:1:0:1:2
-yabai -m rule --add app="^Obsidian$" space=^notes
-yabai -m rule --add app="^Spotify$" space=^work grid=2:3:1:0:1:1
-yabai -m rule --add app="^Slack$" space=^work grid=2:3:0:0:1:1 manage=off
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" space=^other manage=off
-
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"

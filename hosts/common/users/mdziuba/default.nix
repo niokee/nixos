@@ -12,7 +12,7 @@
         "docker"
         "git"
       ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     packages = [pkgs.home-manager];
   };
   home-manager.users.mdziuba = import ../../../../home/mdziuba/${config.networking.hostName}.nix;

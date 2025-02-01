@@ -25,7 +25,7 @@
     ];
     sessionVariables = {
       FLAKE = "$HOME/.config/home-manager";
-      SHELL = "zsh";
+      SHELL = "fish";
       TERM = lib.mkDefault "wezterm";
       TERMINAL = lib.mkDefault "wezterm";
       EDITOR = "nvim";

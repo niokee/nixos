@@ -19,7 +19,7 @@ return {
 			distribution = "NixOS",
 			username = "mdziuba",
 			default_cwd = "/home/mdziuba/",
-			default_prog = { "zsh" },
+			default_prog = { "fish" },
 		},
 	},
 }

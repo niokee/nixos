@@ -7,7 +7,6 @@ $os\
 $username\
 $directory\
 ${custom.dir_no_git}\
-${custom.dir_with_git}\
 $git_branch\
 $git_commit\
 $git_status
@@ -77,19 +76,15 @@ style = "bold fg:#FFFFFF bg:crystal_blue"
 format = "[[](bg:crystal_blue fg:fuji_white)  $symbol$path ]($style)"
 
 [custom.dir_no_git]
-when = '! git rev-parse --is-inside-work-tree'
-format = '[ ](fg:crystal_blue)'
-
-[custom.dir_with_git]
 when = true
-require_repo = true
-format = '[ ](bg:boat_yellow fg:crystal_blue)'
+command = 'begin; git rev-parse --is-inside-work-tree &>/dev/null; or echo ""; end'
+format = '[($output )](fg:crystal_blue)'
 
 [git_branch]
 symbol = " "
 truncation_length = 7
 truncation_symbol = ''
-format = '[$symbol$branch](fg:black bg:boat_yellow)'
+format = '[ ](bg:boat_yellow fg:crystal_blue)[$symbol$branch](fg:black bg:boat_yellow)'
 
 [git_commit]
 tag_symbol = '  '

@@ -4,6 +4,7 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
+    aws-vault
     terraform
     tflint
     terraform-ls

@@ -6,13 +6,16 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
   };
-  programs.zsh.enable = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  programs.fish.enable = true;
   users.users.mateusz = {
     name = "mateusz";
     home = "/Users/mateusz";
+    uid = 501;
+    shell = pkgs.fish;
   };
+  users.knownUsers = ["mateusz"];
   fonts.packages = with pkgs; [
     recursive
     (nerdfonts.override {fonts = ["FiraCode"];})

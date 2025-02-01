@@ -47,6 +47,7 @@
     nodejs_22
     vhs
     devenv
+    github-cli
   ];
 
   home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/nvim";
