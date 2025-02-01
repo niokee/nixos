@@ -1,0 +1,122 @@
+palette = 'kanagawa'
+continuation_prompt = '▶▶ '
+
+format = """
+[](fuji_white)\
+$os\
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_status
+"""
+right_format = """
+$time\
+$status\
+$cmd_duration
+"""
+
+[palettes.kanagawa]
+black = '#000000'
+white = '#FFFFFF'
+
+sum_ink_0 = "#16161D"
+sum_ink_1 = "#181820"
+sum_ink_2 = "#1A1A22"
+background = "#1A1A22"
+sum_ink_3 = "#1F1F28"
+
+fuji_grey = "#727169"
+
+fuji_white = "#DCD7BA"
+foreground = "#DCD7BA"
+old_white = "#C8C093"
+
+wave_blue = "#2D4F67"
+spring_blue = "#7FB4CA"
+crystal_blue = "#7E9CD8"
+winter_blue = "#252535"
+light_blue = "#A3D4D5"
+
+wave_aqua_1 = "#6A9589"
+wave_aqua_2 = "#7AA89F"
+
+oni_violet = "#957FB8"
+spring_violet = "#938AA9"
+dragon_violet = "#8992a7"
+
+boat_yellow = "#C0A36E"
+carp_yellow = "#E6C384"
+
+surimi_orange = "#FFA066"
+
+autumn_red = "#C34043"
+samurai_red = "#E82424"
+peach_red = "#FF5D62"
+
+sakura_pink = "#D27E99"
+
+spring_green = "#98BB6C"
+
+lotusCyan = "#D7E3D8"
+idk = "#C9D87E"
+
+
+[character] 
+disabled = true
+
+[cmd_duration]
+format = '[](fg:boat_yellow)[ $duration  ](bg:boat_yellow fg:black)'
+min_time = 0
+show_notifications = true
+min_time_to_notify = 3_600_000
+
+[directory]
+read_only = " 󰌾"
+style = "bold fg:#FFFFFF bg:crystal_blue"
+format = "[[](bg:crystal_blue fg:fuji_white) $symbol$path ]($style)"
+
+[git_branch]
+symbol = " "
+format = '[ ](fg:crystal_blue bg:boat_yellow)[$symbol$branch](fg:black bg:boat_yellow)'
+
+[git_status]
+ahead = '⇡${count}'
+behind = '⇣${count}'
+conflicted = ' =${count}'
+deleted = ' ✘${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+modified = ' +${count}'
+renamed = ' »${count}'
+staged = ' *${count}'
+stashed = ' ${count}'
+untracked = ' ?${count}'
+format = '[$all_status ]($style)[ ](fg:boat_yellow)'
+style = 'bg:boat_yellow fg:black'
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[os]
+format = '[ $symbol]($style)'
+style = "fg:black bg:fuji_white"
+disabled = false
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Arch = " "
+Debian = " "
+Linux = " "
+Macos = " "
+NixOS = " "
+Raspbian = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "

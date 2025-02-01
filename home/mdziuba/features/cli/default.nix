@@ -3,32 +3,33 @@
     ./lf
 
     ./1password.nix
-    ./btop.nix # [v]
+    ./btop.nix
     ./bat.nix
     ./direnv.nix
     ./eza.nix
-    ./fd.nix # [v]
-    ./fzf.nix # [v]
-    ./git.nix # [v]
-    ./ssh.nix # [v]
-    ./thefuck.nix # [v]
-    ./zsh.nix # [v]
-    ./zoxide.nix # [v]
+    ./fd.nix
+    ./fzf.nix
+    ./git.nix
+    ./ssh.nix
+    ./starship.nix
+    ./thefuck.nix
+    ./zsh.nix
+    ./zoxide.nix
     ./scripts
   ];
   home.packages = with pkgs; [
     wget
     jq
     lshw
-    curl # [v]
-    fzf-git-sh # [v]
-    unzip # [v]
-    zip # [v]
-    xclip # [v]
+    curl
+    fzf-git-sh
+    unzip
+    zip
+    xclip
     neofetch
     lsof
     tldr
-    shutter # [v]
+    shutter
     ripgrep
     nix-prefetch-github
     age

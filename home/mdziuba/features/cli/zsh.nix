@@ -33,16 +33,6 @@
     };
     plugins = [
       {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = ./../../../dotfiles/zsh;
-        file = ".p10k.zsh";
-      }
-      {
         name = "fzf-tab";
         src = pkgs.fetchFromGitHub {
           owner = "Aloxaf";
@@ -60,6 +50,7 @@
     zsh-abbr = {
       enable = true;
       abbreviations = {
+        ave = "aws-vault exec mateusz.dziuba -- ";
         vi = "nvim";
         vim = "nvim";
         hibarnate = "systemctl hibarnate";

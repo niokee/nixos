@@ -9,6 +9,8 @@
     ./pavucontrol.nix
     ./playerctl.nix
     ./syncthing.nix
+    ./wezterm.nix
+    ./zen.nix
   ];
 
   home.packages = with pkgs; [
@@ -32,22 +34,8 @@
   ];
 
   home.file = {
-    "${config.xdg.configHome}/nvim".source = ./../../../../dotfiles/nvim;
-    "${config.xdg.configHome}/rofi" = {
-      source = ./../../../../dotfiles/rofi;
-      recursive = true;
-    };
-    "${config.xdg.configHome}/wezterm" = {
-      source = ./../../../../dotfiles/wezterm;
-      recursive = true;
-    };
-    "${config.xdg.configHome}/awesome" = {
-      source = ./../../../../dotfiles/awesome;
-      recursive = true;
-    };
-    "${config.xdg.configHome}/picom" = {
-      source = ./../../../../dotfiles/picom;
-      recursive = true;
-    };
+    "${config.xdg.configHome}/rofi".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/rofi";
+    "${config.xdg.configHome}/awesome".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/awesome";
+    "${config.xdg.configHome}/picom".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/picom";
   };
 }

@@ -15,6 +15,7 @@
     ./fzf.nix
     ./git.nix
     ./gpg.nix
+    ./starship.nix
     ./ssh.nix
     ./thefuck.nix
     ./zsh.nix

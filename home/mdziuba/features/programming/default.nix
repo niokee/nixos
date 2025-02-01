@@ -48,7 +48,6 @@
     vhs
     devenv
   ];
-  home.file = {
-    "${config.xdg.configHome}/nvim".source = ./../../../dotfiles/nvim;
-  };
+
+  home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/nvim";
 }

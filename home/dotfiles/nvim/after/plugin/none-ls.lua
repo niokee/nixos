@@ -11,6 +11,5 @@ none_ls.setup({
         -- linters
         none_ls.builtins.diagnostics.yamllint,
         none_ls.builtins.diagnostics.golangci_lint,
-        none_ls.builtins.diagnostics.mypy,
     },
 })
