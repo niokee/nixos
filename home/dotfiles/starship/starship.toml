@@ -6,13 +6,15 @@ format = """
 $os\
 $username\
 $directory\
+${custom.dir_no_git}\
+${custom.dir_with_git}\
 $git_branch\
 $git_commit\
 $git_status
 """
 right_format = """
-$time\
 $status\
+$sudo\
 $cmd_duration
 """
 
@@ -23,13 +25,11 @@ white = '#FFFFFF'
 sum_ink_0 = "#16161D"
 sum_ink_1 = "#181820"
 sum_ink_2 = "#1A1A22"
-background = "#1A1A22"
 sum_ink_3 = "#1F1F28"
 
 fuji_grey = "#727169"
 
 fuji_white = "#DCD7BA"
-foreground = "#DCD7BA"
 old_white = "#C8C093"
 
 wave_blue = "#2D4F67"
@@ -66,7 +66,7 @@ idk = "#C9D87E"
 disabled = true
 
 [cmd_duration]
-format = '[](fg:boat_yellow)[ $duration  ](bg:boat_yellow fg:black)'
+format = '[](fg:boat_yellow)[ $duration  ](bg:boat_yellow fg:black)[](fg:boat_yellow)'
 min_time = 0
 show_notifications = true
 min_time_to_notify = 3_600_000
@@ -74,11 +74,27 @@ min_time_to_notify = 3_600_000
 [directory]
 read_only = " 󰌾"
 style = "bold fg:#FFFFFF bg:crystal_blue"
-format = "[[](bg:crystal_blue fg:fuji_white) $symbol$path ]($style)"
+format = "[[](bg:crystal_blue fg:fuji_white)  $symbol$path ]($style)"
+
+[custom.dir_no_git]
+when = '! git rev-parse --is-inside-work-tree'
+format = '[ ](fg:crystal_blue)'
+
+[custom.dir_with_git]
+when = true
+require_repo = true
+format = '[ ](bg:boat_yellow fg:crystal_blue)'
 
 [git_branch]
 symbol = " "
-format = '[ ](fg:crystal_blue bg:boat_yellow)[$symbol$branch](fg:black bg:boat_yellow)'
+truncation_length = 7
+truncation_symbol = ''
+format = '[$symbol$branch](fg:black bg:boat_yellow)'
+
+[git_commit]
+tag_symbol = '  '
+tag_disabled = false
+style = 'bg:boat_yellow fg:black'
 
 [git_status]
 ahead = '⇡${count}'
@@ -91,11 +107,9 @@ renamed = ' »${count}'
 staged = ' *${count}'
 stashed = ' ${count}'
 untracked = ' ?${count}'
-format = '[$all_status ]($style)[ ](fg:boat_yellow)'
+format = '[ $ahead_behind$all_status ]($style)[ ](fg:boat_yellow)'
 style = 'bg:boat_yellow fg:black'
 
-[git_commit]
-tag_symbol = '  '
 
 [golang]
 symbol = " "
@@ -120,3 +134,11 @@ Raspbian = " "
 Ubuntu = " "
 Unknown = " "
 Windows = "󰍲 "
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false
+symbol = "' "
+format = '[$symbol](bg: oni_violet)'
