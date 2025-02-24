@@ -3,10 +3,10 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
@@ -80,7 +80,7 @@
         modules = [
           nixos-wsl.nixosModules.default
           {
-            system.stateVersion = "24.05";
+            system.stateVersion = "25.05";
             wsl.enable = true;
           }
           ./hosts/io

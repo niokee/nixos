@@ -33,6 +33,7 @@
     cargo
     rust-analyzer
     ## yaml/json/etc.
+    vscode-langservers-extracted
     yaml-language-server
     yamllint
     prettierd
@@ -47,6 +48,7 @@
     nodejs_22
     vhs
     devenv
+    devbox
     github-cli
   ];
 

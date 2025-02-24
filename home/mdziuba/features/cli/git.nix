@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: {
@@ -30,7 +29,6 @@
         };
       };
     };
-    package = pkgs.gitAndTools.gitFull;
     userName = "Mateusz Dziuba";
     userEmail = lib.mkDefault "mateusz.dziuba97@gmail.com";
     extraConfig = {

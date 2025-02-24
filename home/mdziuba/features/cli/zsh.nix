@@ -14,8 +14,82 @@ in {
     enableCompletion = true;
     autocd = true;
     initExtra = lib.mkDefault ''
+
+      bindkey "^[m" copy-prev-shell-word # Esc + m
+      bindkey ";5D" backward-word  # Ctrl + Left Arrow
+      bindkey ";5C" forward-word   # Ctrl + Right Arrow
+
+      typeset -A key
+      key[Home]=$${terminfo[khome]}
+      key[End]=$${terminfo[kend]}
+      key[Insert]=$${terminfo[kich1]}
+      key[Delete]=$${terminfo[kdch1]}
+      [[ -n "$${key[Home]}"   ]]  && bindkey "$${key[Home]}"   beginning-of-line
+      [[ -n "$${key[End]}"    ]]  && bindkey "$${key[End]}"    end-of-line
+      [[ -n "$${key[Insert]}" ]]  && bindkey "$${key[Insert]}" overwrite-mode
+      [[ -n "$${key[Delete]}" ]]  && bindkey "$${key[Delete]}" delete-char
+
       source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
       source $(which _fzf_opts)
+      eval "(${pkgs.starship}/bin/starship init zsh)"
+
+      export fzf_directory_opts="--bind 'ctrl-o:execute($EDITOR {} &> /dev/tty)'"
+
+      # Set FZF colors
+      export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=fg:#cfc9a6,bg:#1f1f28,hl:#c8c093 --color=fg+:#c8c093,bg+:#1f1f28,hl+:#2d4f67 --color=info:#6a9589,prompt:#6a9589,pointer:#e82424 --color=marker:#ff5d62,spinner:#7aa89f,header:#FFA066"
+      export FZF_COMPLETION_TRIGGER="++"
+
+      # Define the file or directory preview function
+      show_file_or_dir_preview() {
+          if [[ -d "$1" ]]; then
+              ${pkgs.eza}/bin/eza --tree --color=always "$1" | head -200
+          else
+              ${pkgs.bat}/bin/bat -n --color=always --line-range :500 "$1"
+          fi
+      }
+
+      # Set FZF preview options
+      export FZF_CTRL_T_OPTS="--preview 'show_file_or_dir_preview {}'"
+      export FZF_ALT_C_OPTS="--preview '${pkgs.eza}/bin/eza --tree --color=always {} | head -200'"
+
+      # Set FZF default search commands
+      export FZF_DEFAULT_COMMAND="${pkgs.fd}/bin/fd . ~/.config/nix ~/projects ~/Obsidian"
+      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+      export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type=d"
+
+      # Define function to use `${pkgs.fd}/bin/fd` for path completion
+      _fzf_compgen_path() {
+          ${pkgs.fd}/bin/fd "$@"
+      }
+
+      # Define function to use `${pkgs.fd}/bin/fd` for directory completion
+      _fzf_compgen_dir() {
+          ${pkgs.fd}/bin/fd --type=d "$@"
+      }
+
+      # Define function for advanced FZF completion
+      _fzf_comprun() {
+          local command="$1"
+          shift # Remove the first argument (command name)
+
+          case "$command" in
+              cd)
+                  fzf --preview "${pkgs.eza}/bin/eza --tree --color=always {} | head -200" "$@"
+                  ;;
+              nvim)
+                  fzf --preview "bash -c 'if [ -d \"{}\" ]; then ${pkgs.eza}/bin/eza --tree --color=always {} | head -200; else ${pkgs.bat}/bin/bat -n --color=always --line-range :500 {}; fi'" "$@"
+                  ;;
+              export | unset)
+                  fzf --preview "eval echo {}" "$@"
+                  ;;
+              ssh)
+                  fzf --preview "dig {}" "$@"
+                  ;;
+              *)
+                  fzf --preview "show_file_or_dir_preview {}" "$@"
+                  ;;
+          esac
+      }
     '';
     history = {
       extended = true;
@@ -45,7 +119,7 @@ in {
     zsh-abbr = {
       enable = true;
       abbreviations = {
-        ave = "aws-vault exec mateusz.dziuba -- ";
+        ave = "aws-vault exec mateusz.dziuba --";
         vi = "nvim";
         vim = "nvim";
         hibarnate = "systemctl hibarnate";

@@ -15,7 +15,7 @@
     ../common/optional/systemd-boot.nix
   ];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
   services = {
     displayManager = {

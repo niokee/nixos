@@ -3,6 +3,6 @@
     enable = true;
     icons = "auto";
     git = true;
-    enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 }

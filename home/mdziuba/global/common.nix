@@ -19,13 +19,13 @@
   };
 
   home = {
-    stateVersion = lib.mkDefault "24.11";
+    stateVersion = lib.mkDefault "25.05";
     sessionPath = [
       "$HOME/.local/scripts"
     ];
     sessionVariables = {
       FLAKE = "$HOME/.config/home-manager";
-      SHELL = "fish";
+      SHELL = "zsh";
       TERM = lib.mkDefault "wezterm";
       TERMINAL = lib.mkDefault "wezterm";
       EDITOR = "nvim";

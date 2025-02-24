@@ -29,8 +29,8 @@
     userEmail = "mateusz.dziuba@arx.city";
   };
 
-  programs.fish = {
-    shellInit = lib.mkAfter ''
+  programs.zsh = {
+    initExtra = lib.mkAfter ''
       source ${config.xdg.configHome}/op/plugins.sh
     '';
   };

@@ -10,8 +10,8 @@
   home.packages = with pkgs; [
     yabai
     itsycal
-    slack
     raycast
+    slack
     sketchybar
     skhd
     dconf

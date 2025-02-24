@@ -95,9 +95,6 @@ return {
 					"snippets",
 					"buffer",
 					"dadbod",
-					"avante_commands",
-					"avante_mentions",
-					"avante_files",
 				},
 				providers = {
 					lazydev = {
@@ -134,21 +131,6 @@ return {
 						score_offset = 70,
 					},
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink", score_offset = 100 },
-					avante_commands = {
-						name = "avante_commands",
-						module = "blink.compat.source",
-						score_offset = 90, -- show at a higher priority than lsp
-					},
-					avante_files = {
-						name = "avante_commands",
-						module = "blink.compat.source",
-						score_offset = 95, -- show at a higher priority than lsp
-					},
-					avante_mentions = {
-						name = "avante_mentions",
-						module = "blink.compat.source",
-						score_offset = 95, -- show at a higher priority than lsp
-					},
 				},
 			},
 

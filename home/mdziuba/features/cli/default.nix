@@ -5,7 +5,6 @@
     ./bat.nix
     ./direnv.nix
     ./eza.nix
-    ./fish.nix
     ./nushell.nix
     ./fd.nix
     ./fzf.nix
@@ -14,9 +13,11 @@
     ./starship.nix
     ./thefuck.nix
     ./zoxide.nix
+    ./zsh.nix
     ./scripts
   ];
   home.packages = with pkgs; [
+    dust
     wget
     jq
     curl

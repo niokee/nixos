@@ -80,7 +80,8 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.ruff.setup({
-    cmd = { "ruff" },
+    -- If uv is installed, use it to run Ruff
+    cmd = vim.fn.executable("uv") == 1 and { "uv", "run", "ruff" } or { "ruff" },
     filetypes = { "python" },
     on_attach = function(client, bufnr)
         if client.name == "ruff_lsp" then
@@ -133,6 +134,10 @@ lspconfig.tflint.setup({})
 
 lspconfig.yamlls.setup({
     cmd = { "yamlls" },
+})
+
+lspconfig.jsonls.setup({
+    cmd = { "jsonls" },
 })
 
 lspconfig.efm.setup({
