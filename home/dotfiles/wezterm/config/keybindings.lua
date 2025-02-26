@@ -16,7 +16,9 @@ return {
             mods = "CTRL|SHIFT",
             action = wezterm.action_callback(function(window, _)
                 local _, pane, _ = window:mux_window():spawn_tab({})
-                pane:send_text('fzf --bind "enter:become($EDITOR {})"; wezterm cli kill-pane\n')
+                pane:send_text(
+                    'fzf --preview "$FZF_EDITOR_PREVIEW" --bind "enter:become($EDITOR {})"; wezterm cli kill-pane\n'
+                )
             end),
         },
     },

@@ -35,7 +35,7 @@ local live_multigrep = function(opts)
 					"--line-number",
 					"--column",
 					"--smart-case",
-					"--no-require-git",
+					"--ignore",
 					"--hidden",
 				},
 			})
