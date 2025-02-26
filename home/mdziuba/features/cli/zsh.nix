@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: let
   nixHome = "${config.xdg.configHome}/nix";
@@ -13,31 +12,22 @@ in {
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
-    initExtra = lib.mkDefault ''
+    initExtra = ''
+      #!/bin/bash
 
       bindkey "^[m" copy-prev-shell-word # Esc + m
       bindkey ";5D" backward-word  # Ctrl + Left Arrow
       bindkey ";5C" forward-word   # Ctrl + Right Arrow
 
-      typeset -A key
-      key[Home]=$${terminfo[khome]}
-      key[End]=$${terminfo[kend]}
-      key[Insert]=$${terminfo[kich1]}
-      key[Delete]=$${terminfo[kdch1]}
-      [[ -n "$${key[Home]}"   ]]  && bindkey "$${key[Home]}"   beginning-of-line
-      [[ -n "$${key[End]}"    ]]  && bindkey "$${key[End]}"    end-of-line
-      [[ -n "$${key[Insert]}" ]]  && bindkey "$${key[Insert]}" overwrite-mode
-      [[ -n "$${key[Delete]}" ]]  && bindkey "$${key[Delete]}" delete-char
+      bindkey "^[[H"   beginning-of-line
+      bindkey "^[[F"    end-of-line
+      bindkey "^[[3~" delete-char
 
-      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
-      source $(which _fzf_opts)
-      eval "(${pkgs.starship}/bin/starship init zsh)"
-
-      export fzf_directory_opts="--bind 'ctrl-o:execute($EDITOR {} &> /dev/tty)'"
+      export FZF_DIRECTORY_OPTS="--bind 'enter:execute($EDITOR {} &> /dev/tty)'"
 
       # Set FZF colors
       export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=fg:#cfc9a6,bg:#1f1f28,hl:#c8c093 --color=fg+:#c8c093,bg+:#1f1f28,hl+:#2d4f67 --color=info:#6a9589,prompt:#6a9589,pointer:#e82424 --color=marker:#ff5d62,spinner:#7aa89f,header:#FFA066"
-      export FZF_COMPLETION_TRIGGER="++"
+      export FZF_COMPLETION_TRIGGER="**"
 
       # Define the file or directory preview function
       show_file_or_dir_preview() {
@@ -49,7 +39,7 @@ in {
       }
 
       # Set FZF preview options
-      export FZF_CTRL_T_OPTS="--preview 'show_file_or_dir_preview {}'"
+      export FZF_CTRL_T_OPTS="--preview 'zsh -c \"show_file_or_dir_preview {}\"'"
       export FZF_ALT_C_OPTS="--preview '${pkgs.eza}/bin/eza --tree --color=always {} | head -200'"
 
       # Set FZF default search commands

@@ -12,6 +12,7 @@
     ./ssh.nix
     ./starship.nix
     ./thefuck.nix
+    ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
     ./scripts

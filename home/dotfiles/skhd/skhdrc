@@ -47,7 +47,7 @@ ctrl + alt - m : yabai -m window --insert stack; sketchybar --trigger window_foc
 # toggle window fullscreen zoom
 cmd + alt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2; sketchybar --trigger window_focus
+alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2; sketchybar --trigger window_focus
 
 # close window
 shift + cmd - c : osascript -e 'tell application "System Events" to perform action "AXPress" of (first button whose subrole is "AXCloseButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)'; sketchybar --trigger window_focus

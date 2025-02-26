@@ -15,6 +15,7 @@
     sketchybar
     skhd
     dconf
+    micromamba
   ];
 
   home.file = {
