@@ -9,6 +9,7 @@
     ./fd.nix
     ./fzf.nix
     ./git.nix
+    ./lazygit.nix
     ./ssh.nix
     ./starship.nix
     ./thefuck.nix
