@@ -20,7 +20,6 @@
     pavucontrol
     dconf
     gimp
-    ffmpeg
     rofi
     feh
     maim

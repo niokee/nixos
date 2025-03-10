@@ -24,8 +24,10 @@
     jq
     curl
     fzf-git-sh
-    unzip
-    zip
+    p7zip
+    poppler
+    ffmpeg
+    imagemagick
     xclip
     neofetch
     lsof

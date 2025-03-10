@@ -16,6 +16,7 @@
     lua-language-server
     luarocks
     ## python
+    duckdb
     python3
     uv
     python311Packages.pip

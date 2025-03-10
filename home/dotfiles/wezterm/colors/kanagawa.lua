@@ -51,6 +51,14 @@ local colorsheme = {
     scrollbar_thumb = dragon.oldWhite,
     split = dragon.oldWhite,
     tab_bar = {
+        active_tab = {
+            bg_color = dragon.transparent,
+            fg_color = dragon.oniViolet,
+        },
+        inactive_tab = {
+            bg_color = dragon.transparent,
+            fg_color = dragon.fujiGrey,
+        },
         background = dragon.transparent,
         new_tab = {
             bg_color = dragon.transparent,
@@ -86,6 +94,6 @@ local colorsheme = {
     indexed = {
         [16] = dragon.surimiOrange,
         [17] = dragon.peachRed,
-    }
+    },
 }
 return colorsheme

@@ -25,7 +25,10 @@ in {
     history = {
       extended = true;
       ignoreDups = true;
+      ignoreAllDups = true;
       ignoreSpace = true;
+      expireDuplicatesFirst = true;
+      append = true;
       save = 10000;
       size = 10000;
       share = true;

@@ -16,7 +16,9 @@ local process_icons = {
     ["vim"] = wezterm.nerdfonts.dev_vim,
     ["node"] = wezterm.nerdfonts.mdi_hexagon,
     ["go"] = wezterm.nerdfonts.seti_go,
-    ["python3"] = "",
+    ["python3"] = wezterm.nerdfonts.python,
+    ["python"] = wezterm.nerdfonts.python,
+    ["uv"] = wezterm.nerdfonts.python,
     ["zsh"] = wezterm.nerdfonts.dev_terminal,
     ["bash"] = wezterm.nerdfonts.cod_terminal_bash,
     ["btm"] = wezterm.nerdfonts.mdi_chart_donut_variant,
@@ -58,15 +60,17 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wit
     })
 
     local process = get_process(tab)
-    local title = process and string.format(" %s (%s) ", process, cwd) or " [?] "
-    local foreground = colors.foreground
+    local title = process and string.format(" %s: %s %s ", tab.tab_id, process, cwd) or " [?] "
+    local foreground = colors.tab_bar.inactive_tab.fg_color
+    local background = colors.tab_bar.inactive_tab.bg_color
     if tab.is_active then
-        foreground = colors.selection_fg
+        foreground = colors.tab_bar.active_tab.fg_color
+        -- background = colors.tab_bar.active_tab.bg_color
     end
 
     return {
         { Foreground = { Color = foreground } },
-        { Background = { Color = colors.tab_bar.background } },
+        { Background = { Color = background } },
         { Text = title },
     }
 end)
@@ -88,7 +92,7 @@ return {
             source = { Color = colors.background },
             height = "100%",
             width = "100%",
-            opacity = 0.90,
+            opacity = 0.85,
         },
     },
 
