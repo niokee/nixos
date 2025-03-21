@@ -11,7 +11,6 @@
     yabai
     itsycal
     raycast
-    slack
     sketchybar
     skhd
     dconf

@@ -114,6 +114,12 @@ lspconfig.gopls.setup({
 })
 lspconfig.templ.setup({})
 
+-- rust setup
+lspconfig.rust_analyzer.setup({
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+})
+
 -- nix lang setup
 lspconfig.nixd.setup({
     cmd = { "nixd" },

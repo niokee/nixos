@@ -27,10 +27,10 @@
       "betterdisplay"
       "docker"
       "protonvpn"
-      "firefox"
       "flameshot"
       "sf-symbols"
       "logitech-g-hub"
+      "1password"
     ];
   };
 }

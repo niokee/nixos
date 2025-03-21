@@ -36,14 +36,6 @@ cmd + alt - u : yabai -m window --resize bottom:0:20; sketchybar --trigger windo
 cmd + alt - y : yabai -m window --resize top:0:-20; sketchybar --trigger window_focus
 cmd + alt - 0x27 : yabai -m window --resize right:20:0; sketchybar --trigger window_focus
 
-# set insertion point in focused container
-ctrl + alt - n : yabai -m window --insert west; sketchybar --trigger window_focus
-ctrl + alt - e : yabai -m window --insert south; sketchybar --trigger window_focus
-ctrl + alt - i : yabai -m window --insert north; sketchybar --trigger window_focus
-ctrl + alt - o : yabai -m window --insert east; sketchybar --trigger window_focus
-ctrl + alt - m : yabai -m window --insert stack; sketchybar --trigger window_focus
-
-
 # toggle window fullscreen zoom
 cmd + alt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 

@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -36,6 +37,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     nixos-wsl,
     home-manager,
     darwin,
@@ -49,11 +51,16 @@
       "aarch64-darwin"
     ];
     forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs systems (system:
-      import nixpkgs {
+    pkgsFor = lib.genAttrs systems (system: {
+      unstable = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-      });
+      };
+      stable = import nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    });
   in {
     inherit lib;
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -92,12 +99,12 @@
     homeConfigurations = {
       "mdziuba@ganymede" = lib.homeManagerConfiguration {
         modules = [./home/mdziuba/ganymede.nix];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = pkgsFor.x86_64-linux.unstable;
         extraSpecialArgs = {inherit inputs outputs;};
       };
       "mdziuba@io" = lib.homeManagerConfiguration {
         modules = [./home/mdziuba/io.nix];
-        pkgs = pkgsFor.x86_64-linux;
+        pkgs = pkgsFor.x86_64-linux.unstable;
         extraSpecialArgs = {inherit inputs outputs;};
       };
     };
@@ -105,7 +112,7 @@
     darwinConfigurations = {
       mateuszs-MacBook-Pro = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        pkgs = pkgsFor.aarch64-darwin;
+        pkgs = pkgsFor.aarch64-darwin.unstable;
         modules = [
           ./hosts/callisto
           nix-homebrew.darwinModules.nix-homebrew
@@ -119,7 +126,11 @@
           {
             home-manager.useUserPackages = true;
             home-manager.users.mateusz = import ./home/mdziuba/callisto.nix;
-            home-manager.extraSpecialArgs = {inherit inputs outputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs outputs;
+              pkgs = pkgsFor.aarch64-darwin.unstable;
+              pkgsStable = pkgsFor.aarch64-darwin.stable;
+            };
           }
         ];
         specialArgs = {inherit inputs outputs;};

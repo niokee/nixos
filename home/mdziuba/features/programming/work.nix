@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgsStable,
+  ...
+}: {
   imports = [
     ./default.nix
     ./vscode.nix
@@ -9,8 +13,10 @@
     tflint
     slack-term
     terraform-ls
-    terragrunt
+    pkgsStable.terragrunt
     dbeaver-bin
     circleci-cli
+    postgresql_17
+    libiconv
   ];
 }
