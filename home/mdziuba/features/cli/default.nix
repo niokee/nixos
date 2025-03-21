@@ -12,7 +12,7 @@
     ./lazygit.nix
     ./ssh.nix
     ./starship.nix
-    ./thefuck.nix
+    # ./thefuck.nix
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix

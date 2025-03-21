@@ -19,9 +19,9 @@
     duckdb
     python3
     uv
-    python311Packages.pip
-    python311Packages.debugpy
-    python311Packages.pygments
+    python313Packages.pip
+    python313Packages.debugpy
+    python313Packages.pygments
     pyright
     ruff
     ruff-lsp
@@ -33,6 +33,8 @@
     ## rust
     cargo
     rust-analyzer
+    rustfmt
+    rustc
     ## yaml/json/etc.
     vscode-langservers-extracted
     yaml-language-server
