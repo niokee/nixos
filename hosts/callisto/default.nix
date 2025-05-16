@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   nix.enable = true;
   system.stateVersion = 4;
-  services.skhd.enable = true;
-  services.yabai.enable = true;
+
   nix.settings = {
     experimental-features = "nix-command flakes";
   };
   nixpkgs.hostPlatform = "aarch64-darwin";
+  services.skhd.enable = true;
 
   programs.zsh.enable = true;
   users.users.mateusz = {

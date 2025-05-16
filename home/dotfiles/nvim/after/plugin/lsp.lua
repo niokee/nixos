@@ -146,6 +146,10 @@ lspconfig.jsonls.setup({
     cmd = { "jsonls" },
 })
 
+lspconfig.taplo.setup({
+    cmd = { "taplo", "lsp", "stdio" },
+})
+
 lspconfig.efm.setup({
     settings = {
         languages = {

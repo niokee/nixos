@@ -8,10 +8,11 @@
   ];
 
   home.packages = with pkgs; [
-    yabai
+    aerospace
     itsycal
     raycast
     sketchybar
+    sketchybar-app-font
     skhd
     dconf
     micromamba
@@ -20,6 +21,6 @@
   home.file = {
     "${config.xdg.configHome}/sketchybar".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/sketchybar";
     "${config.xdg.configHome}/skhd".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/skhd";
-    "${config.xdg.configHome}/yabai".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/yabai";
+    "${config.xdg.configHome}/aerospace".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/aerospace";
   };
 }

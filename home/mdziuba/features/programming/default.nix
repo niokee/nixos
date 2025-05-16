@@ -40,6 +40,7 @@
     yaml-language-server
     yamllint
     prettierd
+    taplo
     ## c-tools
     clang-tools
     cmake
