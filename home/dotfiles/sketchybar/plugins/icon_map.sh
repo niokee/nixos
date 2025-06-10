@@ -476,18 +476,6 @@ function icon_map() {
   "WezTerm")
     icon_result=":wezterm:"
     ;;
-  "DBeaver")
-    icon_result=":dbeaver:"
-    ;;
-  "Zen")
-    icon_result=":zen_browser:"
-    ;;
-  "SketchyBar")
-    icon_result=":close:"
-    ;;
-  "QGIS-LTR")
-    icon_result=":qq:"
-    ;;
   *)
     icon_result=":default:"
     ;;

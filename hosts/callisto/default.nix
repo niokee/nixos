@@ -1,12 +1,19 @@
 {pkgs, ...}: {
   nix.enable = true;
-  system.stateVersion = 4;
+  system = {
+    stateVersion = 4;
+    primaryUser = "mateusz";
+  };
 
   nix.settings = {
     experimental-features = "nix-command flakes";
   };
   nixpkgs.hostPlatform = "aarch64-darwin";
   services.skhd.enable = true;
+  services.yabai = {
+    enable = true;
+    enableScriptingAddition = true;
+  };
 
   programs.zsh.enable = true;
   users.users.mateusz = {
@@ -30,7 +37,6 @@
       "flameshot"
       "sf-symbols"
       "logitech-g-hub"
-      "1password"
     ];
   };
 }

@@ -64,15 +64,16 @@ defaults=(
 sketchybar --default "${defaults[@]}"
 
 # Left
-source "$ITEM_DIR/aerospace.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
 
 # Center
+# source "$ITEM_DIR/media.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/spotify.sh"
 source "$ITEM_DIR/cpu.sh"
@@ -83,4 +84,3 @@ sketchybar --hotload on
 sketchybar --update
 
 echo "sketchybar configuation loaded.."
-

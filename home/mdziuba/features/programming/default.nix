@@ -24,7 +24,6 @@
     python313Packages.pygments
     pyright
     ruff
-    ruff-lsp
     ## golang
     go
     gopls
@@ -54,6 +53,7 @@
     devenv
     devbox
     github-cli
+    hyperfine
   ];
 
   home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/nvim";

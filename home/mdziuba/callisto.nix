@@ -30,7 +30,7 @@
   };
 
   programs.zsh = {
-    initExtra = lib.mkAfter ''
+    initContent = lib.mkAfter ''
       source ${config.xdg.configHome}/op/plugins.sh
     '';
   };

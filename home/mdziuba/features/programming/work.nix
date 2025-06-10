@@ -11,6 +11,7 @@
     aws-vault
     terraform
     tflint
+    gdal
     slack-term
     terraform-ls
     pkgsStable.terragrunt

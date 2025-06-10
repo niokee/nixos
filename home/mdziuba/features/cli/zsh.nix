@@ -12,8 +12,10 @@ in {
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
-    initExtra = ''
+    initContent = ''
       source $(which _fzf_opts)
+
+      [ -f ~/.arx_completion.zsh ] && source ~/.arx_completion.zsh
 
       bindkey "^[m"   copy-prev-shell-word  # Esc + m
       bindkey ";5D"   backward-word         # Ctrl + Left Arrow
