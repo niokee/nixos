@@ -9,6 +9,10 @@
   ];
   home.packages = with pkgs; [
     aws-vault
+    maturin
+    cookiecutter
+    llvm
+    lld
     terraform
     tflint
     gdal
@@ -19,5 +23,7 @@
     circleci-cli
     postgresql_17
     libiconv
+    gitstats
+    zig
   ];
 }

@@ -30,10 +30,12 @@
     templ
     golangci-lint
     ## rust
-    cargo
-    rust-analyzer
-    rustfmt
-    rustc
+    # cargo
+    # rust-analyzer
+    # rustfmt
+    # rustc
+    rustup
+    rustlings
     ## yaml/json/etc.
     vscode-langservers-extracted
     yaml-language-server

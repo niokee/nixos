@@ -51,34 +51,72 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local function set_python_path(path)
+	local clients = vim.lsp.get_clients({
+		bufnr = vim.api.nvim_get_current_buf(),
+		name = "pyright",
+	})
+	for _, client in ipairs(clients) do
+		if client.settings then
+			client.settings.python = vim.tbl_deep_extend("force", client.settings.python, { pythonPath = path })
+		else
+			client.config.settings =
+				vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
+		end
+		client.notify("workspace/didChangeConfiguration", { settings = nil })
+	end
+end
+
 -- python setup
 vim.lsp.config("pyright", {
 	on_attach = function(client, bufnr)
 		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+		vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()
+			client:exec_cmd({
+				command = "pyright.organizeimports",
+				arguments = { vim.uri_from_bufnr(bufnr) },
+			})
+		end, {
+			desc = "Organize Imports",
+		})
+		vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightSetPythonPath", set_python_path, {
+			desc = "Reconfigure pyright with the provided python path",
+			nargs = 1,
+			complete = "file",
+		})
 	end,
 	cmd = { "pyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	settings = {
-		pyright = {
-			-- Using Ruff's import organizer
-			disableOrganizeImports = true,
-		},
-		python = {
-			analysis = {
-				ignore = { "*" },
-				-- autoImportCompletions = true,
-				-- diagnosticMode = "workspace",
-				-- typeCheckingMode = "standard",
-				-- useLibraryCodeForTypes = true,
-			},
-		},
+	root_markers = {
+		"pyproject.toml",
+		"setup.py",
+		"setup.cfg",
+		"requirements.txt",
+		"Pipfile",
+		"pyrightconfig.json",
+		".git",
 	},
+	-- settings = {
+	--     pyright = {
+	--         -- Using Ruff's import organizer
+	--         disableOrganizeImports = true,
+	--     },
+	--     -- python = {
+	--     --     analysis = {
+	--     --         -- ignore = { "*" },
+	--     --         -- autoImportCompletions = true,
+	--     --         -- diagnosticMode = "workspace",
+	--     --         -- typeCheckingMode = "standard",
+	--     --         -- useLibraryCodeForTypes = true,
+	--     --     },
+	--     -- },
+	-- },
 })
 vim.lsp.enable("pyright")
 
 vim.lsp.config("ruff", {
 	-- If uv is installed, use it to run Ruff
-	cmd = {"ruff", "server"},
+	cmd = { "ruff", "server" },
 	filetypes = { "python" },
 	on_attach = function(client, _)
 		if client.name == "ruff_lsp" then
@@ -119,6 +157,20 @@ vim.lsp.enable("templ")
 vim.lsp.config("rust_analyzer", {
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
+	settings = {
+		["rust-analyzer"] = {
+			checkOnSave = {
+				command = "clippy",
+			},
+			assist = {
+				importGranularity = "module",
+				importPrefix = "crate",
+			},
+			cargo = {
+				allFeatures = true,
+			},
+		},
+	},
 })
 vim.lsp.enable("rust_analyzer")
 
@@ -133,18 +185,21 @@ vim.lsp.enable("nixd")
 vim.lsp.enable("clangd")
 
 -- terraform setup
+vim.lsp.config("terraformls", {
+	cmd = { "terraform-ls", "serve" },
+	filetypes = { "terraform", "terraform-vars" },
+	root_markers = { ".terraform", ".git" },
+})
 vim.lsp.enable("terraformls")
 
 vim.lsp.config("tflint", {})
 vim.lsp.enable("tflint")
 
-vim.lsp.config("yamlls", {
-	cmd = { "yamlls" },
-})
 vim.lsp.enable("yamlls")
 
 vim.lsp.config("jsonls", {
-	cmd = { "jsonls" },
+	cmd = { "vscode-json-language-server", "--stdio" },
+	filetypes = { "json", "jsonc", "tftpl" },
 })
 vim.lsp.enable("jsonls")
 
