@@ -10,7 +10,7 @@
     ./font.nix
     ./pavucontrol.nix
     ./playerctl.nix
-    ./zen.nix
+    # ./zen.nix
   ];
 
   home.packages = with pkgs; [

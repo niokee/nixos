@@ -19,7 +19,7 @@ local tyrannical = require("tyrannical")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-awful.spawn.with_shell("feh --bg-fill ~/.config/home-manager/home/dotfiles/darksky2.png")
+awful.spawn.with_shell("feh --bg-fill ~/.config/nix/home/dotfiles/darksky2.png")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -59,8 +59,8 @@ home_dir = os.getenv("HOME")
 -- This is used later as the default terminal and editor to run.
 terminal = "wezterm"
 --terminal = "wezterm cli spawn --new-window"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = "wezterm -e nvim " .. home_dir .. "/.config/home-manager/awesome/.config/awesome/rc.lua"
+ditor = os.getenv("EDITOR") or "nvim"
+editor_cmd = "wezterm -e nvim " .. home_dir .. "/.config/awesome/rc.lua"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -84,9 +84,9 @@ myawesomemenu = {
 			hotkeys_popup.show_help(nil, awful.screen.focused())
 		end,
 	},
-	{ "Manual", terminal .. " -e man awesome" },
+	{ "Manual",      terminal .. " -e man awesome" },
 	{ "Edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "Restart", awesome.restart },
+	{ "Restart",     awesome.restart },
 	{
 		"Quit",
 		function()
@@ -121,7 +121,7 @@ else
 			menu_awesome,
 			menu_terminal,
 			{ "Browser", "firefox" },
-			{ "Files", "nautilus" },
+			{ "Files",   "nautilus" },
 		},
 	})
 end
@@ -274,7 +274,8 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Control" }, "k", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
-	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
+	awful.key({ modkey }, "u", awful.client.urgent.jumpto,
+		{ description = "jump to urgent client", group = "client" }),
 	awful.key({ modkey }, "Tab", function()
 		awful.client.focus.history.previous()
 		if client.focus then
@@ -347,9 +348,7 @@ globalkeys = gears.table.join(
 		)
 	end, { description = "take a screenshot of a section", group = "launcher" }),
 	awful.key({ modkey, "Shift" }, "b", function()
-		awful.spawn.with_shell(
-			"sh ~/.local/scripts/auto-connect-bt"
-		)
+		awful.spawn.with_shell("sh ~/.local/scripts/auto-connect-bt")
 	end)
 )
 

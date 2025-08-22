@@ -16,64 +16,33 @@
   ];
 
   system.stateVersion = "25.05";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  services = {
-    displayManager = {
-      autoLogin = {
-        enable = true;
-        user = "mdziuba";
-      };
-      sddm = {
-        enable = true;
-        # wayland.enable = true;
-        theme = "Sugar Dark for SDDM";
-      };
-    };
-    printing = {
-      enable = true;
-      drivers = [pkgs.hplipWithPlugin];
-    };
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-  };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [pkgs.hplipWithPlugin];
-  };
   services.xserver = {
     xkb.layout = "pl";
     enable = true;
-    videoDrivers = ["amdgpu"];
-    windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks # is the package manager for Lua modules
-        luadbi-mysql # Database abstraction layer
-      ];
-    };
-  };
-  # Akceleracja OpenGL/Vulkan i wideo
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true; # 32-bit dla Steam/niektórych gier
-    extraPackages = with pkgs; [
-      vaapiVdpau # mapuje VA-API -> VDPAU (często poprawia odtwarzanie)
-      libvdpau-va-gl # fallback VDPAU przez VA-API
-      rocm-opencl-icd # OpenCL (AMD)
-      rocm-opencl-runtime
-    ];
-  };
+    videoDrivers = ["modesetting"];
 
-  # programs.hyprland = {
-  #   enable = true;
-  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  #   xwayland.enable = true;
-  #
-  # };
+    libinput.enable = true;
+
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = false;
+      theme = "breeze";
+    };
+    windowManager.awesome.enable = true;
+  };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    # extraPackages = with pkgs; [
+    # vappiVdpau
+    # libvdpau-va-gl
+    # rocm-opencl-icd
+    # rocm-opencl-runtime
+    # ];
+  };
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -87,4 +56,7 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  boot.initrd.kernelModules = ["amdgpu"];
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  environment.systemPackages = with pkgs; [xorg.xinit xterm];
 }
