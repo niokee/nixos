@@ -83,6 +83,10 @@
         modules = [./hosts/ganymede];
         specialArgs = {inherit inputs outputs;};
       };
+      europa = lib.nixosSystem {
+        modules = [./hosts/europa];
+        specialArgs = {inherit inputs outputs;};
+      };
       io = lib.nixosSystem {
         modules = [
           nixos-wsl.nixosModules.default
@@ -99,6 +103,11 @@
     homeConfigurations = {
       "mdziuba@ganymede" = lib.homeManagerConfiguration {
         modules = [./home/mdziuba/ganymede.nix];
+        pkgs = pkgsFor.x86_64-linux.unstable;
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
+      "mdziuba@europa" = lib.homeManagerConfiguration {
+        modules = [./home/mdziuba/europa.nix];
         pkgs = pkgsFor.x86_64-linux.unstable;
         extraSpecialArgs = {inherit inputs outputs;};
       };
