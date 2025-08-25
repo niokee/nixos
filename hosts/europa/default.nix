@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -15,24 +16,38 @@
     ../common/optional/systemd-boot.nix
   ];
 
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   system.stateVersion = "25.05";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.xserver = {
-    xkb.layout = "pl";
+  services.displayManager.sddm = {
     enable = true;
-    videoDrivers = ["modesetting"];
-
-    libinput.enable = true;
-
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = false;
-      theme = "breeze";
-    };
-    windowManager.awesome.enable = true;
+    wayland.enable = true;
+    theme = "breeze";
   };
+
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+  # services.xserver = {
+  #   xkb.layout = "pl";
+  #   enable = true;
+  #   videoDrivers = ["modesetting"];
+  #
+  #   libinput.enable = true;
+  #
+  #   windowManager.awesome.enable = true;
+  # };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -43,6 +58,8 @@
     # rocm-opencl-runtime
     # ];
   };
+  hardware.xone.enable = true;
+
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -58,5 +75,9 @@
   services.udisks2.enable = true;
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelPackages = pkgs.linuxPackages_6_6;
-  environment.systemPackages = with pkgs; [xorg.xinit xterm];
+  environment.systemPackages = with pkgs; [
+    xorg.xinit
+    xterm
+    linuxKernel.packages.linux_zen.xone
+  ];
 }

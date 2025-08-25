@@ -4,24 +4,28 @@
   pkgs,
   ...
 }: let
-  hyprland = pkgs.hyprland.override {wrapRuntimeDeps = false;};
-  xdph = pkgs.hyprland.xdh-desktop-portal.hyprland.override {inherit hyprland;};
+  xdph = pkgs.xdg-desktop-portal-hyprland.override {hyprland = config.wayland.windowManager.hyprland.package;};
 in {
   imports = [
     ./basic-binds.nix
     ./waybar.nix
     ./wlsunset.nix
-    ./wlogout.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
   ];
 
   xdg.portal = {
     extraPortals = [xdph];
-    configPackages = [hyprland];
+    config.hyprland = {
+      deafult = ["hyprland" "gtk"];
+    };
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland;
+    package = config.lib.nixGL.wrap (pkgs.hyprland.override {
+      wrapRuntimeDeps = false;
+    });
     systemd = {
       enable = true;
       # Same as default, but stop graphical-session too
@@ -97,11 +101,13 @@ in {
           ignore_opacity = true;
           popups = true;
         };
-        drop_shadow = true;
-        shadow_range = 12;
-        shadow_offset = "3 3";
-        "col.shadow" = "0x44000000";
-        "col.shadow_inactive" = "0x66000000";
+        shadow = {
+          enabled = true;
+          range = 12;
+          offset = "3 3";
+          color = "0x44000000";
+          color_inactive = "0x66000000";
+        };
       };
       animations = {
         enabled = true;
@@ -212,16 +218,16 @@ in {
         )
         (config.monitors);
       workspace = [
-        "name:1,monitor:HDMI-A-2"
-        "name:2,monitor:HDMI-A-2"
-        "name:3,monitor:HDMI-A-2"
-        "name:4,monitor:HDMI-A-2"
-        "name:5,monitor:HDMI-A-2"
-        "name:6,monitor:DP-2"
-        "name:7,monitor:DP-2"
-        "name:8,monitor:DP-2"
-        "name:9,monitor:DP-2"
-        "name:10,monitor:DP-2"
+        "name:1,monitor:eDP-1"
+        "name:2,monitor:eDP-1"
+        "name:3,monitor:eDP-1"
+        "name:4,monitor:eDP-1"
+        "name:5,monitor:eDP-1"
+        "name:6,monitor:HDMI-A-1"
+        "name:7,monitor:HDMI-A-1"
+        "name:8,monitor:HDMI-A-1"
+        "name:9,monitor:HDMI-A-1"
+        "name:10,monitor:HDMI-A-1"
       ];
     };
   };

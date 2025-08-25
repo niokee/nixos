@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../common
+    ../hyprland
 
     ./firefox.nix
     ./font.nix
@@ -23,6 +24,7 @@
     rofi
     feh
     maim
+    parsec-bin
     simple-scan
     picom
   ];

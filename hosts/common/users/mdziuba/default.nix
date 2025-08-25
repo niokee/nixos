@@ -16,5 +16,6 @@
     packages = [pkgs.home-manager];
   };
   programs.zsh.enable = true;
+  home-manager.backupFileExtension = "backup";
   home-manager.users.mdziuba = import ../../../../home/mdziuba/${config.networking.hostName}.nix;
 }
