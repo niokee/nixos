@@ -11,6 +11,8 @@
     aws-vault
     maturin
     cookiecutter
+    clickhouse
+    clickhouse-cli
     llvm
     lld
     terraform
@@ -19,11 +21,14 @@
     slack-term
     terraform-ls
     pkgsStable.terragrunt
+    typescript-language-server
     dbeaver-bin
     circleci-cli
     postgresql_17
     libiconv
     gitstats
     zig
+    flameshot
+    betterdisplay
   ];
 }

@@ -25,13 +25,13 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
   };
 
   outputs = {
@@ -42,6 +42,7 @@
     home-manager,
     darwin,
     nix-homebrew,
+    determinate,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -141,6 +142,12 @@
               pkgsStable = pkgsFor.aarch64-darwin.stable;
             };
           }
+          # Add the determinate nix-darwin module
+          determinate.darwinModules.default
+          ({...}: {
+            # Let Determinate Nix handle Nix configuration rather than nix-darwin
+            nix.enable = false;
+          })
         ];
         specialArgs = {inherit inputs outputs;};
       };

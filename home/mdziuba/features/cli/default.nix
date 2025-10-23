@@ -13,7 +13,6 @@
     ./ssh.nix
     ./starship.nix
     ./pay_respects.nix
-    ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
     ./scripts

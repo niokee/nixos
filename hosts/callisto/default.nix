@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  nix.enable = true;
   system = {
     stateVersion = 4;
     primaryUser = "mateusz";
@@ -7,6 +6,14 @@
 
   nix.settings = {
     experimental-features = "nix-command flakes";
+    trusted-users = [
+      "root"
+      "mateusz"
+    ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://devenv.cachix.org"
+    ];
   };
   nixpkgs.hostPlatform = "aarch64-darwin";
   services.skhd.enable = true;
@@ -31,10 +38,8 @@
   homebrew = {
     enable = true;
     casks = [
-      "betterdisplay"
-      "docker"
+      "docker-desktop"
       "protonvpn"
-      "flameshot"
       "sf-symbols"
       "logitech-g-hub"
     ];

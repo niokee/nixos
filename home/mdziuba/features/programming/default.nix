@@ -23,6 +23,7 @@
     python313Packages.debugpy
     python313Packages.pygments
     pyright
+    pyrefly
     ruff
     ## golang
     go
@@ -48,6 +49,7 @@
     (hiPrio gcc)
     gnumake
     ## misc
+    sqlfluff
     neovim
     gum
     nodejs_22
@@ -56,6 +58,7 @@
     devbox
     github-cli
     hyperfine
+    tabiew
   ];
 
   home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/nvim";

@@ -476,6 +476,15 @@ function icon_map() {
   "WezTerm")
     icon_result=":wezterm:"
     ;;
+  "Zen")
+    icon_result=":zen_browser:"
+    ;;
+  "DBeaver")
+    icon_result=":dbeaver:"
+    ;;
+  "QGIS")
+    icon_result=":orion:"
+    ;;
   *)
     icon_result=":default:"
     ;;
