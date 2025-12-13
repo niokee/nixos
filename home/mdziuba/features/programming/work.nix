@@ -9,16 +9,16 @@
   ];
   home.packages = with pkgs; [
     aws-vault
+    dbt
     maturin
     cookiecutter
-    clickhouse
-    clickhouse-cli
+    jinja-lsp
     llvm
     lld
     terraform
     tflint
     gdal
-    slack-term
+    slack
     terraform-ls
     pkgsStable.terragrunt
     typescript-language-server
@@ -30,5 +30,7 @@
     zig
     flameshot
     betterdisplay
+    pandoc
+    libiconv
   ];
 }

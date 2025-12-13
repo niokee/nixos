@@ -114,12 +114,10 @@
         ms-python.python
         ms-python.vscode-pylance
         njpwerner.autodocstring
-        eamodio.gitlens
         catppuccin.catppuccin-vsc
         ms-toolsai.jupyter
         asvetliakov.vscode-neovim
         ban.spellright
-        mkhl.direnv
       ];
     };
   };

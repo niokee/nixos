@@ -42,6 +42,7 @@
       "protonvpn"
       "sf-symbols"
       "logitech-g-hub"
+      "spotify"
     ];
   };
 }

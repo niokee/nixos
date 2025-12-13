@@ -5,14 +5,14 @@
     ./bat.nix
     ./direnv.nix
     ./eza.nix
-    ./nushell.nix
+    # ./delta.nix
     ./fd.nix
     ./fzf.nix
     ./git.nix
     ./lazygit.nix
+    ./nushell.nix
     ./ssh.nix
     ./starship.nix
-    ./pay_respects.nix
     ./zoxide.nix
     ./zsh.nix
     ./scripts

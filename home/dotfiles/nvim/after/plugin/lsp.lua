@@ -117,7 +117,7 @@ vim.lsp.config("ruff", {
     end,
 })
 vim.lsp.enable("ruff")
-
+vim.lsp.enable("jinja_lsp")
 -- lua setup
 vim.lsp.config("lua_ls", {
     cmd = { "lua-language-server" },
@@ -225,6 +225,9 @@ vim.lsp.enable("efm")
 
 -- JavaScript/TypeScript setup
 vim.lsp.enable("ts_ls")
+
+-- Docker
+vim.lsp.enable("docker_language_server")
 
 -- nvim-diagnostic setup
 vim.diagnostic.config({

@@ -12,6 +12,7 @@
     nixd
     alejandra
     ## lua
+    lua5_1
     stylua
     lua-language-server
     luarocks
@@ -23,7 +24,7 @@
     python313Packages.debugpy
     python313Packages.pygments
     pyright
-    pyrefly
+    # pyrefly
     ruff
     ## golang
     go
@@ -31,10 +32,6 @@
     templ
     golangci-lint
     ## rust
-    # cargo
-    # rust-analyzer
-    # rustfmt
-    # rustc
     rustup
     rustlings
     ## yaml/json/etc.
@@ -46,9 +43,10 @@
     ## c-tools
     clang-tools
     cmake
-    (hiPrio gcc)
+    (lib.hiPrio gcc)
     gnumake
     ## misc
+    docker-language-server
     sqlfluff
     neovim
     gum
