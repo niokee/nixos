@@ -24,7 +24,7 @@
     python313Packages.debugpy
     python313Packages.pygments
     pyright
-    # pyrefly
+    pyrefly
     ruff
     ## golang
     go

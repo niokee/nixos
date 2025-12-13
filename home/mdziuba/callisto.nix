@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -17,7 +16,9 @@
   ];
 
   programs.git = {
-    userEmail = "mateusz.dziuba@arx.city";
+    settings = {
+      user.email = "mateusz.dziuba@arx.city";
+    };
   };
   programs.zsh = {
     initContent = lib.mkAfter ''
@@ -25,19 +26,19 @@
     '';
   };
   programs.ssh = {
-    # enableDefaultConfig = false;
-    # matchBlocks."*" = {
-    #   forwardAgent = false;
-    #   addKeysToAgent = "no";
-    #   compression = false;
-    #   serverAliveInterval = 0;
-    #   serverAliveCountMax = 3;
-    #   hashKnownHosts = false;
-    #   userKnownHostsFile = "~/.ssh/known_hosts";
-    #   controlMaster = "no";
-    #   controlPath = "~/.ssh/master-%r@%n:%p";
-    #   controlPersist = "no";
-    # };
+    enableDefaultConfig = false;
+    matchBlocks."*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no";
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
     extraConfig = ''
       # 1Password SSH agent
       Host *

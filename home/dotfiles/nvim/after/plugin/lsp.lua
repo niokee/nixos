@@ -70,6 +70,9 @@ end
 -- vim.lsp.config("pyrefly", {
 --     cmd = { "pyrefly", "lsp" },
 --     filetypes = { "python" },
+--     on_attach = function(client, bufnr)
+--         require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+--     end,
 -- })
 -- vim.lsp.enable("pyrefly")
 

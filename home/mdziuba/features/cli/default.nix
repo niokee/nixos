@@ -5,7 +5,7 @@
     ./bat.nix
     ./direnv.nix
     ./eza.nix
-    # ./delta.nix
+    ./delta.nix
     ./fd.nix
     ./fzf.nix
     ./git.nix
