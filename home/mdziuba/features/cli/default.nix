@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./1password.nix
     ./btop.nix
     ./bat.nix
     ./direnv.nix

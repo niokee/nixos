@@ -7,6 +7,7 @@
     ./global
 
     features/cli
+    features/cli/1password.nix
     features/cli/awscli.nix
 
     features/desktop/macos

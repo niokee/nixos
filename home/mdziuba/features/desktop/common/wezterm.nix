@@ -8,6 +8,6 @@
   ];
 
   home.file."${config.xdg.configHome}/wezterm" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/wezterm";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/wezterm";
   };
 }

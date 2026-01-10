@@ -49,6 +49,7 @@
     docker-language-server
     sqlfluff
     neovim
+    tree-sitter
     gum
     nodejs_22
     vhs
@@ -59,5 +60,5 @@
     tabiew
   ];
 
-  home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nix/home/dotfiles/nvim";
+  home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/nvim";
 }

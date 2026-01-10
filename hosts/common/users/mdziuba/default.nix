@@ -3,9 +3,10 @@
   config,
   ...
 }: {
+  programs.zsh.enable = true;
   users.users.mdziuba = {
     isNormalUser = true;
-    description = "Matuesz Dziuba";
+    description = "Mateusz Dziuba";
     extraGroups =
       ["networkmanager" "wheel"]
       ++ [

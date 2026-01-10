@@ -1,14 +1,11 @@
 {pkgs, ...}: {
-  fonts.packages = [
+  home.packages = [
     pkgs.nerd-fonts.fira-code
   ];
-  fontProfiles = {
+  fonts.fontconfig = {
     enable = true;
-    monospace = {
-      family = "FiraCode Nerd Font";
-    };
-    regular = {
-      family = "Fira Sans";
+    defaultFonts = {
+      monospace = ["FiraCode Nerd Font"];
     };
   };
 }

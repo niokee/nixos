@@ -30,7 +30,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply don't specify the nixpkgs input
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
   };
 
@@ -81,7 +89,9 @@
 
     nixosConfigurations = {
       ganymede = lib.nixosSystem {
-        modules = [./hosts/ganymede];
+        modules = [
+          ./hosts/ganymede
+        ];
         specialArgs = {inherit inputs outputs;};
       };
       europa = lib.nixosSystem {
@@ -98,24 +108,6 @@
           ./hosts/io
         ];
         specialArgs = {inherit inputs outputs;};
-      };
-    };
-
-    homeConfigurations = {
-      "mdziuba@ganymede" = lib.homeManagerConfiguration {
-        modules = [./home/mdziuba/ganymede.nix];
-        pkgs = pkgsFor.x86_64-linux.unstable;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-      "mdziuba@europa" = lib.homeManagerConfiguration {
-        modules = [./home/mdziuba/europa.nix];
-        pkgs = pkgsFor.x86_64-linux.unstable;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-      "mdziuba@io" = lib.homeManagerConfiguration {
-        modules = [./home/mdziuba/io.nix];
-        pkgs = pkgsFor.x86_64-linux.unstable;
-        extraSpecialArgs = {inherit inputs outputs;};
       };
     };
 
