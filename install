@@ -1,12 +1,8 @@
 #!/bin/bash
 
 cd ~
+mkdir .config
+cd .config
 git clone https://github.com/m-dziuba/nixos.git
 cd nixos
-mv configuration.nix /etc/nixos/configuration.nix
-cd ..
-mv nixos ~/.config/home-manager
-sudo nixos-rebuild switch
-home-manager switch
-
-
+sudo nixos-rebuild switch --flake .#ganymede
