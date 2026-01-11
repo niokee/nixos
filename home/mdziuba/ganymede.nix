@@ -5,7 +5,7 @@
     features/games
     features/desktop/common
     features/desktop/linux
-    features/desktop/hyprland
+    features/desktop/niri
     features/programming
   ];
 

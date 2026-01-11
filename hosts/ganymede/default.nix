@@ -20,15 +20,9 @@
   system.stateVersion = "25.05";
 
   services = {
-    greetd = {
+    displayManager.dms-greeter = {
       enable = true;
-
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";
-          user = "greeter";
-        };
-      };
+      compositor.name = "niri";
     };
     printing = {
       enable = true;
@@ -49,11 +43,10 @@
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    xwayland.enable = true;
   };
+
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";

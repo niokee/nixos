@@ -19,4 +19,9 @@
       allowUnfree = true;
     };
   };
+
+  documentation.man = {
+    enable = true;
+    generateCaches = true;
+  };
 }

@@ -1,17 +1,13 @@
-{pkgs, ...}: {
+{config, ...}: {
   imports = [
     ./global
     features/cli
     features/games
     features/desktop/common
-    features/desktop/hyprland
+    features/desktop/niri
     features/programming
   ];
 
-  # home.packages = with pkgs; [
-  #   shutter
-  #   lshw
-  # ];
   # config.monitors = [
   #   {
   #     name = "HDMI-A-2";
