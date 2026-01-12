@@ -29,33 +29,22 @@
   programs.ssh = {
     enableDefaultConfig = false;
     matchBlocks."*" = {
-      forwardAgent = false;
-      addKeysToAgent = "no";
-      compression = false;
-      serverAliveInterval = 0;
-      serverAliveCountMax = 3;
-      hashKnownHosts = false;
-      userKnownHostsFile = "~/.ssh/known_hosts";
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
+      identityAgent = "/Users/mateusz/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
     };
     extraConfig = ''
-      # 1Password SSH agent
-      Host *
-        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
-      # Arx account
-      Host github.com
-      HostName github.com
-        User git
-        IdentityFile ~/.ssh/m-dziuba
-
-      # Personal account
-      Host github.com-personal
+      Host github-niokee
         HostName github.com
         User git
-        IdentityFile ~/.ssh/niokee
+        IdentitiesOnly yes
+        IdentityAgent /Users/mateusz/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+        IdentityFile ~/.ssh/niokee.pub
+
+      Host github.com
+        HostName github.com
+        User git
+        IdentitiesOnly yes
+        IdentityAgent /Users/mateusz/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+        IdentityFile ~/.ssh/m-dziuba.pub
     '';
   };
 }

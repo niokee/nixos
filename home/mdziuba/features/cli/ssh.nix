@@ -1,6 +1,8 @@
-{config, ...}: let
-  onePassPath = "${config.home.homeDirectory}/.1password/agent.sock";
-in {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -15,10 +17,7 @@ in {
       controlMaster = "no";
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
+      identityAgent = lib.mkDefault "${config.home.homeDirectory}/.1password/agent.sock";
     };
-    extraConfig = ''
-      Host *
-        IdentityAgent ${onePassPath}
-    '';
   };
 }
