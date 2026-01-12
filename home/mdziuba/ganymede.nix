@@ -2,6 +2,7 @@
   imports = [
     ./global
     features/cli
+    features/cli/linux.nix
     features/games
     features/desktop/common
     features/desktop/linux

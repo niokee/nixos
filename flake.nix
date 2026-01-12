@@ -10,8 +10,12 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     darwin = {
-      url = "github:lnl7/nix-darwin/master";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
@@ -34,6 +38,10 @@
         home-manager.follows = "home-manager";
       };
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
   };
 
@@ -43,6 +51,7 @@
     nixpkgs-stable,
     nixos-wsl,
     home-manager,
+    home-manager-stable,
     darwin,
     nix-homebrew,
     determinate,
@@ -109,7 +118,7 @@
     darwinConfigurations = {
       mateuszs-MacBook-Pro-2 = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        pkgs = pkgsFor.aarch64-darwin.unstable;
+        pkgs = pkgsFor.aarch64-darwin.stable;
         modules = [
           ./hosts/callisto
           nix-homebrew.darwinModules.nix-homebrew
@@ -119,14 +128,16 @@
               user = "mateusz";
             };
           }
-          home-manager.darwinModules.home-manager
+          home-manager-stable.darwinModules.home-manager
           {
-            home-manager.useUserPackages = true;
-            home-manager.users.mateusz = import ./home/mdziuba/callisto.nix;
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs;
-              pkgs = pkgsFor.aarch64-darwin.unstable;
-              pkgsStable = pkgsFor.aarch64-darwin.stable;
+            home-manager = {
+              useUserPackages = true;
+
+              users.mateusz = import ./home/mdziuba/callisto.nix;
+              extraSpecialArgs = {
+                inherit inputs outputs;
+                pkgs = pkgsFor.aarch64-darwin.stable;
+              };
             };
           }
           # Add the determinate nix-darwin module

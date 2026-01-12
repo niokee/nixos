@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgsStable,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./default.nix
     ./vscode.nix
@@ -20,7 +16,7 @@
     gdal
     slack
     terraform-ls
-    pkgsStable.terragrunt
+    terragrunt
     typescript-language-server
     dbeaver-bin
     circleci-cli

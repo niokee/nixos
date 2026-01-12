@@ -17,8 +17,6 @@
     ./scripts
   ];
   home.packages = with pkgs; [
-    bluetui # bluetooth
-    impala # wifi
     dust # disk usage
     wget # download files
     jq # json parsing tool
@@ -27,7 +25,6 @@
     p7zip # 7zip
     ffmpeg # multimedia processing
     imagemagick # image managment tool
-    wiremix # audio managment
     tldr # tldr man
     ripgrep # better grep
     age # file encryption
