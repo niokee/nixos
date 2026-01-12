@@ -39,7 +39,7 @@
     yaml-language-server
     yamllint
     prettierd
-    taplo
+    taplo # toml
     ## c-tools
     clang-tools
     cmake
@@ -47,17 +47,14 @@
     gnumake
     ## misc
     docker-language-server
-    sqlfluff
     neovim
     tree-sitter
     gum
     nodejs_22
     vhs
     devenv
-    devbox
     github-cli
     hyperfine
-    tabiew
   ];
 
   home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/nvim";

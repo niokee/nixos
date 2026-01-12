@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     xwayland-satellite
     quickshell
-    # qt6Packages.qt6ct
   ];
   xdg.portal = {
     enable = true;
@@ -40,9 +39,9 @@
     };
   };
 
-  # home.sessionVariables = {
-  #   QT_QPA_PLATFORMTHEME = "gtk3";
-  # };
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
+  };
 
   home.file."${config.xdg.configHome}/niri".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/niri";
 }

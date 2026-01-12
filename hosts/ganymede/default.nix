@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
@@ -33,31 +32,65 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+
+    devmon.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
+    xserver.videoDrivers = ["nvidia"];
   };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [pkgs.hplipWithPlugin];
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    sane = {
+      enable = true;
+      extraBackends = [pkgs.hplipWithPlugin];
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+
+      open = true;
+      nvidiaSettings = true;
+
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+    };
   };
-  hardware.graphics.enable = true;
-  hardware.nvidia = {
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  programs.xwayland.enable = true;
   programs.niri = {
     enable = true;
   };
 
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
+  environment = {
+    systemPackages = [
+      config.hardware.nvidia.package
+    ];
+    sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+    };
   };
-
   networking = {
     hostName = "ganymede";
     networkmanager.enable = true;
   };
+  fileSystems."/mnt/archive" = {
+    device = "/dev/disk/by-uuid/edbbd4d3-a985-4339-be99-004849e0a385";
+    fsType = "ext4";
+    options = ["nofail" "x-systemd.automount"];
+  };
 
-  services.devmon.enable = true;
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/83f0bf86-4180-47d7-9704-2a055cb0f8f3";
+    fsType = "ext4";
+    options = ["nofail" "x-systemd.automount"];
+  };
+
+  fileSystems."/mnt/games2" = {
+    device = "/dev/disk/by-uuid/beaa416d-c81e-490e-a280-6425ade16362";
+    fsType = "ext4";
+    options = ["nofail" "x-systemd.automount"];
+  };
 }

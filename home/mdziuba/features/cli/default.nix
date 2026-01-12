@@ -8,30 +8,28 @@
     ./fd.nix
     ./fzf.nix
     ./git.nix
-    ./lazygit.nix
     ./nushell.nix
     ./ssh.nix
     ./starship.nix
+    ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
     ./scripts
   ];
   home.packages = with pkgs; [
-    dust
-    wget
-    jq
-    curl
-    fzf-git-sh
-    p7zip
-    poppler
-    ffmpeg
-    imagemagick
-    xclip
-    neofetch
-    lsof
-    tldr
-    ripgrep
-    nix-prefetch-github
-    age
+    bluetui # bluetooth
+    impala # wifi
+    dust # disk usage
+    wget # download files
+    jq # json parsing tool
+    curl # http requests
+    fzf-git-sh # fzf git bindings
+    p7zip # 7zip
+    ffmpeg # multimedia processing
+    imagemagick # image managment tool
+    wiremix # audio managment
+    tldr # tldr man
+    ripgrep # better grep
+    age # file encryption
   ];
 }

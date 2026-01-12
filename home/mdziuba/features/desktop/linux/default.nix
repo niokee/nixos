@@ -6,10 +6,11 @@
   imports = [
     ../common
 
-    ./firefox.nix
+    ./ghostty.nix
     ./font.nix
     ./playerctl.nix
     ./zen.nix
+    ./zellij.nix
   ];
 
   home.packages = with pkgs; [

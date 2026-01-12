@@ -269,6 +269,7 @@ layout {
 
 
 spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP";
+spawn-sh-at-startup "1password --silent";
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
