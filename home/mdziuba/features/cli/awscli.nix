@@ -4,7 +4,10 @@
     settings = {
       "default" = {
         region = "us-west-1";
-        output = "json";
+      };
+      "profile mateusz.dziuba" = {
+        region = "us-west-1";
+        credential_process = "aws-vault exec mateusz.dziuba --json";
       };
     };
   };
