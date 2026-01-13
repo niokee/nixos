@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  myLib,
   ...
 }: {
   home.packages = with pkgs; [
@@ -57,5 +58,5 @@
     hyperfine
   ];
 
-  home.file."${config.xdg.configHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/nvim";
+  home.file = myLib.mkDotfileEntry config "nvim";
 }

@@ -74,6 +74,12 @@
         config.allowUnfree = true;
       };
     });
+
+    # Personal configuration values
+    personalConfig = import ./config.nix;
+
+    # Custom library functions
+    myLib = import ./lib {inherit lib;};
   in {
     inherit lib;
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -96,11 +102,11 @@
         modules = [
           ./hosts/ganymede
         ];
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs personalConfig myLib;};
       };
       europa = lib.nixosSystem {
         modules = [./hosts/europa];
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs personalConfig myLib;};
       };
       io = lib.nixosSystem {
         modules = [
@@ -111,7 +117,7 @@
           }
           ./hosts/io
         ];
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs personalConfig myLib;};
       };
     };
 
@@ -135,7 +141,7 @@
 
               users.mateusz = import ./home/mdziuba/callisto.nix;
               extraSpecialArgs = {
-                inherit inputs outputs;
+                inherit inputs outputs personalConfig myLib;
                 pkgs = pkgsFor.aarch64-darwin.stable;
               };
             };
@@ -147,7 +153,7 @@
             nix.enable = false;
           })
         ];
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs personalConfig myLib;};
       };
     };
   };

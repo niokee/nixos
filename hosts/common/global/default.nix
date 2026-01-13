@@ -1,6 +1,8 @@
 {
   inputs,
   outputs,
+  personalConfig,
+  myLib,
   ...
 }: {
   imports = [
@@ -10,7 +12,7 @@
   ];
 
   home-manager.extraSpecialArgs = {
-    inherit inputs outputs;
+    inherit inputs outputs personalConfig myLib;
   };
 
   nixpkgs = {

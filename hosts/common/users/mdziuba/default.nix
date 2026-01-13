@@ -1,12 +1,13 @@
 {
   pkgs,
   config,
+  personalConfig,
   ...
 }: {
   programs.zsh.enable = true;
   users.users.mdziuba = {
     isNormalUser = true;
-    description = "Mateusz Dziuba";
+    description = personalConfig.user.name;
     extraGroups =
       ["networkmanager" "wheel"]
       ++ [

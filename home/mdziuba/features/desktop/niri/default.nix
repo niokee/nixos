@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  myLib,
   ...
 }: {
   imports = [
@@ -43,5 +44,5 @@
     QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
-  home.file."${config.xdg.configHome}/niri".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/niri";
+  home.file = myLib.mkDotfileEntry config "niri";
 }

@@ -5,6 +5,8 @@
   ];
   home.packages = with pkgs; [
     aws-vault
+    claude-code
+    claude-monitor
     dbt
     maturin
     cookiecutter

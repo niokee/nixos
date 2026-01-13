@@ -1,8 +1,11 @@
 {
   config,
   lib,
+  personalConfig,
   ...
-}: {
+}: let
+  opAgentSock = personalConfig.onePassword.darwinAgentSock;
+in {
   imports = [
     ./global
 
@@ -18,7 +21,7 @@
 
   programs.git = {
     settings = {
-      user.email = "mateusz.dziuba@arx.city";
+      user.email = personalConfig.user.email.work;
     };
   };
   programs.zsh = {
@@ -29,21 +32,21 @@
   programs.ssh = {
     enableDefaultConfig = false;
     matchBlocks."*" = {
-      identityAgent = "/Users/mateusz/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+      identityAgent = opAgentSock;
     };
     extraConfig = ''
       Host github-niokee
         HostName github.com
         User git
         IdentitiesOnly yes
-        IdentityAgent /Users/mateusz/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+        IdentityAgent ${opAgentSock}
         IdentityFile ~/.ssh/niokee.pub
 
       Host github.com
         HostName github.com
         User git
         IdentitiesOnly yes
-        IdentityAgent /Users/mateusz/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+        IdentityAgent ${opAgentSock}
         IdentityFile ~/.ssh/m-dziuba.pub
     '';
   };

@@ -1,14 +1,15 @@
 {
   config,
   lib,
+  personalConfig,
   ...
 }: {
   programs.git = {
     enable = true;
     settings = {
       user = {
-        email = lib.mkDefault "mateusz.dziuba97@gmail.com";
-        name = "Mateusz Dziuba";
+        email = lib.mkDefault personalConfig.user.email.personal;
+        name = personalConfig.user.name;
       };
       url = {
         "git@github.com:" = {

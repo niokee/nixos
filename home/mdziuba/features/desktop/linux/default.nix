@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  myLib,
   ...
 }: {
   imports = [
@@ -23,7 +24,5 @@
     simple-scan
   ];
 
-  home.file = {
-    "${config.xdg.configHome}/rofi".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/nixos/home/dotfiles/rofi";
-  };
+  home.file = myLib.mkDotfileEntry config "rofi";
 }

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, personalConfig, ...}: {
   hardware.firmware = [pkgs.rtl8761b-firmware];
   hardware.bluetooth = {
     enable = true;
@@ -17,7 +17,7 @@
     script = ''
       ${pkgs.bluez}/bin/bluetoothctl power on
       ${pkgs.bluez}/bin/bluetoothctl agent on
-      ${pkgs.bluez}/bin/bluetoothctl connect F8:4E:17:7F:1B:A3
+      ${pkgs.bluez}/bin/bluetoothctl connect ${personalConfig.hardware.bluetooth.headphones}
     '';
   };
 }

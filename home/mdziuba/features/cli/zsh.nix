@@ -1,9 +1,11 @@
 {
   config,
   pkgs,
+  personalConfig,
   ...
 }: let
-  nixHome = "${config.xdg.configHome}/nix";
+  nixHome = "${config.xdg.configHome}/nixos";
+  awsProfile = personalConfig.aws.profile;
 in {
   programs.zsh = {
     enable = true;
@@ -55,7 +57,7 @@ in {
     zsh-abbr = {
       enable = true;
       abbreviations = {
-        ave = "aws-vault exec mateusz.dziuba --";
+        ave = "aws-vault exec ${awsProfile} --";
         vi = "nvim";
         vim = "nvim";
         hibarnate = "systemctl hibarnate";
