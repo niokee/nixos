@@ -6,6 +6,11 @@
 }: let
   opAgentSock = personalConfig.onePassword.darwinAgentSock;
 in {
+  home = {
+    username = "mateusz";
+    homeDirectory = "/Users/mateusz";
+  };
+
   imports = [
     ./global
 

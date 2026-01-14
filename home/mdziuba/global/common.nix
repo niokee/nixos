@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  xdg.enable = true;
+
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
