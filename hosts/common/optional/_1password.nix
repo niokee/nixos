@@ -4,6 +4,9 @@
     builtins.elem (lib.getName pkg) [
       "1password-gui"
       "1password"
+
+      "onepassword-password-manager"
+      "onetab"
     ];
 
   programs._1password.enable = true;

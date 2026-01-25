@@ -8,7 +8,6 @@
     claude-code
     claude-monitor
     dbt
-    maturin
     cookiecutter
     jinja-lsp
     llvm

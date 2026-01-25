@@ -11,7 +11,7 @@
     ./font.nix
     ./playerctl.nix
     ./zen.nix
-    ./zellij.nix
+    # ./zellij.nix
   ];
 
   home.packages = with pkgs; [
@@ -22,6 +22,7 @@
     feh
     maim
     simple-scan
+    spotify
   ];
 
   home.file = myLib.mkDotfileEntry config "rofi";

@@ -75,6 +75,13 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+
+// output  "HDMI-A-1" {
+//     mode "2560x1600@60"
+//     scale 0
+//     position x=3440 y=0
+// }
+
 output "DP-2" {
     // Uncomment this line to disable this output.
     // off
@@ -104,6 +111,7 @@ output "DP-2" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=0 y=0
+    focus-at-startup
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -301,6 +309,27 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 }
+// window-rule {
+//     open-on-output "DP-2"
+// }
+//
+// window-rule {
+//     match app-id="steam"
+//     match title="Steam Big Picture Mode"
+//     open-on-output "HDMI-A-1"
+// }
+//
+// window-rule {
+//     match app-id="gamescope"
+//     match title="Steam Big Picture Mode"
+//     open-on-output "HDMI-A-1"
+// }
+//
+// window-rule {
+//     match title="Steam Big Picture Mode"
+//     open-on-output "HDMI-A-1"
+// }
+//
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
@@ -360,7 +389,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: WezTerm" { spawn "wezterm"; }
+    // Mod+T hotkey-overlay-title="Open a Terminal: WezTerm" { spawn "wezterm"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "/home/mdziuba/.config/rofi/scripts/launcher_t7"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

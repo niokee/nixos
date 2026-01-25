@@ -29,10 +29,11 @@
         Fingerprinting = true;
       };
     };
+
     profiles.mdziuba.extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
       tabliss
-      onepassword-password-manager
-      onetab
+      # onepassword-password-manager
+      # onetab
       decentraleyes
       darkreader
       clearcache
@@ -40,8 +41,7 @@
       sponsorblock
       ublock-origin
       undoclosetabbutton
-      youtubeno-translation
-      dearrow
+      youtube-no-translation
     ];
     profiles.mdziuba.settings = {
       "accessibility.typeaheadfind.flashBar" = 0;

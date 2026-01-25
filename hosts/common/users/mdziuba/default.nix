@@ -17,5 +17,8 @@
     shell = pkgs.zsh;
     packages = [pkgs.home-manager];
   };
-  home-manager.users.mdziuba = import ../../../../home/mdziuba/${config.networking.hostName}.nix;
+  home-manager.users.mdziuba = {
+    nixpkgs.config.allowUnfree = true;
+    imports = [../../../../home/mdziuba/${config.networking.hostName}.nix];
+  };
 }

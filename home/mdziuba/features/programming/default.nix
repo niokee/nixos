@@ -35,6 +35,7 @@
     ## rust
     rustup
     rustlings
+    maturin
     ## yaml/json/etc.
     vscode-langservers-extracted
     yaml-language-server

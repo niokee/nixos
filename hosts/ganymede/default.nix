@@ -52,10 +52,11 @@
       powerManagement.enable = false;
       powerManagement.finegrained = false;
 
-      open = true;
+      open = false;
       nvidiaSettings = true;
 
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      forceFullCompositionPipeline = true;
     };
   };
   programs.xwayland.enable = true;
@@ -63,15 +64,14 @@
     enable = true;
   };
 
-  environment = {
-    systemPackages = [
-      config.hardware.nvidia.package
-    ];
-    sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
-    };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "1"; # Fixes cursor issues
+    NIXOS_OZONE_WL = "1"; # For Electron apps
   };
+
   networking = {
     hostName = "ganymede";
     networkmanager.enable = true;
