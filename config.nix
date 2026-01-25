@@ -26,6 +26,7 @@
   onePassword = {
     # macOS agent socket path
     darwinAgentSock = "~/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+    linuxAgentSock = "~/.1password/agent.sock";
   };
 
   # Hardware-specific settings
