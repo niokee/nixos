@@ -28,12 +28,4 @@
     darwinAgentSock = "~/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
     linuxAgentSock = "~/.1password/agent.sock";
   };
-
-  # Hardware-specific settings
-  hardware = {
-    bluetooth = {
-      # Bluetooth device MAC addresses for auto-connect
-      headphones = "F8:4E:17:7F:1B:A3";
-    };
-  };
 }

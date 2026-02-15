@@ -49,7 +49,7 @@
     };
     nvidia = {
       modesetting.enable = true;
-      powerManagement.enable = false;
+      powerManagement.enable = true;
       powerManagement.finegrained = false;
 
       open = false;
@@ -63,6 +63,7 @@
   programs.niri = {
     enable = true;
   };
+  environment.etc."niri/config.kdl".source = ../../home/dotfiles/niri/config.kdl;
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";

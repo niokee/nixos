@@ -8,6 +8,7 @@
   awsProfile = personalConfig.aws.profile;
 in {
   programs.zsh = {
+    dotDir = "${config.xdg.configHome}/zsh";
     enable = true;
     autosuggestion.enable = true;
     historySubstringSearch.enable = true;
