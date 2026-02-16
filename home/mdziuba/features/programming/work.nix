@@ -5,6 +5,9 @@
   ];
   home.packages = with pkgs; [
     aws-vault
+    python313Packages.mdformat
+    python313Packages.mdformat-gfm
+    python313Packages.mdformat-tables
     claude-code
     claude-monitor
     dbt
@@ -29,5 +32,6 @@
     betterdisplay
     pandoc
     libiconv
+    docker-client
   ];
 }

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   myLib,
   ...
 }: {
@@ -57,6 +58,7 @@
     devenv
     github-cli
     hyperfine
+    pkgsUnstable.ty
   ];
 
   home.file = myLib.mkDotfileEntry config "nvim";

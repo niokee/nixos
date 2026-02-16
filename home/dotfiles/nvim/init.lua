@@ -21,3 +21,15 @@ if not vim.g.vscode then
 
     vim.cmd("colorscheme kanagawa")
 end
+
+local lsp_log = vim.fn.stdpath("state") .. "/lsp.log"
+local max_size = 1024 * 100 -- 100 KB
+
+vim.defer_fn(function()
+    local stat = vim.uv.fs_stat(lsp_log)
+    if stat and stat.size > max_size then
+        -- Keep last 1000 lines
+        local lines = vim.fn.systemlist("tail -n 1000 " .. lsp_log)
+        vim.fn.writefile(lines, lsp_log)
+    end
+end, 0)

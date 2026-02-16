@@ -143,6 +143,7 @@
               extraSpecialArgs = {
                 inherit inputs outputs personalConfig myLib;
                 pkgs = pkgsFor.aarch64-darwin.stable;
+                pkgsUnstable = pkgsFor.aarch64-darwin.unstable;
               };
             };
           }

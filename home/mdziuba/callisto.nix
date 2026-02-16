@@ -32,6 +32,8 @@ in {
   programs.zsh = {
     initContent = lib.mkAfter ''
       source ${config.xdg.configHome}/op/plugins.sh
+      export LIBRARY_PATH="/opt/homebrew/opt/libiconv/lib:''${LIBRARY_PATH}"
+      export CPATH="/opt/homebrew/opt/libiconv/include:''${CPATH}"
     '';
   };
   programs.ssh = {

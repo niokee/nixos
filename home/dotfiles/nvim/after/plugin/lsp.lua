@@ -245,6 +245,9 @@ lsp_capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
 }
+lsp_capabilities.general = {
+    positionEncodings = { "utf-16" },
+}
 vim.lsp.config("*", {
     capabilities = lsp_capabilities,
 })
