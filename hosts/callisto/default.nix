@@ -45,9 +45,7 @@
       "docker-desktop"
       "protonvpn"
       "sf-symbols"
-      "logitech-g-hub"
       "spotify"
-      "libiconv"
     ];
   };
 }

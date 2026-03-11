@@ -33,5 +33,7 @@
     pandoc
     libiconv
     docker-client
+    markdownlint-cli
+    #    nodejs_20
   ];
 }
