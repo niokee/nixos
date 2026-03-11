@@ -53,7 +53,7 @@
     neovim
     tree-sitter
     gum
-    nodejs_20
+    nodejs
     vhs
     devenv
     github-cli
