@@ -57,6 +57,7 @@
     devenv
     github-cli
     hyperfine
+    just
   ];
 
   home.file = myLib.mkDotfileEntry config "nvim";

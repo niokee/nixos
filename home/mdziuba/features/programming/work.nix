@@ -34,6 +34,7 @@
     libiconv
     docker-client
     markdownlint-cli
-    #    nodejs_20
+    localstack
+    terraform-local
   ];
 }

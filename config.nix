@@ -15,6 +15,7 @@
   aws = {
     defaultRegion = "us-west-1";
     profile = "mateusz.dziuba";
+    awsAccountID = "811074819111";
   };
 
   # Git settings

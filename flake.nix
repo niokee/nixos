@@ -138,6 +138,7 @@
           {
             home-manager = {
               useUserPackages = true;
+              sharedModules = [inputs.sops-nix.homeManagerModules.sops];
 
               users.mateusz = import ./home/mdziuba/callisto.nix;
               extraSpecialArgs = {

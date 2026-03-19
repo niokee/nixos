@@ -28,5 +28,6 @@
     tldr # tldr man
     ripgrep # better grep
     age # file encryption
+    sops # secrets management
   ];
 }
