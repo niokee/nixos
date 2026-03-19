@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -32,11 +32,9 @@
       nssmdns4 = true;
       openFirewall = true;
     };
-
     devmon.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
-    xserver.videoDrivers = ["nvidia"];
   };
   hardware = {
     graphics = {
@@ -47,36 +45,18 @@
       enable = true;
       extraBackends = [pkgs.hplipWithPlugin];
     };
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      powerManagement.finegrained = false;
-
-      open = false;
-      nvidiaSettings = true;
-
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      forceFullCompositionPipeline = true;
-    };
   };
   programs.xwayland.enable = true;
-  programs.niri = {
-    enable = true;
-  };
+  programs.niri.enable = true;
   environment.etc."niri/config.kdl".source = ../../home/dotfiles/niri/config.kdl;
-
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "1"; # Fixes cursor issues
-    NIXOS_OZONE_WL = "1"; # For Electron apps
+    NIXOS_OZONE_WL = "1";
   };
-
   networking = {
     hostName = "ganymede";
     networkmanager.enable = true;
   };
+  boot.initrd.kernelModules = ["amdgpu"];
   fileSystems."/mnt/archive" = {
     device = "/dev/disk/by-uuid/edbbd4d3-a985-4339-be99-004849e0a385";
     fsType = "ext4";
