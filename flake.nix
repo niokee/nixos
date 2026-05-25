@@ -4,6 +4,7 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    deadlock-api-ingest.url = "github:deadlock-api/deadlock-api-ingest";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
@@ -55,6 +56,7 @@
     darwin,
     nix-homebrew,
     determinate,
+    deadlock-api-ingest,
     ...
   } @ inputs: let
     inherit (self) outputs;

@@ -56,21 +56,11 @@
     hostName = "ganymede";
     networkmanager.enable = true;
   };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = ["amdgpu"];
-  fileSystems."/mnt/archive" = {
-    device = "/dev/disk/by-uuid/edbbd4d3-a985-4339-be99-004849e0a385";
-    fsType = "ext4";
-    options = ["nofail" "x-systemd.automount"];
-  };
 
   fileSystems."/mnt/games" = {
     device = "/dev/disk/by-uuid/83f0bf86-4180-47d7-9704-2a055cb0f8f3";
-    fsType = "ext4";
-    options = ["nofail" "x-systemd.automount"];
-  };
-
-  fileSystems."/mnt/games2" = {
-    device = "/dev/disk/by-uuid/beaa416d-c81e-490e-a280-6425ade16362";
     fsType = "ext4";
     options = ["nofail" "x-systemd.automount"];
   };
