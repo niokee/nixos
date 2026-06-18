@@ -24,8 +24,6 @@
     simple-scan
     spotify
     crosspipe
-    solaar
-    lsusb
   ];
 
   home.file = myLib.mkDotfileEntry config "rofi";

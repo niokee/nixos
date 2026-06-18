@@ -14,8 +14,12 @@
     ../common/optional/bluetooth.nix
     ../common/optional/pipewire.nix
     ../common/optional/systemd-boot.nix
+    ../common/optional/lact.nix
+    ../common/optional/openrgb.nix
   ];
-
+  boot.kernelParams = [
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
   system.stateVersion = "25.05";
 
   services = {
@@ -63,5 +67,8 @@
     device = "/dev/disk/by-uuid/83f0bf86-4180-47d7-9704-2a055cb0f8f3";
     fsType = "ext4";
     options = ["nofail" "x-systemd.automount"];
+  };
+  programs.corectrl = {
+    enable = true;
   };
 }

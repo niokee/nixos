@@ -5,6 +5,9 @@
   ...
 }: let
   steam-with-pkgs = pkgs.steam.override {
+    extraEnv = {
+      STEAM_GAMESCOPE_EMBEDDED = "1";
+    };
     extraPkgs = pkgs:
       with pkgs; [
         xorg.libXcursor
@@ -31,10 +34,11 @@
       "--framerate-limit ${toString monitor.refreshRate}"
       "--prefer-output ${monitor.name}"
       "--adaptive-sync"
-      #        "--expose-wayland"
+      "--expose-wayland"
       "--hdr-enabled"
       "--steam"
     ];
+
     steam = lib.concatStringsSep " " [
       "steam"
       "steam://open/bigpicture"
