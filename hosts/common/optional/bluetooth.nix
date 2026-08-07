@@ -1,12 +1,12 @@
-{pkgs, ...}: {
-  hardware.firmware = [pkgs.rtl8761b-firmware];
+{...}: {
+  hardware.enableRedistributableFirmware = true; # provides MT7925 BT firmware
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true; # Ensure BT is on at boot
+    powerOnBoot = true;
     settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
-        Experimental = true; # Enables better device reconnection
+        Experimental = true;
         AutoEnable = true;
       };
       Policy = {

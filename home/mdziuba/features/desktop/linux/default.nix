@@ -23,6 +23,7 @@
     maim
     simple-scan
     spotify
+    crosspipe
   ];
 
   home.file = myLib.mkDotfileEntry config "rofi";
