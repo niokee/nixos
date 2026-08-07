@@ -17,9 +17,12 @@
   # Helper for creating multiple dotfile entries at once
   # Usage: mkDotfileEntries config ["nvim" "rofi" "niri"]
   mkDotfileEntries = config: names:
-    lib.foldl' (acc: name: acc // {
-      "${config.xdg.configHome}/${name}".source =
-        config.lib.file.mkOutOfStoreSymlink
-        "${config.xdg.configHome}/nixos/home/dotfiles/${name}";
-    }) {} names;
+    lib.foldl' (acc: name:
+      acc
+      // {
+        "${config.xdg.configHome}/${name}".source =
+          config.lib.file.mkOutOfStoreSymlink
+          "${config.xdg.configHome}/nixos/home/dotfiles/${name}";
+      }) {}
+    names;
 }

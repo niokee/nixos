@@ -9,12 +9,10 @@
   ];
 
   home.packages = with pkgs; [
-    yabai
     itsycal
     raycast
     sketchybar
     sketchybar-app-font
-    skhd
     dconf
   ];
 

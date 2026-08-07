@@ -27,9 +27,7 @@ Personal NixOS, nix-darwin, and home-manager configuration for multiple machines
 │   ├── common/          # Shared host config (global, optional, users)
 │   └── <hostname>/      # Per-host NixOS config
 ├── lib/                 # Custom library functions
-├── modules/             # Custom NixOS and home-manager modules
-├── overlays/            # Nixpkgs overlays
-└── pkgs/                # Custom packages
+└── modules/             # Custom NixOS and home-manager modules
 ```
 
 ## Usage

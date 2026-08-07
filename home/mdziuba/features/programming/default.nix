@@ -26,6 +26,7 @@
     python313Packages.pygments
     pyright
     pyrefly
+    zuban
     ruff
     ## golang
     go

@@ -14,11 +14,16 @@
       "https://cache.nixos.org"
       "https://devenv.cachix.org"
     ];
-    trusted-public-keys = [
-      # "cache.nixos.org-1:..."
+  };
+
+  determinateNix.customSettings = {
+    trusted-users = ["root" "mateusz"];
+    extra-substituters = ["https://devenv.cachix.org"];
+    extra-trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   services.skhd.enable = true;
   services.yabai = {

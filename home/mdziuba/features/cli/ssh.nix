@@ -9,18 +9,20 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*" = {
-      forwardAgent = false;
-      addKeysToAgent = "no";
-      compression = false;
-      serverAliveInterval = 0;
-      serverAliveCountMax = 3;
-      hashKnownHosts = false;
-      userKnownHostsFile = "~/.ssh/known_hosts";
-      controlMaster = "no";
-      controlPath = "~/.ssh/master-%r@%n:%p";
-      controlPersist = "no";
-      identityAgent = lib.mkDefault "${config.home.homeDirectory}/.1password/agent.sock";
+    # `settings` takes upstream OpenSSH directive names, unlike the deprecated
+    # camelCase `matchBlocks`.
+    settings."*" = {
+      ForwardAgent = false;
+      AddKeysToAgent = "no";
+      Compression = false;
+      ServerAliveInterval = 0;
+      ServerAliveCountMax = 3;
+      HashKnownHosts = false;
+      UserKnownHostsFile = "~/.ssh/known_hosts";
+      ControlMaster = "no";
+      ControlPath = "~/.ssh/master-%r@%n:%p";
+      ControlPersist = "no";
+      IdentityAgent = lib.mkDefault "${config.home.homeDirectory}/.1password/agent.sock";
     };
     extraConfig = lib.mkDefault ''
       Host github.com

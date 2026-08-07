@@ -1,4 +1,8 @@
-{config, myLib, ...}: {
+{
+  config,
+  myLib,
+  ...
+}: {
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;

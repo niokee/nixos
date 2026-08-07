@@ -229,6 +229,8 @@ vim.lsp.enable("efm")
 
 -- JavaScript/TypeScript setup
 vim.lsp.enable("ts_ls")
+vim.lsp.enable("tailwindcss")
+vim.lsp.enable("eslint")
 
 -- Docker
 vim.lsp.enable("docker_language_server")

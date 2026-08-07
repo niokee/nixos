@@ -4,18 +4,18 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
+      url = "github:lnl7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
@@ -88,11 +88,9 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    # Custom modifications/overrides to upstream packages.
-    overlays = import ./overlays {inherit inputs outputs;};
-
-    # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-    formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+    # Nix formatter available through 'nix fmt' https://github.com/kamadorueda/alejandra
+    # forEachSystem hands over the {unstable, stable} pair, not a package set.
+    formatter = forEachSystem (pkgs: pkgs.stable.alejandra);
 
     # Shell configured with packages that are typically only needed when working on or with nix-config.
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});

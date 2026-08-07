@@ -3,6 +3,7 @@
   outputs,
   personalConfig,
   myLib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -13,10 +14,13 @@
 
   home-manager.extraSpecialArgs = {
     inherit inputs outputs personalConfig myLib;
+    pkgsUnstable = import inputs.nixpkgs {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      config.allowUnfree = true;
+    };
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
@@ -24,6 +28,6 @@
 
   documentation.man = {
     enable = true;
-    generateCaches = true;
+    cache.enable = true;
   };
 }

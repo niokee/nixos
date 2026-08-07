@@ -31,7 +31,7 @@
     };
 
     profiles.mdziuba.extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
-      tabliss
+      tablissng # upstream renamed `tabliss` -> `tablissng`
       # onepassword-password-manager
       # onetab
       decentraleyes

@@ -1,4 +1,8 @@
-{config, myLib, ...}: {
+{
+  config,
+  myLib,
+  ...
+}: {
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;

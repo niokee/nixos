@@ -41,8 +41,8 @@ in {
   };
   programs.ssh = {
     enableDefaultConfig = false;
-    matchBlocks."*" = {
-      identityAgent = opAgentSock;
+    settings."*" = {
+      IdentityAgent = opAgentSock;
     };
     extraConfig = ''
       Host github-niokee

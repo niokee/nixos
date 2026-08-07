@@ -1,10 +1,15 @@
-{personalConfig, ...}: let
+{
+  personalConfig,
+  pkgs,
+  ...
+}: let
   awsProfile = personalConfig.aws.profile;
   awsRegion = personalConfig.aws.defaultRegion;
   awsAccountID = personalConfig.aws.awsAccountID;
 in {
   programs.awscli = {
     enable = true;
+    package = pkgs.awscli2;
     settings = {
       "default" = {
         region = awsRegion;

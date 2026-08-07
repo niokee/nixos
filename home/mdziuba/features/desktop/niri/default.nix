@@ -35,6 +35,9 @@
     gtk3.extraConfig = {
       "gtk-application-prefer-dark-theme" = 1;
     };
+    # Upstream stopped defaulting gtk4 to `gtk.theme` at stateVersion 26.05;
+    # keep GTK4 apps on Adwaita-dark rather than falling back to unthemed.
+    gtk4.theme = config.gtk.theme;
     gtk4.extraConfig = {
       "gtk-application-prefer-dark-theme" = 1;
     };
