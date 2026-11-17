@@ -473,6 +473,9 @@ function icon_map() {
   "Firefox")
     icon_result=":firefox:"
     ;;
+  "Ghostty")
+    icon_result=":ghostty:"
+    ;;
   "WezTerm")
     icon_result=":wezterm:"
     ;;

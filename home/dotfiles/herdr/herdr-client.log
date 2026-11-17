@@ -1,0 +1,46 @@
+2026-10-14T06:31:47.049477Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=58499
+2026-10-14T06:31:47.049543Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-14T06:31:47.274548Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-14T06:52:32.593415Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=58499
+2026-10-14T06:52:37.042962Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=70497
+2026-10-14T06:52:37.043022Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-14T06:52:37.076974Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-14T06:52:38.291981Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=70497
+2026-10-14T06:52:43.342423Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=70669
+2026-10-14T06:52:43.342472Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-14T06:52:43.452136Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-14T11:44:56.196501Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=72008
+2026-10-14T11:44:56.196762Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-14T11:44:56.203303Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-14T11:47:01.517914Z  INFO herdr::client: client terminal unavailable; detaching err=Inappropriate ioctl for device (os error 25)
+2026-10-14T11:47:01.518707Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=72008
+2026-10-14T11:47:01.519579Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=70669
+2026-10-14T11:47:06.769152Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=73804
+2026-10-14T11:47:06.769196Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-14T11:47:06.994829Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-20T10:38:26.896286Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=69552
+2026-10-20T10:38:26.896394Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-20T10:38:26.904344Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-20T10:43:09.535509Z  INFO herdr::client: client terminal unavailable; detaching err=Inappropriate ioctl for device (os error 25)
+2026-10-20T10:43:09.536413Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=69552
+2026-10-26T20:40:44.558890Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-10-28T09:05:45.229297Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=60857
+2026-10-28T09:05:45.229849Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-10-28T09:05:45.232005Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-29T00:03:49.029738Z  WARN herdr::sound: sound playback failed sound=Request err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-10-29T00:03:49.029753Z  WARN herdr::sound: sound playback failed sound=Request err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-04T10:48:08.729867Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=73804
+2026-11-04T18:41:19.755470Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-06T17:01:51.818497Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-06T20:04:46.806290Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-06T21:05:48.036374Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-06T23:13:04.388357Z  WARN herdr::sound: sound playback failed sound=Done err=player exited with exit status: 1: Error: AudioQueueStart failed (-66681)
+2026-11-16T13:28:51.844534Z  INFO herdr::client: client terminal unavailable; detaching err=Inappropriate ioctl for device (os error 25)
+2026-11-16T13:28:51.856749Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=60857
+2026-11-16T13:28:53.499739Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=28717
+2026-11-16T13:28:53.499785Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-11-16T13:28:53.602328Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-11-16T13:50:34.871431Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=28717
+2026-11-16T13:50:43.551546Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=40846
+2026-11-16T13:50:43.552113Z  INFO herdr::client: connecting to server path=/Users/mateusz/.config/herdr/herdr-client.sock
+2026-11-16T13:50:43.653255Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1

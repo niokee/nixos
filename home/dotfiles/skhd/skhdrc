@@ -48,18 +48,22 @@ shift + cmd - c : osascript -e 'tell application "System Events" to perform acti
 shift - 0x0A : skhd -k "shift - 0x32"
 ctrl - c  [
   "wezterm" ~
+  "ghostty" ~
   * : skhd -k "cmd - c"
 ]
 ctrl - v  [
   "wezterm" ~
+  "ghostty" ~
   * : skhd -k "cmd - v"
 ]
 ctrl - x  [
   "wezterm" ~
+  "ghostty" ~
   * : skhd -k "cmd - x"
 ]
 
 ctrl - z [
   "wezterm" ~
+  "ghostty" ~
   * : skhd -k "cmd - z"
 ]

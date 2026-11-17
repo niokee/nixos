@@ -76,8 +76,34 @@ end
 -- })
 -- vim.lsp.enable("pyrefly")
 
+-- Pyright does not read VIRTUAL_ENV and falls back to the first `python` on
+-- PATH, which is wrong whenever nvim is launched outside an activated shell
+-- (GUI launcher, tmux session started elsewhere). Probe the project instead.
+local function project_python(root)
+    local candidates = {}
+    if vim.env.VIRTUAL_ENV then
+        table.insert(candidates, vim.env.VIRTUAL_ENV .. "/bin/python")
+    end
+    if root then
+        -- .devenv/state/venv is where devenv's uv integration puts the venv
+        table.insert(candidates, root .. "/.devenv/state/venv/bin/python")
+        table.insert(candidates, root .. "/.venv/bin/python")
+    end
+    for _, path in ipairs(candidates) do
+        if vim.uv.fs_stat(path) then
+            return path
+        end
+    end
+    return vim.fn.exepath("python3")
+end
+
 -- python setup
 vim.lsp.config("pyright", {
+    before_init = function(_, config)
+        config.settings = vim.tbl_deep_extend("force", config.settings or {}, {
+            python = { pythonPath = project_python(config.root_dir) },
+        })
+    end,
     on_attach = function(client, bufnr)
         require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()

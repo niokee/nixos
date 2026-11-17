@@ -8,6 +8,7 @@
     ./fd.nix
     ./fzf.nix
     ./git.nix
+    ./jujutsu.nix
     ./nushell.nix
     ./ssh.nix
     ./starship.nix
@@ -29,5 +30,7 @@
     ripgrep # better grep
     age # file encryption
     sops # secrets management
+    taskwarrior3
+    taskwarrior-tui
   ];
 }

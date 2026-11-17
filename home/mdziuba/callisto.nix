@@ -9,6 +9,7 @@ in {
   home = {
     username = "mateusz";
     homeDirectory = "/Users/mateusz";
+    sessionVariables.TERMINAL = "ghostty";
   };
 
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
@@ -21,6 +22,8 @@ in {
     features/cli/awscli.nix
 
     features/desktop/macos
+    features/desktop/ghostty.nix
+    features/desktop/herdr.nix
 
     features/programming
     features/programming/work.nix

@@ -1,0 +1,212 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w2",
+      "custom_name": "DE main",
+      "identity_cwd": "/Users/mateusz/projects/arx-be",
+      "public_pane_numbers": {
+        "45": 22,
+        "80": 33,
+        "10": 3,
+        "78": 31
+      },
+      "next_public_pane_number": 34,
+      "public_tab_numbers": [
+        3,
+        22,
+        31,
+        33
+      ],
+      "next_public_tab_number": 34,
+      "tabs": [
+        {
+          "custom_name": "caffinate",
+          "layout": {
+            "Pane": 10
+          },
+          "panes": {
+            "10": {
+              "cwd": "/Users/mateusz/projects/arx-be"
+            }
+          },
+          "zoomed": false,
+          "focused": 10,
+          "root_pane": 10
+        },
+        {
+          "custom_name": "Null vs 0",
+          "layout": {
+            "Pane": 45
+          },
+          "panes": {
+            "45": {
+              "cwd": "/Users/mateusz/projects/arx-de"
+            }
+          },
+          "zoomed": false,
+          "focused": 45,
+          "root_pane": 45
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 78
+          },
+          "panes": {
+            "78": {
+              "cwd": "/Users/mateusz/projects/arx-de-2"
+            }
+          },
+          "zoomed": false,
+          "focused": 78,
+          "root_pane": 78
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 80
+          },
+          "panes": {
+            "80": {
+              "cwd": "/Users/mateusz/projects/arx-de-2"
+            }
+          },
+          "zoomed": false,
+          "focused": 80,
+          "root_pane": 80
+        }
+      ],
+      "active_tab": 3
+    },
+    {
+      "id": "w4",
+      "custom_name": "Orchestration",
+      "identity_cwd": "/Users/mateusz/projects/arx-de-2",
+      "public_pane_numbers": {
+        "75": 35,
+        "63": 24,
+        "12": 1
+      },
+      "next_public_pane_number": 37,
+      "public_tab_numbers": [
+        1,
+        24,
+        35
+      ],
+      "next_public_tab_number": 37,
+      "tabs": [
+        {
+          "custom_name": "Flip left",
+          "layout": {
+            "Pane": 12
+          },
+          "panes": {
+            "12": {
+              "cwd": "/Users/mateusz/projects/arx-de-2"
+            }
+          },
+          "zoomed": false,
+          "focused": 12,
+          "root_pane": 12
+        },
+        {
+          "custom_name": "Analytics",
+          "layout": {
+            "Pane": 63
+          },
+          "panes": {
+            "63": {
+              "cwd": "/Users/mateusz/projects/arx-de"
+            }
+          },
+          "zoomed": false,
+          "focused": 63,
+          "root_pane": 63
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 75
+          },
+          "panes": {
+            "75": {
+              "cwd": "/Users/mateusz/projects/arx-de"
+            }
+          },
+          "zoomed": false,
+          "focused": 75,
+          "root_pane": 75
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w6",
+      "custom_name": null,
+      "identity_cwd": "/Users/mateusz/projects/serving-watch",
+      "public_pane_numbers": {
+        "76": 2,
+        "81": 3,
+        "73": 1
+      },
+      "next_public_pane_number": 4,
+      "public_tab_numbers": [
+        1,
+        2,
+        3
+      ],
+      "next_public_tab_number": 4,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 73
+          },
+          "panes": {
+            "73": {
+              "cwd": "/Users/mateusz/projects/serving-watch"
+            }
+          },
+          "zoomed": false,
+          "focused": 73,
+          "root_pane": 73
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 76
+          },
+          "panes": {
+            "76": {
+              "cwd": "/Users/mateusz/projects/serving-watch"
+            }
+          },
+          "zoomed": false,
+          "focused": 76,
+          "root_pane": 76
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 81
+          },
+          "panes": {
+            "81": {
+              "cwd": "/Users/mateusz/projects/serving-watch"
+            }
+          },
+          "zoomed": false,
+          "focused": 81,
+          "root_pane": 81
+        }
+      ],
+      "active_tab": 2
+    }
+  ],
+  "active": 2,
+  "selected": 2,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

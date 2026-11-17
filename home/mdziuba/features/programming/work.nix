@@ -40,10 +40,14 @@
       markdownlint-cli
       localstack
       terraform-local
+      bun
       eslint
+      google-chrome
     ])
     ++ [
       # stable 26.05 ships gdal 3.12.4; 3.13.x carries the security fixes.
-      pkgsUnstable.gdal
+      pkgsUnstable.gdalMinimal
+      # Not in nixpkgs; packaged from the upstream release tarballs.
+      (pkgs.callPackage ./dagger-package.nix {})
     ];
 }

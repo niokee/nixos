@@ -7,7 +7,7 @@
   imports = [
     ../common
 
-    ./ghostty.nix
+    ../ghostty.nix
     ./font.nix
     ./playerctl.nix
     ./zen.nix

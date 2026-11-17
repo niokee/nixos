@@ -4,6 +4,8 @@ return {
 	check_for_updates = false,
 	exit_behavior = "CloseOnCleanExit", -- if the shell program exited with a successful status
 	status_update_interval = 1000,
+	-- was forced globally via home.sessionVariables.TERM; now terminal-owned
+	term = "wezterm",
 
 	-- scrollbar
 	scrollback_lines = 5000,

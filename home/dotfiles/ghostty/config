@@ -1,0 +1,11 @@
+# Visuals mirror dotfiles/wezterm (font, kanagawa palette, opacity)
+theme = kanagawa-dragon
+font-family = FiraCode Nerd Font
+font-size = 15
+background-opacity = 0.85
+
+# Tabs live in herdr; a native tab would attach a second herdr client
+keybind = cmd+t=unbind
+
+# Present only on hosts importing features/desktop/herdr.nix (auto-starts herdr)
+config-file = ?~/.config/herdr/ghostty.conf
